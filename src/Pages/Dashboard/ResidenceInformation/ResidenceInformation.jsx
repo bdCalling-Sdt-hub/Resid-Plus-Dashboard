@@ -1,7 +1,70 @@
 import { Col, Row } from "antd";
 import React from "react";
-import CarInfoTable from "./CarinfoTable";
-import "./ResidenceInformation.css";
+import styles from "./ResidenceInformation.css";
+import ResidenceCard from "./ResidenceCard";
+
+const data = [
+  {
+    id: 1,
+    name: "John Brown",
+    productName: "Car",
+    status: true,
+    capacity: 4,
+    beds: 2,
+    baths: 2,
+    price: 200,
+    address: "New York No. 1 Lake Park",
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    aboutResidence:
+      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
+    rating: 4.5,
+  },
+  {
+    id: 2,
+    name: "John Brown",
+    productName: "Car",
+    status: true,
+    capacity: 4,
+    beds: 2,
+    baths: 2,
+    price: 200,
+    address: "New York No. 1 Lake Park",
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    aboutResidence:
+      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    name: "John Brown",
+    productName: "Car",
+    status: true,
+    capacity: 4,
+    beds: 2,
+    baths: 2,
+    price: 200,
+    address: "New York No. 1 Lake Park",
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    aboutResidence:
+      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
+    rating: 4.5,
+  },
+  {
+    id: 4,
+    name: "John Brown",
+    productName: "Car",
+    status: true,
+    capacity: 4,
+    beds: 2,
+    baths: 2,
+    price: 200,
+    address: "New York No. 1 Lake Park",
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    aboutResidence:
+      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
+    rating: 4.5,
+  },
+];
 
 function CarInformation() {
   return (
@@ -124,9 +187,9 @@ function CarInformation() {
       </Row>
 
       <Row>
-        <Col lg={{ span: 24 }}>
-          <CarInfoTable />
-        </Col>
+        {data.map((item) => (
+          <ResidenceCard key={item.id} data={item} />
+        ))}
       </Row>
     </div>
   );
