@@ -1,0 +1,15 @@
+.card {
+  background: #000b90;
+  color: white;
+  height: 210px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardTitle {
+  margin-bottom: 20px;
+  font-weight: normal;
+}
