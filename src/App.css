@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-:where(.css-dev-only-do-not-override-17a39f8).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:where(.css-dev-only-do-not-override-17a39f8).ant-dropdown
+  .ant-dropdown-menu
+  .ant-dropdown-menu-item {
   margin-bottom: 10px;
   padding: 20px 10px;
   line-height: 20px;
@@ -14,7 +15,7 @@
 }
 
 .ant-layout-sider-children .ant-menu-item-selected {
-  color: #000;
+  color: #000b90;
   font-weight: bold;
 }
 
@@ -34,3 +35,7 @@
   color: white;
   border: 0;
 }
+
+
+
+

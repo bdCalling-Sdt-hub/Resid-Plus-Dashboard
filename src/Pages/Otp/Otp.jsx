@@ -2,6 +2,9 @@ import { Button, Form, Input, Typography } from "antd";
 import React from "react";
 import logo from "../../Images/Logo.png";
 import style from "./Otp.module.css";
+import { LeftOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router";
+
 
 const { Title, Paragraph, Text, Link } = Typography;
 
@@ -9,23 +12,33 @@ const Otp = () => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
+
+  const navigate = useNavigate();
+
   return (
     <div className={style.otpContainer}>
-      <div>
-        <img src={logo} alt="" />
+      <div className={style.logoContainer}>
+        <div>
+          <img
+            className={style.logo}
+            src="https://i.ibb.co/znBXwxd/Logo-2.png"
+            alt="Logo"
+          />
+        </div>
+        <img
+          className={style.illustration}
+          src="https://i.ibb.co/k1qX15R/Illustration-2.png"
+          alt=""
+        />
       </div>
       <div className={style.formContainer}>
-        <Title
-          level={2}
-          style={{
-            color: "#000B90",
-            fontWeight: "normal",
-            marginBottom: "10px",
-            textShadow: "#bfbfbf 2px 2px 4px",
-          }}
+        <div
+          onClick={(e) => navigate("/signin")}
+          className={style.otpTextHeader}
         >
-          Verify OTP
-        </Title>
+          <LeftOutlined size={50} />
+          <h2>Verify OTP</h2>
+        </div>
         <Paragraph style={{ marginBottom: "30px" }}>
           We'll send a verification code to your email. Check your inbox and
           enter the code here.
@@ -48,7 +61,7 @@ const Otp = () => {
 
             <a
               className="login-form-forgot"
-              style={{ color: "#000B90" }}
+              style={{ color: "#333333" }}
               href=""
             >
               Resend
@@ -56,22 +69,11 @@ const Otp = () => {
           </div>
 
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              block
-              style={{
-                height: "45px",
-                fontWeight: "400px",
-                fontSize: "18px",
-                background: "#000B90",
-                alignSelf: "bottom",
-                marginTop: "130px",
-              }}
-            >
-              Continue
-            </Button>
+            <div className={style.buttonContainer}>
+              <Button   onClick={(e) => navigate("/")} htmlType="submit" className={style.verifyButton}>
+                Verify
+              </Button>
+            </div>
           </Form.Item>
         </Form>
       </div>

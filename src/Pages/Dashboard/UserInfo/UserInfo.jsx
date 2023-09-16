@@ -2,6 +2,61 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Col, Input, Row } from "antd";
 import React from "react";
 import UserInfoTable from "./UserInfoTable";
+import UserCard from "./UserCard";
+
+
+  const data = [
+    {
+      id: "1",
+      name: "John Brown",
+      email: "test@gmail.com",
+      phone: "01700000000",
+      address: "New York No. 1 Lake Park",
+      joinDate: "2021-08-15",
+      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+      BookingCompleted: 5,
+    },
+    {
+      id: "2",
+      name: "John Brown",
+      email: "test@gmail.com",
+      phone: "01700000000",
+      address: "New York No. 1 Lake Park",
+      joinDate: "2021-08-15",
+      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+      BookingCompleted: 45,
+    },
+    {
+      id: "3",
+      name: "John Brown",
+      email: "test@gmail.com",
+      phone: "01700000000",
+      address: "New York No. 1 Lake Park",
+      joinDate: "2021-08-15",
+      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+      BookingCompleted: 8,
+    },
+    {
+      id: "4",
+      name: "John Brown",
+      email: "test@gmail.com",
+      phone: "01700000000",
+      address: "New York No. 1 Lake Park",
+      joinDate: "2021-08-15",
+      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+      BookingCompleted: 98,
+    },
+    {
+      id: "5",
+      name: "John Brown",
+      email: "test@gmail.com",
+      phone: "01700000000",
+      address: "New York No. 1 Lake Park",
+      joinDate: "2021-08-15",
+      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+      BookingCompleted: 1,
+    },
+  ]
 
 function UserInfo() {
   return (
@@ -14,26 +69,17 @@ function UserInfo() {
             fontWeight: "normal",
           }}
         >
-          All user info
+          Search User
         </h2>
         <Col lg={{ span: 24 }}>
           <div className="" style={{ display: "flex", gap: "15px" }}>
             <Input
               size="large"
+              style={{ border: "1px solid #787878" }}
               placeholder="Search by name/email/phone"
               prefix={<SearchOutlined style={{ color: "#cccccc" }} />}
             />
-            <Button
-              style={{
-                height: "50px",
-                width: "300px",
-                backgroundColor: "#000b90",
-                color: "#fff",
-                fontSize: "20px",
-              }}
-            >
-              Search
-            </Button>
+            <Button className="btn">Search</Button>
           </div>
         </Col>
       </Row>
@@ -42,15 +88,20 @@ function UserInfo() {
         <h2
           style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}
         >
-          Users information
+          User List
         </h2>
       </Row>
-
       <Row>
+        {data.map((item) => (
+          <UserCard key={item.id} data={item} />
+        ))}
+      </Row>
+
+      {/* <Row>
         <Col lg={{ span: 24 }}>
           <UserInfoTable />
         </Col>
-      </Row>
+      </Row> */}
     </div>
   );
 }

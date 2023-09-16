@@ -27,6 +27,7 @@ import SettingPage from "./Pages/Dashboard/Setting/SettingPage/SettingPage";
 import StripeBills from "./Pages/Dashboard/StripeBills/StripeBills";
 import UserKyc from "./Pages/Dashboard/UserKyc/UserKyc";
 import UserPayment from "./Pages/Dashboard/UserPayment/UserPayment";
+import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
 
 function App() {
   return (
@@ -67,7 +68,8 @@ function App() {
 
             <Route path="/signin" element={<Signin />} />
             <Route path="/email" element={<Email />} />
-            <Route path="/forget-password" element={<Otp />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/otp" element={<Otp />} />
             <Route path="/update-password" element={<UpdatePass />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
