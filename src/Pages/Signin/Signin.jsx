@@ -1,5 +1,4 @@
-import { LockOutlined, MailOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import React from "react";
 import { useNavigate } from "react-router";
 import logo from "../../Images/Logo.png";
@@ -18,20 +17,23 @@ const Signin = () => {
 
   return (
     <div className={style.signContainer}>
-      <div>
-        <img src={logo} alt="" />
+      <div className={style.logoContainer}>
+        <div>
+          <img
+            className={style.logo}
+            src="https://i.ibb.co/znBXwxd/Logo-2.png"
+            alt="Logo"
+          />
+        </div>
+        <img
+          className={style.illustration}
+          src="https://i.ibb.co/YjBqNfm/illustration-1.png"
+          alt=""
+        />
       </div>
+
       <div className={style.formContainer}>
-        <h2
-          style={{
-            color: "#000B90",
-            fontWeight: "normal",
-            marginBottom: "30px",
-            textShadow: "#bfbfbf 2px 2px 4px",
-          }}
-        >
-          Sign In
-        </h2>
+        <h2 className={style.formHeader}>Welcome</h2>
         <Form
           name="normal_login"
           className="login-form"
@@ -40,10 +42,8 @@ const Signin = () => {
           }}
           onFinish={onFinish}
         >
+          <h3 className={style.expertSignIn}>Expert Sign In</h3>
           <div>
-            <label htmlFor="email" className={style.label}>
-              Email
-            </label>
             <Form.Item
               name="email"
               id="email"
@@ -54,44 +54,30 @@ const Signin = () => {
                 },
               ]}
             >
-              <Input
-                prefix={<MailOutlined className="site-form-item-icon" />}
-                placeholder="Enter your email address"
-                type="email"
-                className={style.input}
-              />
+              <Input placeholder="Email" type="email" className={style.input} />
             </Form.Item>
           </div>
 
           <div>
-            <label htmlFor="email" className={style.label}>
-              Password
-            </label>
             <Form.Item
               name="password"
               rules={[
                 {
                   required: true,
-                  message: "Please input your Password!",
+                  message: "password",
                 },
               ]}
             >
-              <Input
-                prefix={<LockOutlined className="site-form-item-icon" />}
-                type="password"
-                placeholder="Enter your password"
-                className={style.input}
+              <Input.Password
+                placeholder="Password"
+                className={style.passwordInput}
               />
             </Form.Item>
           </div>
-          <div className={style.rememberAndPass}>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
+          <div className={style.ForgotBtn}>
             <a
               className="login-form-forgot"
-              style={{ color: "#000B90" }}
+              style={{ color: "#333333" }}
               href=""
               onClick={handleForget}
             >
@@ -100,21 +86,11 @@ const Signin = () => {
           </div>
 
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              block
-              style={{
-                height: "45px",
-                fontWeight: "400px",
-                fontSize: "18px",
-                background: "#000B90",
-                marginTop: "60px",
-              }}
-            >
-              Sign In
-            </Button>
+            <div className={style.buttonContainer}>
+              <Button htmlType="submit" className={style.loginButton}>
+                Sign In
+              </Button>
+            </div>
           </Form.Item>
         </Form>
       </div>
