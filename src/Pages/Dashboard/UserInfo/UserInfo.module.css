@@ -75,6 +75,12 @@
     margin: 15px 0px;
 
 }
+.userDetails p{
+    font-size: 14px;
+    font-weight: 500;
+    color: #787878;
+    margin: 15px 0px;
+}
 
 .modalImage{
     width: 183px;

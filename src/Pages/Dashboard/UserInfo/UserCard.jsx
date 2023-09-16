@@ -44,7 +44,7 @@ function UserCard({ data }) {
           </div>
           <hr />
           <div>
-            <div className="">
+            <div className={styles.userDetails}>
               <h1>Details</h1>
               <p>Email: {data.email}</p>
               <p>Joining Date: {data.joinDate}</p>
