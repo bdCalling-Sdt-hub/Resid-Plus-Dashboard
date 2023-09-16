@@ -6,6 +6,7 @@ import { Divider } from "antd";
 import { GiReceiveMoney } from "react-icons/gi";
 import { MdCarRental, MdPayment, MdPeopleOutline } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
+import { BiBookmarkAltPlus } from "react-icons/bi";
 import { GoPeople } from "./../../../node_modules/react-icons/go/index.esm";
 
 import { RiUserSearchLine } from "react-icons/ri";
@@ -14,7 +15,7 @@ import React, { useEffect, useState } from "react";
 
 import { useTranslation } from "react-i18next";
 import { Link, Outlet } from "react-router-dom";
-import rentiLogo from "../../Images/renti-logo.png";
+import rentiLogo from "../../Images/resid-logo.png";
 import Styles from "./Dashboard.module.css";
 
 const { Header, Sider, Content } = Layout;
@@ -201,7 +202,7 @@ const Dashboard = () => {
           position: "fixed",
           height: "100vh",
           zIndex: 2,
-          backgroundColor: "white",
+          backgroundColor: "black"
         }}
       >
         <div className="demo-logo-vertical" />
@@ -211,19 +212,19 @@ const Dashboard = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "30px",
-            marginBottom: "30px",
+            marginTop: "60px",
+            marginBottom: "40px",
           }}
         >
           <img
             src={rentiLogo}
-            height={collapsed ? "40px" : "150px"}
-            width={collapsed ? "40px" : "150px"}
+            height={collapsed ? "40px" : "76px"}
+            width={collapsed ? "40px" : "66px"}
           />
         </div>
 
         <Menu
-          style={{ padding: collapsed ? "0px" : "20px", border: "none" }}
+          style={{ padding: collapsed ? "0px" : "20px", border: "none", backgroundColor: "black", color: "white" }}
           mode="inline"
           defaultSelectedKeys={["1"]}
         >
@@ -231,65 +232,20 @@ const Dashboard = () => {
             key="1"
             icon={<RxDashboard style={{ fontSize: "14px" }} />}
           >
-            <Link to="/" style={{ fontSize: "16px" }}>
+            <Link to="/" style={{ fontSize: "16px", }}>
               {t("dashboard")}
             </Link>
           </Menu.Item>
 
-          <SubMenu
-            style={{ fontSize: "16px" }}
-            key="2"
-            icon={<GiReceiveMoney style={{ fontSize: "14px" }} />}
-            title={t("earning.title")}
-          >
-            <Menu.Item key="31">
-              <Link to="/earning/today-income">{t("earning.subTitle1")}</Link>
-            </Menu.Item>
-            <Menu.Item key="32">
-              <Link to="/earning/weekly-income">{t("earning.subTitle2")}</Link>
-            </Menu.Item>
-            <Menu.Item key="33">
-              <Link to="/earning/monthly-income">{t("earning.subTitle3")}</Link>
-            </Menu.Item>
-          </SubMenu>
 
-          <SubMenu
-            style={{ fontSize: "16px" }}
-            key="3"
-            icon={<MdPayment style={{ fontSize: "14px" }} />}
-            title={t("payment.title")}
-          >
-            <Menu.Item key="34">
-              <Link to="/user-payment">{t("payment.subTitle1")}</Link>
-            </Menu.Item>
-            <Menu.Item key="35">
-              <Link to="/host-payment">{t("payment.subTitle2")}</Link>
-            </Menu.Item>
-            <Menu.Item key="36">
-              <Link to="/stripe-bills">{t("payment.subTitle3")}</Link>
-            </Menu.Item>
-            <Menu.Item key="37">
-              <Link to="/renti-income">{t("payment.subTitle4")}</Link>
-            </Menu.Item>
-            <Menu.Item key="38">
-              <Link to="/wallet">{t("payment.subTitle5")}</Link>
-            </Menu.Item>
-          </SubMenu>
+          <Menu.Item
+            key="31"
+            icon={<BiBookmarkAltPlus style={{ fontSize: "14px", }} />} >
+            <Link to="/booking" style={{ fontSize: "16px" }}>{t("booking")}</Link>
+          </Menu.Item>
+
           <Divider />
 
-          <SubMenu
-            style={{ fontSize: "16px" }}
-            key="4"
-            icon={<GoPeople style={{ fontSize: "14px" }} />}
-            title={t("hostInfo.title")}
-          >
-            <Menu.Item key="39">
-              <Link to="/host-info">{t("hostInfo.subTitle1")}</Link>
-            </Menu.Item>
-            <Menu.Item key="40">
-              <Link to="/host-request">{t("hostInfo.subTitle2")}</Link>
-            </Menu.Item>
-          </SubMenu>
 
           <Menu.Item
             key="5"
@@ -301,29 +257,37 @@ const Dashboard = () => {
           </Menu.Item>
 
           <Menu.Item
+            key="39"
+            icon={<GoPeople style={{ fontSize: "14px" }} />}>
+            <Link to="/host-info" style={{ fontSize: "16px" }}>{t("hostInfo")}</Link>
+          </Menu.Item>
+
+
+
+          {/* <Menu.Item
             key="6"
-            icon={<MdCarRental style={{ fontSize: "14px" }} />}
+            icon={<MdCarRental style={{ fontSize: "14px", color: "white" }} />}
           >
-            <Link to="/rent-info" style={{ fontSize: "16px" }}>
+            <Link to="/rent-info" style={{ fontSize: "16px", color: "white" }}>
               {t("rentInfo")}
             </Link>
-          </Menu.Item>
+          </Menu.Item> */}
 
           <Menu.Item
             key="7"
             icon={<CarOutlined style={{ fontSize: "14px" }} />}
           >
-            <Link to="/car-info" style={{ fontSize: "16px" }}>
-              {t("carInfo")}
+            <Link to="/residence-info" style={{ fontSize: "16px" }}>
+              {t("residenceInfo")}
             </Link>
           </Menu.Item>
 
           <Divider />
 
           <SubMenu
-            style={{ fontSize: "16px" }}
+            style={{ fontSize: "16px", color: "white" }}
             key="8"
-            icon={<RiUserSearchLine style={{ fontSize: "14px" }} />}
+            icon={<RiUserSearchLine style={{ fontSize: "14px", color: "white" }} />}
             title={t("kyc.title")}
           >
             <Menu.Item key="41">
@@ -342,13 +306,15 @@ const Dashboard = () => {
 
           <Menu.Item
             key="9"
-            icon={<SettingOutlined style={{ fontSize: "14px" }} />}
+            icon={<SettingOutlined style={{ fontSize: "14px", color: "white" }} />}
           >
-            <Link to="/setting" style={{ fontSize: "16px" }}>
+            <Link to="/setting" style={{ fontSize: "16px", color: "white" }}>
               {t("setting.title")}
             </Link>
           </Menu.Item>
         </Menu>
+
+
       </Sider>
       <Layout>
         <Header
@@ -358,7 +324,8 @@ const Dashboard = () => {
             height: "80px",
             zIndex: 1,
             padding: 0,
-            background: colorBgContainer,
+            // background: colorBgContainer,
+            background: "#FDFBFB",
             display: "flex",
             justifyContent: "space-between",
             paddingRight: "60px",
@@ -451,11 +418,11 @@ const Dashboard = () => {
         </Header>
         <Content
           style={{
-            marginTop: "120px",
+            marginTop: "80px",
             marginBottom: "50px",
-            marginLeft: collapsed ? "130px" : "360px",
+            marginLeft: collapsed ? "90px" : "320px",
             marginRight: "60px",
-            background: "#e6e7f4",
+            background: "white",
 
             padding: 50,
             minHeight: 280,

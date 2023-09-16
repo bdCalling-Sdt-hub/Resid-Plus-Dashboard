@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-:where(.css-dev-only-do-not-override-17a39f8).ant-dropdown
-  .ant-dropdown-menu
-  .ant-dropdown-menu-item {
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
   margin-bottom: 10px;
   padding: 20px 10px;
   line-height: 20px;
@@ -15,23 +14,23 @@
 }
 
 .ant-layout-sider-children .ant-menu-item-selected {
-  color: #000b90;
+  color: #000;
   font-weight: bold;
 }
 
-:where(.css-dev-only-do-not-override-17a39f8).ant-table-wrapper
-  .ant-table-thead
-  > tr
-  > th,
-:where(.css-dev-only-do-not-override-17a39f8).ant-table-wrapper
-  .ant-table-thead
-  > tr
-  > td {
-  background: #000b90;
-  color: white;
-  border: 0;
+.ant-layout-sider-children .ant-menu-item:hover {
+  color: white !important;
+}
+
+.ant-layout-sider-children .ant-menu-item-selected:hover {
+  color: black !important;
 }
 
 
 
-
+:where(.css-dev-only-do-not-override-17a39f8).ant-table-wrapper .ant-table-thead>tr>th,
+:where(.css-dev-only-do-not-override-17a39f8).ant-table-wrapper .ant-table-thead>tr>td {
+  background: #000;
+  color: white;
+  border: 0;
+}

@@ -3,6 +3,7 @@
     "title": "Dashboard"
   },
   "dashboard": "Dashboard",
+  "booking": "Booking",
   "setting": {
     "title": "Settings"
   },
@@ -13,14 +14,10 @@
     "subTitle3": "Car KYC",
     "subTitle4": "Form KYC"
   },
-  "carInfo": "Car Information",
+  "residenceInfo": "Residence Information",
   "rentInfo": "Rent Information",
   "userInfo": "User Information",
-  "hostInfo": {
-    "title": "Host Information",
-    "subTitle1": "All Host",
-    "subTitle2": "Host Request"
-  },
+  "hostInfo": "Host Information",
   "payment": {
     "title": "Payments",
     "subTitle1": "User Payments",

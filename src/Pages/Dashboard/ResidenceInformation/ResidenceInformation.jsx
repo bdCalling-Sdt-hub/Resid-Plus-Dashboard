@@ -1,7 +1,7 @@
 import { Col, Row } from "antd";
 import React from "react";
 import CarInfoTable from "./CarinfoTable";
-import "./Carinformation.css";
+import "./ResidenceInformation.css";
 
 function CarInformation() {
   return (
@@ -14,7 +14,7 @@ function CarInformation() {
             fontWeight: "normal",
           }}
         >
-          Car Information
+          Residence Information
         </h3>
       </Row>
 
@@ -36,7 +36,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              Total's car
+              Total Residence
             </h1>
             <h3
               style={{
@@ -66,7 +66,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              Car active
+              Active
             </h1>
             <h3
               style={{
@@ -96,7 +96,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              Reserved car
+              Reserved
             </h1>
             <h3
               style={{

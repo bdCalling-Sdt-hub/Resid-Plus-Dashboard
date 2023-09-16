@@ -2,7 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
-import Earning from "./Pages/Dashboard/Earning/Earning";
+import Booking from "./Pages/Dashboard/Booking/Booking";
 import HostInfo from "./Pages/Dashboard/HostInfo/HostInfo";
 import HostRequest from "./Pages/Dashboard/HostInfo/HostRequest";
 import KycForm from "./Pages/Dashboard/Kyc/KycForm";
@@ -17,7 +17,7 @@ import UpdatePass from "./Pages/UpdatePass/UpdatePass";
 
 import NotFound from "./404";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import CarInformation from "./Pages/Dashboard/CarInformation/CarInformation";
+import ResidenceInformation from "./Pages/Dashboard/ResidenceInformation/ResidenceInformation";
 import CarKyc from "./Pages/Dashboard/CarKyc/CarKyc";
 import HostKyc from "./Pages/Dashboard/HostKyc/HostKyc";
 import HostPayment from "./Pages/Dashboard/HostPayment/HostPayment";
@@ -45,7 +45,7 @@ function App() {
             >
               <Route path="/" element={<DashboardHome />} />
               <Route path="/notification" element={<Notification />} />
-              <Route path="/earning/:income" element={<Earning />} />
+              <Route path="/booking" element={<Booking />} />
               <Route path="/host-info" element={<HostInfo />} />
               <Route path="/host-request" element={<HostRequest />} />
               <Route path="/kyc-form" element={<KycForm />} />
@@ -53,7 +53,7 @@ function App() {
 
               <Route path="/user-info" element={<UserInfo />} />
               <Route path="/rent-info" element={<RentInformation />} />
-              <Route path="/car-info" element={<CarInformation />} />
+              <Route path="/residence-info" element={<ResidenceInformation />} />
               <Route path="/user-payment" element={<UserPayment />} />
               <Route path="/renti-income" element={<RentisIncome />} />
               <Route path="/host-payment" element={<HostPayment />} />
