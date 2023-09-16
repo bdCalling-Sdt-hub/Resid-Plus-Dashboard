@@ -1,10 +1,12 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Typography } from "antd";
 import React from "react";
 import { useNavigate } from "react-router";
-import logo from "../../Images/Logo.png";
-import style from "./Signin.module.css";
+import { LeftOutlined } from "@ant-design/icons";
+import style from "./ForgetPassword.module.css";
 
-const Signin = () => {
+const { Title, Paragraph, Text, Link } = Typography;
+
+const ForgetPassword = () => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
@@ -12,7 +14,7 @@ const Signin = () => {
   const navigate = useNavigate();
 
   const handleForget = () => {
-    navigate("/forget-password");
+    navigate("/otp");
   };
 
   return (
@@ -27,13 +29,12 @@ const Signin = () => {
         </div>
         <img
           className={style.illustration}
-          src="https://i.ibb.co/YjBqNfm/illustration-1.png"
+          src="https://i.ibb.co/rGy8ML7/Illustration-3.png"
           alt=""
         />
       </div>
 
       <div className={style.formContainer}>
-        <h2 className={style.formHeader}>Welcome</h2>
         <Form
           name="normal_login"
           className="login-form"
@@ -42,7 +43,16 @@ const Signin = () => {
           }}
           onFinish={onFinish}
         >
-          <h3 className={style.expertSignIn}>Expert Sign In</h3>
+          <div
+            onClick={(e) => navigate("/signin")}
+            className={style.forgetPasswordTextHeader}
+          >
+            <LeftOutlined size={50} />
+            <h2>Forget Password</h2>
+          </div>
+          <Paragraph style={{ marginBottom: "30px" }}>
+          Enter the email address associated with your account. We'll send you an OTP to your email.
+          </Paragraph>
           <div>
             <Form.Item
               name="email"
@@ -58,40 +68,13 @@ const Signin = () => {
             </Form.Item>
           </div>
 
-          <div>
-            <Form.Item
-              name="password"
-              rules={[
-                {
-                  required: true,
-                  message: "password",
-                },
-              ]}
-            >
-              <Input.Password
-                placeholder="Password"
-                className={style.passwordInput}
-              />
-            </Form.Item>
-          </div>
-          <div className={style.ForgotBtn}>
-            <a
-              className="login-form-forgot"
-              style={{ color: "#333333" }}
-              href=""
-              onClick={handleForget}
-            >
-              Forgot password
-            </a>
-          </div>
-
           <Form.Item>
             <div
-              onClick={(e) => navigate("/")}
+              onClick={(e) => navigate("/otp")}
               className={style.buttonContainer}
             >
               <Button htmlType="submit" className={style.loginButton}>
-                Sign In
+              Send OTP
               </Button>
             </div>
           </Form.Item>
@@ -101,4 +84,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default ForgetPassword;

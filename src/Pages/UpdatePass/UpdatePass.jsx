@@ -2,6 +2,7 @@ import { Button, Form, Input } from "antd";
 import React, { useState } from "react";
 import logo from "../../Images/Logo.png";
 import style from "./UpdatePass.module.css";
+import { LeftOutlined } from "@ant-design/icons";
 
 const UpdatePass = () => {
   const [err, setErr] = useState("");
@@ -40,89 +41,78 @@ const UpdatePass = () => {
 
   return (
     <div className={style.updateContainer}>
-      <div>
-        <img src={logo} alt="" />
+      <div className={style.logoContainer}>
+        <div>
+          <img
+            className={style.logo}
+            src="https://i.ibb.co/znBXwxd/Logo-2.png"
+            alt="Logo"
+          />
+        </div>
+        <img
+          className={style.illustration}
+          src="https://i.ibb.co/FHDwr1r/Group-2.png"
+          alt=""
+        />
       </div>
+
       <div className={style.formContainer}>
-        <h1
-          style={{
-            color: "#000B90",
-            fontWeight: "normal",
-            marginBottom: "30px",
-            textShadow: "#bfbfbf 2px 2px 4px",
-          }}
+        <div
+          onClick={(e) => navigate("/forget-password")}
+          className={style.UpdateTextHeader}
         >
-          Update Password
-        </h1>
+          <LeftOutlined size={50} />
+          <h2>Update Password</h2>
+        </div>
         <Form
           name="normal_login"
           className="login-form"
           initialValues={{
             remember: true,
           }}
-          onFinish={onFinish}
         >
           <div>
-            <label htmlFor="" className={style.label}>
-              New Password
-            </label>
             <Form.Item
-              name="password"
+              name="newPassword"
               rules={[
                 {
                   required: true,
-                  message: "Please enter new password!",
+                  message: "New password",
                 },
               ]}
             >
-              <Input
-                type="text"
-                placeholder="Password"
-                className={style.input}
+              <Input.Password
+                placeholder="New password"
+                className={style.passwordInput}
               />
             </Form.Item>
           </div>
-
           <div>
-            <label htmlFor="" className={style.label}>
-              Re-type Password
-            </label>
             <Form.Item
               name="confirmPassword"
               rules={[
                 {
                   required: true,
-                  message: "Please enter confirm Password!",
+                  message: "Confirm Password",
                 },
               ]}
             >
-              <Input
-                type="text"
-                placeholder="Confirm password"
-                className={style.input}
+              <Input.Password
+                placeholder="Confirm Password"
+                className={style.passwordInput}
               />
             </Form.Item>
           </div>
 
-          {/* showing error */}
-          <label style={{ color: "red" }}>{err}</label>
-
           <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              block
-              style={{
-                height: "45px",
-                fontWeight: "400px",
-                fontSize: "18px",
-                background: "#000B90",
-                marginTop: "100px",
-              }}
+            <div
+              onClick={(e) => navigate("/")}
+              className={style.buttonContainer}
             >
-              Confirm
-            </Button>
+              <Button htmlType="submit" className={style.updateButton}>
+                Update
+              </Button>
+            </div>
           </Form.Item>
         </Form>
       </div>
