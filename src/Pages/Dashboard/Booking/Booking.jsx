@@ -1,11 +1,65 @@
 import { Col, Row } from "antd";
 import React from "react";
+import styles from "./Booking.module.css";
 import { LiaHandHoldingUsdSolid } from "react-icons/lia";
-import EarnHistoryTable from "./EarnHistoryTable";
-import style from "./Earning.module.css";
+import BookingHistoryTable from "./BookingHistoryTable";
+import { Form, Select } from 'antd';
+
+const data = [
+  {
+    id: "1",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 5,
+  },
+  {
+    id: "2",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 45,
+  },
+  {
+    id: "3",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 8,
+  },
+  {
+    id: "4",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 98,
+  },
+  {
+    id: "5",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 1,
+  },
+]
 
 const Booking = () => (
-  <div style={{ padding: "0px 50px" }}>
+  <div style={{ padding: "0px 10px" }}>
     <h2 style={{ fontSize: "25px", fontWeight: "normal" }}>Bookings</h2>
     <Row gutter={16} style={{ marginTop: "20px" }}>
       <Col className="gutter-row" style={{ marginBottom: "10px" }} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
@@ -27,12 +81,31 @@ const Booking = () => (
         </div>
       </Col>
     </Row>
-    
+
     <h2 style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}>
-      Transactions History
+      Booking History
     </h2>
 
-    <EarnHistoryTable />
+
+    <div className={styles.card}>
+      <div className={styles.filterContainer}>
+        <h3 className={styles.cardTitle}>Booking List/ August, 2023</h3>
+        <Form.Item label="" className={styles.filterLabel}>
+          <Select
+            placeholder="Monthly Booking"
+          >
+            <Option value="male">Augest/2023</Option>
+            <Option value="female">September/2023</Option>
+            <Option value="other">October/2023</Option>
+          </Select>
+        </Form.Item>
+      </div>
+      {data.map((item) => (
+        <BookingHistoryTable key={item.id} data={item} />
+      ))}
+    </div>
+
+    {/* <BookingHistoryTable /> */}
   </div>
 );
 

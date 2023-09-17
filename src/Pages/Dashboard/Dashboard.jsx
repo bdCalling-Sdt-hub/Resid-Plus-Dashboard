@@ -202,7 +202,7 @@ const Dashboard = () => {
           position: "fixed",
           height: "100vh",
           zIndex: 2,
-          backgroundColor: "black"
+          backgroundColor: "linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%)"
         }}
       >
         <div className="demo-logo-vertical" />
@@ -224,7 +224,7 @@ const Dashboard = () => {
         </div>
 
         <Menu
-          style={{ padding: collapsed ? "0px" : "20px", border: "none", backgroundColor: "black", color: "white" }}
+          style={{ padding: collapsed ? "0px" : "20px", border: "none", backgroundColor: "#001529", color: "white" }}
           mode="inline"
           defaultSelectedKeys={["1"]}
         >

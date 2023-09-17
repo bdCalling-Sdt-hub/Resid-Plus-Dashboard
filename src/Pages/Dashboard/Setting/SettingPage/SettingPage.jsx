@@ -44,10 +44,10 @@ const SettingPage = () => {
       <div style={style.settingContainer}>
         {text === "personal information" && <PersonalInfo />}
         {text === "login activity" && <LoginActivity />}
-        {text === "block list" && <BlockList />}
+        {/* {text === "block list" && <BlockList />}
         {text === "renti percentage" && <RentiPercentage />}
-        {text === "host payment time" && <HostPaymentTime />}
-        {text === "trash" && <Trash />}
+        {text === "host payment time" && <HostPaymentTime />} */}
+        {/* {text === "trash" && <Trash />} */}
         {text === "privacy policy" && <PrivacyPolicy />}
         {text === "terms condition" && <TermsAndCondition />}
         {text === "about us" && <About />}

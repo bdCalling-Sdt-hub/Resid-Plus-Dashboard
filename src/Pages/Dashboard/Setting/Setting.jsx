@@ -61,26 +61,26 @@ const Setting = () => {
       title: "Login Activity",
       link: "login-activity",
     },
-    {
-      key: "4",
-      title: "Block List",
-      link: "block-list",
-    },
-    {
-      key: "5",
-      title: "Renti Percentage",
-      link: "renti-percentage",
-    },
-    {
-      key: "6",
-      title: "Host Payment Time",
-      link: "host-payment-time",
-    },
-    {
-      key: "7",
-      title: "Trash",
-      link: "trash",
-    },
+    // {
+    //   key: "4",
+    //   title: "Block List",
+    //   link: "block-list",
+    // },
+    // {
+    //   key: "5",
+    //   title: "Renti Percentage",
+    //   link: "renti-percentage",
+    // },
+    // {
+    //   key: "6",
+    //   title: "Host Payment Time",
+    //   link: "host-payment-time",
+    // },
+    // {
+    //   key: "7",
+    //   title: "Trash",
+    //   link: "trash",
+    // },
     {
       key: "8",
       title: "Privacy Policy",
@@ -156,7 +156,7 @@ const Setting = () => {
   };
 
   return (
-    <div style={{ padding: "0 60px" }}>
+    <div style={{ padding: "0 10px" }}>
       <h2 style={{ marginBottom: "20px", fontWeight: "normal" }}>Settings</h2>
       <div style={style.formContainer}>
         {menuItems.map((item) => (
