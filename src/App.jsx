@@ -18,7 +18,7 @@ import UpdatePass from "./Pages/UpdatePass/UpdatePass";
 import NotFound from "./404";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ResidenceInformation from "./Pages/Dashboard/ResidenceInformation/ResidenceInformation";
-import CarKyc from "./Pages/Dashboard/CarKyc/CarKyc";
+import CarKyc from "./Pages/Dashboard/ResidenceKYC/ResidenceKYC";
 import HostKyc from "./Pages/Dashboard/HostKyc/HostKyc";
 import HostPayment from "./Pages/Dashboard/HostPayment/HostPayment";
 import RentisIncome from "./Pages/Dashboard/RentisIncome/RentisIncome";
@@ -28,6 +28,7 @@ import StripeBills from "./Pages/Dashboard/StripeBills/StripeBills";
 import UserKyc from "./Pages/Dashboard/UserKyc/UserKyc";
 import UserPayment from "./Pages/Dashboard/UserPayment/UserPayment";
 import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
+import ResidenceKYC from "./Pages/Dashboard/ResidenceKYC/ResidenceKYC";
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
               <Route path="/stripe-bills" element={<StripeBills />} />
               <Route path="/host-kyc" element={<HostKyc />} />
               <Route path="/user-kyc" element={<UserKyc />} />
-              <Route path="/car-kyc" element={<CarKyc />} />
+              <Route path="/residence-kyc" element={<ResidenceKYC />} />
               <Route path="/setting" element={<Setting />}></Route>
               <Route path="/setting/:dynamic" element={<SettingPage />} />
             </Route>

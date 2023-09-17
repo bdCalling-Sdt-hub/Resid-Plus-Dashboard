@@ -8,11 +8,10 @@
     "title": "Settings"
   },
   "kyc": {
-    "title": "KYC",
-    "subTitle1": "Host KYC",
-    "subTitle2": "User KYC",
-    "subTitle3": "Car KYC",
-    "subTitle4": "Form KYC"
+    "title": "KYC Form",
+    "subTitle1": "User",
+    "subTitle2": "Host",
+    "subTitle3": "Residence"
   },
   "residenceInfo": "Residence Information",
   "rentInfo": "Rent Information",

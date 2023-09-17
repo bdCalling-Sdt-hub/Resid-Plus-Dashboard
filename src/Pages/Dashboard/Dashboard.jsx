@@ -258,14 +258,7 @@ const Dashboard = () => {
 
 
 
-          {/* <Menu.Item
-            key="6"
-            icon={<MdCarRental style={{ fontSize: "14px", color: "white" }} />}
-          >
-            <Link to="/rent-info" style={{ fontSize: "16px", color: "white" }}>
-              {t("rentInfo")}
-            </Link>
-          </Menu.Item> */}
+
 
           <Menu.Item
             key="7"
@@ -284,14 +277,14 @@ const Dashboard = () => {
             icon={<RiUserSearchLine style={{ fontSize: "14px", color: "white" }} />}
             title={t("kyc.title")}
           >
-            <Menu.Item key="41">
-              <Link to="/host-kyc">{t("kyc.subTitle1")}</Link>
+             <Menu.Item key="41">
+              <Link to="/user-kyc">{t("kyc.subTitle1")}</Link>
             </Menu.Item>
             <Menu.Item key="42">
-              <Link to="/user-kyc">{t("kyc.subTitle2")}</Link>
+              <Link to="/host-kyc">{t("kyc.subTitle2")}</Link>
             </Menu.Item>
             <Menu.Item key="43">
-              <Link to="/car-kyc">{t("kyc.subTitle3")}</Link>
+              <Link to="/residence-kyc">{t("kyc.subTitle3")}</Link>
             </Menu.Item>
             <Menu.Item key="44">
               <Link to="/kyc-form">{t("kyc.subTitle4")}</Link>
