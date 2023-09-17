@@ -1,17 +1,17 @@
 import { Col, Row } from "antd";
 import React from "react";
-import styles from "./ResidenceInformation.css";
+import "./Residence.css";
 import ResidenceCard from "./ResidenceCard";
 
 const data = [
   {
     id: 1,
     name: "John Brown",
-    productName: "Car",
+    productName: "BMW",
     status: true,
     capacity: 4,
     beds: 2,
-    baths: 2,
+    baths: 5,
     price: 200,
     address: "New York No. 1 Lake Park",
     image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
@@ -23,10 +23,10 @@ const data = [
     id: 2,
     name: "John Brown",
     productName: "Car",
-    status: true,
+    status: false,
     capacity: 4,
     beds: 2,
-    baths: 2,
+    baths: 9,
     price: 200,
     address: "New York No. 1 Lake Park",
     image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
@@ -37,11 +37,11 @@ const data = [
   {
     id: 3,
     name: "John Brown",
-    productName: "Car",
-    status: true,
+    productName: "Tesla X2",
+    status: false,
     capacity: 4,
-    beds: 2,
-    baths: 2,
+    beds: 25,
+    baths: 8,
     price: 200,
     address: "New York No. 1 Lake Park",
     image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",

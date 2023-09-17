@@ -1,6 +1,7 @@
 import { Button, Modal } from "antd";
-import styles from "./ResidenceInformation.css";
+import styles from "./ResidenceInformation.module.css";
 import React, { useState } from "react";
+import { StarFilled } from "@ant-design/icons";
 
 function ResidenceCard({ data }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,37 +20,85 @@ function ResidenceCard({ data }) {
         <img className={styles.cardLogo} src={data.image} alt="" />
       </div>
       <div className={styles.cardDescription}>
-        <h1></h1>
         <div>
-          <p>Email: {data.email}</p>
-          <p>Joining Date: {data.joinDate}</p>
-          <p>Contact: {data.phone}</p>
-          <p>Address: {data.address}</p>
+          <div className={styles.statusContainer}>
+            <h1>{data.productName}</h1>{" "}
+            {data.status ? (
+              <span className={styles.active}>Active</span>
+            ) : (
+              <span className={styles.reserved}>Reserved</span>
+            )}
+          </div>
+          <div>
+            <StarFilled style={{ color: "#FBA91D" }} />
+            <span style={{ marginLeft: "3px" }}>({data.rating})</span>
+          </div>
         </div>
-        <Button onClick={showModal} className={styles.searchBtn}>
+        <div>
+          <p>Person/Capacity: {data.capacity}</p>
+          <p>Beds: {data.beds}</p>
+          <p>Baths: {data.baths}</p>
+          <p>Rent/hr: {data.price}</p>
+        </div>
+        <Button onClick={showModal} className={styles.ViewDetailsBtn}>
           View Details
         </Button>
       </div>
 
-      <Modal open={isModalOpen} onCancel={handleCancel} centered footer={[]}>
+      <Modal
+        open={isModalOpen}
+        width={1000}
+        onCancel={handleCancel}
+        centered
+        footer={[]}
+      >
         <div className={styles.modalContainer}>
-          <h1>User information</h1>
+          <h1>Residence information</h1>
           <hr />
           <div className={styles.userModalTitle}>
             <img className={styles.modalImage} src={data.image} alt="" />
             <div className={styles.userTitle}>
-              <h1>{data.name}</h1>
-              <p>Booking Completed: {data.BookingCompleted}</p>
+              <div>
+                <div className={styles.statusContainer}>
+                  <h1>{data.productName}</h1>{" "}
+                  {data.status ? (
+                    <span className={styles.active}>Active</span>
+                  ) : (
+                    <span className={styles.reserved}>Reserved</span>
+                  )}
+                </div>
+                <div>
+                  <StarFilled style={{ color: "#FBA91D" }} />
+                  <span style={{ marginLeft: "3px" }}>({data.rating})</span>
+                </div>
+              </div>
             </div>
           </div>
           <hr />
           <div>
             <div className={styles.userDetails}>
               <h1>Details</h1>
-              <p>Email: {data.email}</p>
-              <p>Joining Date: {data.joinDate}</p>
-              <p>Contact: {data.phone}</p>
+              <p>Person/Capacity: {data.capacity}</p>
+              <p>Beds: {data.beds}</p>
+              <p>Baths: {data.baths}</p>
               <p>Address: {data.address}</p>
+              <p>Rent/hr: {data.price}</p>
+            </div>
+            <hr />
+            <div className={styles.about}>
+              <h4>About this residence</h4>
+              <p style={{ width: "700px" }} className={styles.aboutResidence}>
+                {data.aboutResidence}
+              </p>
+            </div>
+            <hr />
+            <div>
+              <h2>Owner Information</h2>
+              <p>Owner Name: {data.name}</p>
+              <h4>About this residence</h4>
+              <p style={{ width: "700px" }} className={styles.aboutResidence}>
+                {data.aboutResidence}
+              </p>
             </div>
             <div>
               <Button className={styles.modalBtn}>Print</Button>
