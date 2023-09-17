@@ -2,7 +2,7 @@ import {
   Button,
   Col,
   DatePicker,
-  Image,
+  Radio,
   Input,
   Row,
   Upload,
@@ -67,6 +67,7 @@ function ResidenceKYC() {
   return (
     <div>
       <div>
+        <h1 className={styles.kycTitle}>Residence KYC Form</h1>
         <>
           <Upload
             action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
@@ -133,6 +134,20 @@ function ResidenceKYC() {
               style={{ height: "45px", marginTop: "5px" }}
               placeholder="Enter Amount"
             />
+          </Col>
+        </Row>
+        <Row style={{ marginBottom: "15px" }}>
+          <Col span={24}>
+            <div className={styles.radioBtnContainer}>
+              <label style={{ marginBottom: "10px" }} htmlFor="">
+                Set Residence Category
+              </label>
+              <Radio.Group name="radiogroup" defaultValue={1}>
+                <Radio value={1}>Popular</Radio>
+                <Radio value={2}>Trending</Radio>
+                <Radio value={3}>Regular</Radio>
+              </Radio.Group>
+            </div>
           </Col>
         </Row>
         <Row style={{ marginBottom: "15px" }}>
