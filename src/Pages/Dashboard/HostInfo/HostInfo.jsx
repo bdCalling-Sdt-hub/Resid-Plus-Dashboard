@@ -2,6 +2,7 @@ import { Button, Col, Input, Row } from "antd";
 import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import HostCard from "./HostCard";
+import styles from "./Host.module.css";
 
 const data = [
   {
@@ -89,11 +90,12 @@ const HostInfo = () => (
       </h2>
     </Row>
     <Row>
-      {data.map((item) => (
-        <HostCard key={item.id} data={item} />
-      ))}
+      <div className={styles.UserCardContainer}>
+        {data.map((item) => (
+          <HostCard key={item.id} data={item} />
+        ))}
+      </div>
     </Row>
-
   </div>
 );
 
