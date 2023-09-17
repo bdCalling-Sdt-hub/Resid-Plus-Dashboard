@@ -34,3 +34,24 @@
   color: white;
   border: 0;
 }
+
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+  color: white;
+  border-color: black;
+}
+
+
+.btn {
+  color: var(--White, #fff);
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 16px 100px;
+  border-radius: 8px;
+  height: 100%;
+  background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
+}
+

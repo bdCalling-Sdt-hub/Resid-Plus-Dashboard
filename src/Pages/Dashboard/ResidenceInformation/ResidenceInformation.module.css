@@ -1,4 +1,4 @@
-.searchBtn {
+.ViewDetailsBtn {
     margin-top: 10px;
     color: white;
     font-family: Raleway;
@@ -12,7 +12,8 @@
             linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
 
-.modalBtn{
+
+.modalBtn {
     margin-top: 10px;
     color: white;
     font-family: Raleway;
@@ -26,7 +27,8 @@
     background: var(--Black-BG,
             linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
-.modalBtn1{
+
+.modalBtn1 {
     margin-left: 10px;
     margin-top: 10px;
     color: white;
@@ -51,7 +53,7 @@
 
 .CardContainer {
     display: flex;
-    height: 280px;
+    height: 310px;
     width: 100%;
     border-top: 4px solid #E2E2E2;
     padding: 30px;
@@ -59,13 +61,15 @@
 
 
 .cardDescription h1 {
-    font-size: 18px;
+    font-size: 21px;
     font-weight: bold;
 }
-.cardDescription{
+
+.cardDescription {
     /* margin-top: 20px; */
     margin-left: 20px;
 }
+
 .cardDescription p {
     font-size: 14px;
     font-weight: 500;
@@ -73,32 +77,77 @@
     margin: 15px 0px;
 
 }
-.userDetails p{
+
+.userDetails p {
     font-size: 14px;
     font-weight: 500;
     color: #787878;
     margin: 15px 0px;
 }
 
-.modalImage{
+.modalImage {
     width: 183px;
     height: 183px;
 }
-.userModalTitle{
+
+.userModalTitle {
     display: flex;
     margin: 24px 0px;
 
 }
 
-.userTitle{
-margin-left: 10px;
+.userTitle {
+    margin-left: 10px;
 }
-.modalContainer h1{
+
+.modalContainer {
+    background-color: linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%)
+}
+
+.modalContainer h1 {
     font-size: 18px;
     font-weight: bold;
     margin: 10px 0px;
 }
 
+.statusContainer {
+    display: flex;
+    align-items: center;
+}
+
+.active {
+    background: linear-gradient(180deg, #34DE00 0%, #229400 100%);
+    border-radius: 8px;
+    padding: 7px 40px;
+    font-size: 12px;
+    color: white;
+    margin-left: 10px;
+}
+
+.reserved {
+    background: linear-gradient(180deg, #FF2340 0%, #AC0016 100%);
+    border-radius: 8px;
+    padding: 7px 30px;
+    font-size: 12px;
+    color: white;
+    margin-left: 10px;
+}
+
+.aboutResidence {
+    padding: 10px;
+    border: 2px solid #E2E2E2;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.about {
+    margin: 15px 0px;
+}
+
+.about h1 {
+    font-size: 18px;
+    font-weight: bold;
+}
 
 .UserCardContainer {
     border-left: 4px solid #E2E2E2;

@@ -1,66 +1,65 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Col, Input, Row } from "antd";
 import React from "react";
-import UserInfoTable from "./UserInfoTable";
+import styles from "./UserInfo.module.css";
 import UserCard from "./UserCard";
 
-
-  const data = [
-    {
-      id: "1",
-      name: "John Brown",
-      email: "test@gmail.com",
-      phone: "01700000000",
-      address: "New York No. 1 Lake Park",
-      joinDate: "2021-08-15",
-      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-      BookingCompleted: 5,
-    },
-    {
-      id: "2",
-      name: "John Brown",
-      email: "test@gmail.com",
-      phone: "01700000000",
-      address: "New York No. 1 Lake Park",
-      joinDate: "2021-08-15",
-      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-      BookingCompleted: 45,
-    },
-    {
-      id: "3",
-      name: "John Brown",
-      email: "test@gmail.com",
-      phone: "01700000000",
-      address: "New York No. 1 Lake Park",
-      joinDate: "2021-08-15",
-      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-      BookingCompleted: 8,
-    },
-    {
-      id: "4",
-      name: "John Brown",
-      email: "test@gmail.com",
-      phone: "01700000000",
-      address: "New York No. 1 Lake Park",
-      joinDate: "2021-08-15",
-      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-      BookingCompleted: 98,
-    },
-    {
-      id: "5",
-      name: "John Brown",
-      email: "test@gmail.com",
-      phone: "01700000000",
-      address: "New York No. 1 Lake Park",
-      joinDate: "2021-08-15",
-      image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-      BookingCompleted: 1,
-    },
-  ]
+const data = [
+  {
+    id: "1",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 5,
+  },
+  {
+    id: "2",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 45,
+  },
+  {
+    id: "3",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 8,
+  },
+  {
+    id: "4",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 98,
+  },
+  {
+    id: "5",
+    name: "John Brown",
+    email: "test@gmail.com",
+    phone: "01700000000",
+    address: "New York No. 1 Lake Park",
+    joinDate: "2021-08-15",
+    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
+    BookingCompleted: 1,
+  },
+];
 
 function UserInfo() {
   return (
-    <div style={{ padding: "0 60px" }}>
+    <div style={{ padding: "0 10px" }}>
       <Row>
         <h2
           style={{
@@ -92,16 +91,12 @@ function UserInfo() {
         </h2>
       </Row>
       <Row>
-        {data.map((item) => (
-          <UserCard key={item.id} data={item} />
-        ))}
+        <div className={styles.UserCardContainer}>
+          {data.map((item) => (
+            <UserCard key={item.id} data={item} />
+          ))}
+        </div>
       </Row>
-
-      {/* <Row>
-        <Col lg={{ span: 24 }}>
-          <UserInfoTable />
-        </Col>
-      </Row> */}
     </div>
   );
 }

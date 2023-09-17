@@ -1,11 +1,75 @@
 import { Col, Row } from "antd";
 import React from "react";
-import CarInfoTable from "./CarinfoTable";
-import "./ResidenceInformation.css";
+import "./Residence.css";
+import ResidenceCard from "./ResidenceCard";
+import styles from "./ResidenceInformation.module.css";
+
+const data = [
+  {
+    id: 1,
+    name: "John Brown",
+    productName: "BMW",
+    status: true,
+    capacity: 4,
+    beds: 2,
+    baths: 5,
+    price: 200,
+    address: "New York No. 1 Lake Park",
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    aboutResidence:
+      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
+    rating: 4.5,
+  },
+  {
+    id: 2,
+    name: "John Brown",
+    productName: "Car",
+    status: false,
+    capacity: 4,
+    beds: 2,
+    baths: 9,
+    price: 200,
+    address: "New York No. 1 Lake Park",
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    aboutResidence:
+      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    name: "John Brown",
+    productName: "Tesla X2",
+    status: false,
+    capacity: 4,
+    beds: 25,
+    baths: 8,
+    price: 200,
+    address: "New York No. 1 Lake Park",
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    aboutResidence:
+      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
+    rating: 4.5,
+  },
+  {
+    id: 4,
+    name: "John Brown",
+    productName: "Car",
+    status: true,
+    capacity: 4,
+    beds: 2,
+    baths: 2,
+    price: 200,
+    address: "New York No. 1 Lake Park",
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    aboutResidence:
+      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
+    rating: 4.5,
+  },
+];
 
 function CarInformation() {
   return (
-    <div style={{ padding: "0 60px" }}>
+    <div style={{ padding: "0 10px" }}>
       <Row>
         <h3
           style={{
@@ -124,9 +188,11 @@ function CarInformation() {
       </Row>
 
       <Row>
-        <Col lg={{ span: 24 }}>
-          <CarInfoTable />
-        </Col>
+        <div className={styles.UserCardContainer}>
+          {data.map((item) => (
+            <ResidenceCard key={item.id} data={item} />
+          ))}
+        </div>
       </Row>
     </div>
   );
