@@ -286,9 +286,6 @@ const Dashboard = () => {
             <Menu.Item key="43">
               <Link to="/residence-kyc">{t("kyc.subTitle3")}</Link>
             </Menu.Item>
-            <Menu.Item key="44">
-              <Link to="/kyc-form">{t("kyc.subTitle4")}</Link>
-            </Menu.Item>
           </SubMenu>
 
           <Menu.Item

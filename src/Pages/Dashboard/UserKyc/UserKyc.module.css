@@ -1,0 +1,15 @@
+.margeBtn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hostTitle{
+    color: var(--black-black-100, #333);
+    /* Raleway/S B 30 */
+    font-family: Raleway;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-bottom: 35px;
+}
