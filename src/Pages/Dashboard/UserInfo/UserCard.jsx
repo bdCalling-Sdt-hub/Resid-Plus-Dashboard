@@ -19,7 +19,7 @@ function UserCard({ data }) {
         <img className={styles.cardLogo} src={data.image} alt="" />
       </div>
       <div className={styles.cardDescription}>
-        <h1></h1>
+        <h1>{data.name}</h1>
         <div>
           <p>Email: {data.email}</p>
           <p>Joining Date: {data.joinDate}</p>

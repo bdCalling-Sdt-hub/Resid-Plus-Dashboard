@@ -14,7 +14,7 @@
 }
 
 .ant-layout-sider-children .ant-menu-item-selected {
-  color: #000b90;
+  color: #000;
   font-weight: bold;
 }
 
@@ -35,6 +35,11 @@
   border: 0;
 }
 
+:where(.css-dev-only-do-not-override-17a39f8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+  color: white;
+  border-color: black;
+}
+
 
 .btn {
   color: var(--White, #fff);
@@ -48,3 +53,4 @@
   height: 100%;
   background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
 }
+
