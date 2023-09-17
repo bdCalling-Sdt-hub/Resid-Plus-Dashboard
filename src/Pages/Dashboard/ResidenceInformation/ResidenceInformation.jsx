@@ -2,6 +2,7 @@ import { Col, Row } from "antd";
 import React from "react";
 import "./Residence.css";
 import ResidenceCard from "./ResidenceCard";
+import styles from "./ResidenceInformation.module.css";
 
 const data = [
   {
@@ -68,7 +69,7 @@ const data = [
 
 function CarInformation() {
   return (
-    <div style={{ padding: "0 60px" }}>
+    <div style={{ padding: "0 10px" }}>
       <Row>
         <h3
           style={{
@@ -187,9 +188,11 @@ function CarInformation() {
       </Row>
 
       <Row>
-        {data.map((item) => (
-          <ResidenceCard key={item.id} data={item} />
-        ))}
+        <div className={styles.UserCardContainer}>
+          {data.map((item) => (
+            <ResidenceCard key={item.id} data={item} />
+          ))}
+        </div>
       </Row>
     </div>
   );
