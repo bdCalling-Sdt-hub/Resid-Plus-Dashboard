@@ -96,12 +96,6 @@ function UserInfo() {
           <UserCard key={item.id} data={item} />
         ))}
       </Row>
-
-      {/* <Row>
-        <Col lg={{ span: 24 }}>
-          <UserInfoTable />
-        </Col>
-      </Row> */}
     </div>
   );
 }
