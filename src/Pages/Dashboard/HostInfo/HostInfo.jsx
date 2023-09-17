@@ -57,7 +57,7 @@ const data = [
 ];
 
 const HostInfo = () => (
-  <div style={{ padding: "0 60px" }}>
+  <div style={{ padding: "0 10px" }}>
     <Row>
       <h2
         style={{

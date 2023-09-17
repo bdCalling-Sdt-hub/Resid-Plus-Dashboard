@@ -37,7 +37,7 @@ function Notification() {
     </Row>
     <Row>
          <Col lg={{span:12}} style={{marginBottom:'20px'}}>
-            <h1 style={{fontSize:"20px",color:"#000b90"}}>Showing 1-10 OF 250</h1>
+            <h1 style={{fontSize:"20px",color:"#333333"}}>Showing 1-10 OF 250</h1>
          </Col>
          <Col lg={{span:8,offset:4}}>
            <Pagination defaultCurrent={1} total={5000} showQuickJumper={false} showSizeChanger={false}/>

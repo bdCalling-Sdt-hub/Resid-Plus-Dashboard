@@ -174,18 +174,12 @@ const Dashboard = () => {
         }}
       >
         <Button
-          type="primary"
-          block
-          style={{
-            height: "50px",
-            backgroundColor: "#e6e7f4",
-            color: "#000b90",
-            fontSize: "18px",
-            fontWeight: "bold",
-          }}
+         className="btn"
+         block
         >
-          <Link to="/notification">See All</Link>
+         See All
         </Button>
+        
       </div>
     </Menu>
   );

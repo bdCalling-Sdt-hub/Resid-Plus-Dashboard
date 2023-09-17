@@ -60,7 +60,7 @@ import UserCard from "./UserCard";
 
 function UserInfo() {
   return (
-    <div style={{ padding: "0 60px" }}>
+    <div style={{ padding: "0 10px" }}>
       <Row>
         <h2
           style={{
