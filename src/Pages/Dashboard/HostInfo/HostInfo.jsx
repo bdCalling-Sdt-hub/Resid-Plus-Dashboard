@@ -1,4 +1,4 @@
-import { Button, Col, Input, Row } from "antd";
+import { Button, Col, Input, Row, Pagination } from "antd";
 import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import HostCard from "./HostCard";
@@ -94,6 +94,22 @@ const HostInfo = () => (
         {data.map((item) => (
           <HostCard key={item.id} data={item} />
         ))}
+
+        <Row className={styles.Pagination}>
+          <Col>
+            <h1 style={{ fontSize: "20px", color: "#333333" }}>
+              Showing 1-10 OF 250
+            </h1>
+          </Col>
+          <Col>
+            <Pagination
+              defaultCurrent={1}
+              total={5000}
+              showQuickJumper={false}
+              showSizeChanger={false}
+            />
+          </Col>
+        </Row>
       </div>
     </Row>
   </div>

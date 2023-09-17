@@ -12,7 +12,7 @@
             linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
 
-.modalBtn{
+.modalBtn {
     margin-top: 10px;
     color: white;
     font-family: Raleway;
@@ -26,7 +26,8 @@
     background: var(--Black-BG,
             linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
-.modalBtn1{
+
+.modalBtn1 {
     margin-left: 10px;
     margin-top: 10px;
     color: white;
@@ -62,10 +63,12 @@
     font-size: 18px;
     font-weight: bold;
 }
-.cardDescription{
+
+.cardDescription {
     /* margin-top: 20px; */
     margin-left: 20px;
 }
+
 .cardDescription p {
     font-size: 14px;
     font-weight: 500;
@@ -73,27 +76,30 @@
     margin: 15px 0px;
 
 }
-.userDetails p{
+
+.userDetails p {
     font-size: 14px;
     font-weight: 500;
     color: #787878;
     margin: 15px 0px;
 }
 
-.modalImage{
+.modalImage {
     width: 183px;
     height: 183px;
 }
-.userModalTitle{
+
+.userModalTitle {
     display: flex;
     margin: 24px 0px;
 
 }
 
-.userTitle{
-margin-left: 10px;
+.userTitle {
+    margin-left: 10px;
 }
-.modalContainer h1{
+
+.modalContainer h1 {
     font-size: 18px;
     font-weight: bold;
     margin: 10px 0px;
@@ -114,4 +120,11 @@ margin-left: 10px;
 
 .UserCardContainer:first-child {
     border-bottom: 4px solid #E2E2E2;
+}
+
+.Pagination {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 4px solid #E2E2E2;
 }

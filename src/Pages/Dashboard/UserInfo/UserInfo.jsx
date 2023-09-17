@@ -1,5 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Col, Input, Row } from "antd";
+import { Button, Col, Input, Row, Pagination } from "antd";
 import React from "react";
 import styles from "./UserInfo.module.css";
 import UserCard from "./UserCard";
@@ -95,6 +95,21 @@ function UserInfo() {
           {data.map((item) => (
             <UserCard key={item.id} data={item} />
           ))}
+          <Row className={styles.Pagination}>
+            <Col>
+              <h1 style={{ fontSize: "20px", color: "#333333" }}>
+                Showing 1-10 OF 250
+              </h1>
+            </Col>
+            <Col>
+              <Pagination
+                defaultCurrent={1}
+                total={5000}
+                showQuickJumper={false}
+                showSizeChanger={false}
+              />
+            </Col>
+          </Row>
         </div>
       </Row>
     </div>

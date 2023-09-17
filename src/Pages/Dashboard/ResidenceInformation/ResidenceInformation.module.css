@@ -164,3 +164,10 @@
 .UserCardContainer:first-child {
     border-bottom: 4px solid #E2E2E2;
 }
+
+.Pagination {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 4px solid #E2E2E2;
+}
