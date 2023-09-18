@@ -41,13 +41,13 @@ function HostKyc() {
           <Col span={12}>
             <label htmlFor="">Date of Birth</label>
             <DatePicker
-              style={{ height: "45px", width: "100%" }}
+              style={{ height: "45px", width: "100%",marginTop: "5px"  }}
               defaultValue={dayjs("2023-08-27", dateFormat)}
             />
           </Col>
           <Col span={12}>
             <label htmlFor="">Phone Number</label>
-            <Input style={{ height: "45px" }} defaultValue={"01646524028"} />
+            <Input style={{ height: "45px",marginTop: "5px"  }} defaultValue={"01646524028"} />
           </Col>
         </Row>
         <Row style={{ marginBottom: "15px" }}>
