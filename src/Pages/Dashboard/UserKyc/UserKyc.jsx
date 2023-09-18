@@ -37,25 +37,20 @@ function UserKyc() {
             />
           </Col>
         </Row>
-        <div className={styles.margeBtn}>
-          <Row style={{ marginBottom: "15px" }}>
-            <label htmlFor="">Date of Birth</label>
 
+        <Row gutter={15} style={{ marginBottom: "15px" }}>
+          <Col span={12}>
+            <label htmlFor="">Date of Birth</label>
             <DatePicker
-              style={{ height: "45px", marginTop: "5px", width: "100%" }}
-              defaultValue={dayjs("2015/01/01", dateFormat)}
-              format={dateFormat}
+              style={{ height: "45px", width: "100%" }}
+              defaultValue={dayjs("2023-08-27", dateFormat)}
             />
-          </Row>
-          <Row style={{ marginBottom: "15px" }}>
+          </Col>
+          <Col span={12}>
             <label htmlFor="">Phone Number</label>
-            <Input
-              type="number"
-              style={{ height: "45px", marginTop: "5px", width: "100%" }}
-              placeholder="Enter your number"
-            />
-          </Row>
-        </div>
+            <Input style={{ height: "45px" }} defaultValue={"01646524028"} />
+          </Col>
+        </Row>
         <Row style={{ marginBottom: "15px" }}>
           <Col span={24}>
             <label htmlFor="">Address</label>
