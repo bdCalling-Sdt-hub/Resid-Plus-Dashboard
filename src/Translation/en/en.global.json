@@ -9,9 +9,9 @@
   },
   "kyc": {
     "title": "KYC Form",
-    "subTitle1": "User",
-    "subTitle2": "Host",
-    "subTitle3": "Residence"
+    "subTitle1": "- User",
+    "subTitle2": "- Host",
+    "subTitle3": "- Residence"
   },
   "residenceInfo": "Residence Information",
   "rentInfo": "Rent Information",

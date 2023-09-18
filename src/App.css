@@ -23,7 +23,7 @@
 }
 
 .ant-layout-sider-children .ant-menu-item-selected:hover {
-  color: black !important;
+  color: white !important;
 }
 
 
@@ -41,10 +41,13 @@
   border-color: black;
 }
 
-:where(.css-dev-only-do-not-override-17a39f8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover{
+:where(.css-dev-only-do-not-override-17a39f8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
   color: black;
 }
 
+:where(.css-dev-only-do-not-override-17a39f8).ant-layout {
+  background: #fff;
+}
 
 .btn {
   color: var(--White, #fff);
@@ -59,3 +62,39 @@
   background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
 }
 
+.ant-layout-sider-children {
+  background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
+  width: 320px;
+}
+
+.ant-layout-sider-children ul {
+  background-color: transparent !important;
+  padding: 0px !important;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-divider-horizontal {
+  background-color: #5A5A5A;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-menu-light .ant-menu-item-selected {
+  background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
+  color: white;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-divider-horizontal.ant-divider-with-text-left::before {
+  background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
+  color: white;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-menu-light .ant-menu-submenu-selected>.ant-menu-submenu-title {
+  color: white;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-menu .ant-menu-item {
+  border-radius: 0px !important;
+}
+
+li.ant-menu-item.ant-menu-item-selected {
+  margin: 0px !important;
+  border-left: 4px solid white !important;
+}
