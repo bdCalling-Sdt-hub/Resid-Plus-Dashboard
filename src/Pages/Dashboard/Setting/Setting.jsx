@@ -259,7 +259,7 @@ const Setting = () => {
               <Button
                 type="text"
                 className="login-form-forgot"
-                style={{ color: "#000B90" }}
+                style={{ color: "black" }}
                 onClick={() => (setVerify(true), setOpenChangePassModel(false))}
               >
                 Forgot password
@@ -268,17 +268,13 @@ const Setting = () => {
 
             <Form.Item>
               <Button
-                type="primary"
                 htmlType="submit"
-                className="login-form-button"
+                className="btn"
+                       style={{
+                marginTop: "20px",
+              }}
                 block
-                style={{
-                  height: "45px",
-                  fontWeight: "400px",
-                  fontSize: "18px",
-                  background: "#000B90",
-                  marginTop: "60px",
-                }}
+                
               >
                 Confirm
               </Button>
@@ -291,7 +287,7 @@ const Setting = () => {
             <Title
               level={2}
               style={{
-                color: "#000B90",
+                color: "black",
                 fontWeight: "normal",
                 marginBottom: "30px",
                 textShadow: "#bfbfbf 2px 2px 4px",
@@ -334,7 +330,7 @@ const Setting = () => {
 
               <a
                 className="login-form-forgot"
-                style={{ color: "#000B90" }}
+                style={{ color: "black" }}
                 href=""
               >
                 Resend
@@ -344,14 +340,9 @@ const Setting = () => {
             <Button
               block
               onClick={() => (setUpdatePassword(true), setVerify(false))}
+              className="btn"
               style={{
-                height: "45px",
-                fontWeight: "400px",
-                fontSize: "18px",
-                background: "#000B90",
-                color: "#fff",
-                alignSelf: "bottom",
-                marginTop: "130px",
+                marginTop: "100px",
               }}
             >
               Continue
@@ -364,7 +355,7 @@ const Setting = () => {
             <Title
               level={2}
               style={{
-                color: "#000B90",
+                color: "black",
                 fontWeight: "normal",
                 marginBottom: "30px",
                 textShadow: "#bfbfbf 2px 2px 4px",
@@ -428,15 +419,9 @@ const Setting = () => {
 
             <Form.Item>
               <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button"
+                className="btn"
                 block
                 style={{
-                  height: "45px",
-                  fontWeight: "400px",
-                  fontSize: "18px",
-                  background: "#000B90",
                   marginTop: "100px",
                 }}
               >
