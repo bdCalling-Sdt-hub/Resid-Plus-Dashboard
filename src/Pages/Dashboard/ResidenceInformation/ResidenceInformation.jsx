@@ -8,7 +8,7 @@ const data = [
   {
     id: 1,
     name: "John Brown",
-    productName: "BMW",
+    productName: "Hotel blue sky",
     status: true,
     capacity: 4,
     beds: 2,
@@ -23,7 +23,7 @@ const data = [
   {
     id: 2,
     name: "John Brown",
-    productName: "Car",
+    productName: "Hotel redison ",
     status: false,
     capacity: 4,
     beds: 2,
@@ -38,7 +38,7 @@ const data = [
   {
     id: 3,
     name: "John Brown",
-    productName: "Tesla X2",
+    productName: "Hotel relax relax",
     status: false,
     capacity: 4,
     beds: 25,
@@ -53,7 +53,7 @@ const data = [
   {
     id: 4,
     name: "John Brown",
-    productName: "Car",
+    productName: "Abul hotel",
     status: true,
     capacity: 4,
     beds: 2,
@@ -183,7 +183,7 @@ function CarInformation() {
             fontWeight: "normal",
           }}
         >
-          Car Details
+          Residence Details
         </h2>
       </Row>
 
@@ -194,9 +194,9 @@ function CarInformation() {
           ))}
           <Row className={styles.Pagination}>
             <Col>
-              <h1 style={{ fontSize: "20px", color: "#333333" }}>
+              <p style={{  color: "#333333" }}>
                 Showing 1-10 OF 250
-              </h1>
+              </p>
             </Col>
             <Col>
               <Pagination
