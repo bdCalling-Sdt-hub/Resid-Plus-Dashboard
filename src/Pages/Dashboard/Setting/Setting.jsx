@@ -14,7 +14,7 @@ const Setting = () => {
 
   const style = {
     formContainer: {
-      background: "white",
+      background: "linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%)",
       padding: "30px",
       borderRadius: "10px",
     },
@@ -156,7 +156,7 @@ const Setting = () => {
   };
 
   return (
-    <div style={{ padding: "0 10px" }}>
+    <div style={{ padding: "0 10px",background:"linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%) !important" }}>
       <h2 style={{ marginBottom: "20px", fontWeight: "normal" }}>Settings</h2>
       <div style={style.formContainer}>
         {menuItems.map((item) => (
