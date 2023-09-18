@@ -2,7 +2,6 @@ import { Col, Divider, Pagination, Row } from "antd";
 import React from "react";
 import "./Notification.css";
 
-
 function Notification() {
   return (
     <div>
@@ -45,9 +44,7 @@ function Notification() {
       </Row>
       <Row>
         <Col lg={{ span: 12 }} style={{ marginBottom: "20px" }}>
-          <h1 style={{ fontSize: "20px", color: "#333333" }}>
-            Showing 1-10 OF 250
-          </h1>
+          <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
         </Col>
         <Col lg={{ span: 8, offset: 4 }}>
           <Pagination

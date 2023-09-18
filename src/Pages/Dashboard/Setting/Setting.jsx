@@ -14,7 +14,8 @@ const Setting = () => {
 
   const style = {
     formContainer: {
-      background: "linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%)",
+      background:
+        "linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%)",
       padding: "30px",
       borderRadius: "10px",
     },
@@ -24,6 +25,7 @@ const Setting = () => {
       justifyContent: "space-between",
       height: "45px",
       marginBottom: "10px",
+      color: "black",
     },
     notification: {
       display: "flex",
@@ -156,7 +158,13 @@ const Setting = () => {
   };
 
   return (
-    <div style={{ padding: "0 10px",background:"linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%) !important" }}>
+    <div
+      style={{
+        padding: "0 10px",
+        background:
+          "linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%) !important",
+      }}
+    >
       <h2 style={{ marginBottom: "20px", fontWeight: "normal" }}>Settings</h2>
       <div style={style.formContainer}>
         {menuItems.map((item) => (
@@ -270,11 +278,10 @@ const Setting = () => {
               <Button
                 htmlType="submit"
                 className="btn"
-                       style={{
-                marginTop: "20px",
-              }}
+                style={{
+                  marginTop: "20px",
+                }}
                 block
-                
               >
                 Confirm
               </Button>

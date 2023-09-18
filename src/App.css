@@ -41,9 +41,7 @@
   border-color: black;
 }
 
-:where(.css-dev-only-do-not-override-17a39f8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
-
-}
+:where(.css-dev-only-do-not-override-17a39f8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {}
 
 
 
@@ -123,6 +121,7 @@ main.ant-layout-content.css-dev-only-do-not-override-17a39f8 {
 :where(.css-dev-only-do-not-override-17a39f8).ant-switch.ant-switch-checked {
   background: #333333;
 }
-:where(.css-dev-only-do-not-override-17a39f8).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled){
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
   background: #333333;
 }
