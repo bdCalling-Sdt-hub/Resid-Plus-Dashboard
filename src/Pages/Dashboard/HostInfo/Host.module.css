@@ -107,19 +107,22 @@
 
 
 .UserCardContainer {
+    
     border-left: 4px solid #E2E2E2;
     border-right: 4px solid #E2E2E2;
     width: 100%;
     border-radius: 10px;
+    border-top: 4px solid #E2E2E2;
     background-color: linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%);
+}
+
+
+.UserCardContainer:first-child {
+    border-top: none;
 }
 
 .UserCardContainer:last-child {
     margin-bottom: 20px;
-}
-
-.UserCardContainer:first-child {
-    border-bottom: 4px solid #E2E2E2;
 }
 
 .Pagination {

@@ -83,7 +83,11 @@ const HostInfo = () => (
     </Row>
 
     <Row>
-      <p style={{ fontWeight: "normal" }}>Host List</p>
+    <h2
+          style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}
+        >
+        Host List
+        </h2>
     </Row>
     <Row>
       <div className={styles.UserCardContainer}>
