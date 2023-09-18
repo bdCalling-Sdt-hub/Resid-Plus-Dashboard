@@ -4,28 +4,18 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
 import Booking from "./Pages/Dashboard/Booking/Booking";
 import HostInfo from "./Pages/Dashboard/HostInfo/HostInfo";
-import HostRequest from "./Pages/Dashboard/HostInfo/HostRequest";
 import Notification from "./Pages/Dashboard/Notification/Notification";
-import RentInformation from "./Pages/Dashboard/RentInformation/RentInformation";
 import UserInfo from "./Pages/Dashboard/UserInfo/UserInfo";
-import Wallet from "./Pages/Dashboard/Wallet/Wallet";
-import Email from "./Pages/Email/Email";
 import Otp from "./Pages/Otp/Otp";
 import Signin from "./Pages/Signin/Signin";
 import UpdatePass from "./Pages/UpdatePass/UpdatePass";
-
 import NotFound from "./404";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import ResidenceInformation from "./Pages/Dashboard/ResidenceInformation/ResidenceInformation";
-import CarKyc from "./Pages/Dashboard/ResidenceKYC/ResidenceKYC";
 import HostKyc from "./Pages/Dashboard/HostKyc/HostKyc";
-import HostPayment from "./Pages/Dashboard/HostPayment/HostPayment";
-import RentisIncome from "./Pages/Dashboard/RentisIncome/RentisIncome";
 import Setting from "./Pages/Dashboard/Setting/Setting";
 import SettingPage from "./Pages/Dashboard/Setting/SettingPage/SettingPage";
-import StripeBills from "./Pages/Dashboard/StripeBills/StripeBills";
 import UserKyc from "./Pages/Dashboard/UserKyc/UserKyc";
-import UserPayment from "./Pages/Dashboard/UserPayment/UserPayment";
 import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
 import ResidenceKYC from "./Pages/Dashboard/ResidenceKYC/ResidenceKYC";
 
@@ -48,16 +38,11 @@ function App() {
               <Route path="/notification" element={<Notification />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="/host-info" element={<HostInfo />} />
-              <Route path="/host-request" element={<HostRequest />} />
-              <Route path="/wallet" element={<Wallet />} />
-
               <Route path="/user-info" element={<UserInfo />} />
-              <Route path="/rent-info" element={<RentInformation />} />
-              <Route path="/residence-info" element={<ResidenceInformation />} />
-              <Route path="/user-payment" element={<UserPayment />} />
-              <Route path="/renti-income" element={<RentisIncome />} />
-              <Route path="/host-payment" element={<HostPayment />} />
-              <Route path="/stripe-bills" element={<StripeBills />} />
+              <Route
+                path="/residence-info"
+                element={<ResidenceInformation />}
+              />
               <Route path="/host-kyc" element={<HostKyc />} />
               <Route path="/user-kyc" element={<UserKyc />} />
               <Route path="/residence-kyc" element={<ResidenceKYC />} />
@@ -66,7 +51,6 @@ function App() {
             </Route>
 
             <Route path="/signin" element={<Signin />} />
-            <Route path="/email" element={<Email />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/otp" element={<Otp />} />
             <Route path="/update-password" element={<UpdatePass />} />

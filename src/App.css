@@ -41,6 +41,10 @@
   border-color: black;
 }
 
+:where(.css-dev-only-do-not-override-17a39f8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover{
+  color: black;
+}
+
 
 .btn {
   color: var(--White, #fff);
