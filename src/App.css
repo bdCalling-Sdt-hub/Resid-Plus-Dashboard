@@ -23,7 +23,7 @@
 }
 
 .ant-layout-sider-children .ant-menu-item-selected:hover {
-  color: black !important;
+  color: white !important;
 }
 
 
@@ -41,6 +41,9 @@
   border-color: black;
 }
 
+:where(.css-dev-only-do-not-override-17a39f8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {}
+
+
 
 .btn {
   color: var(--White, #fff);
@@ -55,3 +58,70 @@
   background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
 }
 
+.btn:hover {
+  color: white !important;
+}
+
+.ant-layout-sider-children {
+  background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
+  width: 320px;
+}
+
+.ant-layout-sider-children ul {
+  background-color: transparent !important;
+  padding: 0px !important;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-divider-horizontal {
+  background-color: #5A5A5A;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-menu-light .ant-menu-item-selected {
+  background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
+  color: white;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-divider-horizontal.ant-divider-with-text-left::before {
+  background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
+  color: white;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-menu-light .ant-menu-submenu-selected>.ant-menu-submenu-title {
+  color: white;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-menu .ant-menu-item {
+  border-radius: 0px !important;
+}
+
+li.ant-menu-item.ant-menu-item-selected {
+  margin: 0px !important;
+  border-left: 4px solid white !important;
+}
+
+header.ant-layout-header.css-dev-only-do-not-override-17a39f8 {
+  background: linear-gradient(180deg, #FDFBFB 0%, #FFFFFF 0.01%, #F4F4F4 100%) !important;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-modal .ant-modal-content {
+  background: linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%) !important;
+}
+
+/* body main bg color here start */
+main.ant-layout-content.css-dev-only-do-not-override-17a39f8 {
+  background: linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%) !important;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-layout {
+  background: linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%) !important;
+}
+
+/* body main bg color here end */
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-switch.ant-switch-checked {
+  background: #333333;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  background: #333333;
+}

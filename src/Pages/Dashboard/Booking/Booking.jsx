@@ -1,60 +1,90 @@
-import { Col, Row,Pagination } from "antd";
+import { Col, Row, Pagination } from "antd";
 import React from "react";
 import styles from "./Booking.module.css";
 import { LiaHandHoldingUsdSolid } from "react-icons/lia";
-import BookingHistoryTable from "./BookingHistoryTable";
 import { Form, Select } from "antd";
+import BookingCard from "./BookingCard";
 
 const data = [
   {
-    id: "1",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
+    id: 1,
+    ownerName: "John Brown",
+    ownerContact: "+789 5669 0256",
+    productName: "Hotel blue sky",
+    bookingId: "123456789",
+    status: "A",
+    price: 200,
     address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 5,
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    rating: 4.5,
+    totalPersons: 4,
+    userName: "John Brown",
+    contact: "+123456789",
+    bookingDate: "August 15, 2023 - August 18, 2023",
   },
   {
-    id: "2",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
+    id: 2,
+    ownerName: "John Brown",
+    ownerContact: "+789 5669 0256",
+    productName: "Hotel Relax sky",
+    bookingId: "123456789",
+    status: "B",
+    price: 200,
     address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 45,
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    rating: 4.5,
+    totalPersons: 4,
+    userName: "John Brown",
+    contact: "+123456789",
+    bookingDate: "August 15, 2023 - August 18, 2023",
   },
   {
-    id: "3",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
+    id: 3,
+    ownerName: "John Brown",
+    ownerContact: "+789 5669 0256",
+    productName: "Hotel blue Relax",
+    bookingId: "123456789",
+    status: "B",
+    price: 200,
     address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 8,
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    rating: 4.5,
+    totalPersons: 4,
+    userName: "John Brown",
+    contact: "+123456789",
+    bookingDate: "August 15, 2023 - August 18, 2023",
   },
   {
-    id: "4",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
+    id: 4,
+    ownerName: "John Brown",
+    ownerContact: "+789 5669 0256",
+    productName: "Hotel blue sky",
+    bookingId: "123456789",
+    status: "C",
+    price: 200,
     address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 98,
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    rating: 4.5,
+    totalPersons: 4,
+    userName: "John Brown",
+    contact: "+123456789",
+    bookingDate: "August 15, 2023 - August 18, 2023",
   },
   {
-    id: "5",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
+    id: 5,
+    ownerName: "John Brown",
+    ownerContact: "+789 5669 0256",
+    productName: "Hotel blue sky",
+    bookingId: "123456789",
+    status: "A",
+    price: 200,
     address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 1,
+    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
+    rating: 4.5,
+    totalPersons: 4,
+    userName: "John Brown",
+    contact: "+123456789",
+    bookingDate: "August 15, 2023 - August 18, 2023",
   },
 ];
 
@@ -171,13 +201,11 @@ const Booking = () => (
           </Form.Item>
         </div>
         {data.map((item) => (
-          <BookingHistoryTable key={item.id} data={item} />
+          <BookingCard key={item.id} data={item} />
         ))}
         <Row className={styles.Pagination}>
           <Col>
-            <h1 style={{ fontSize: "20px", color: "#333333" }}>
-              Showing 1-10 OF 250
-            </h1>
+            <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
           </Col>
           <Col>
             <Pagination

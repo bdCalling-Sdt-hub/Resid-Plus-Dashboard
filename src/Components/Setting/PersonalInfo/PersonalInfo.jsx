@@ -51,23 +51,29 @@ const PersonalInfo = () => {
               marginBottom: "20px",
             }}
           >
-            <div style={{ display: "flex", gap: "20px" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "20px",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Image
                 width={200}
                 style={{ borderRadius: "6px" }}
                 src="https://yt3.googleusercontent.com/Qy5Gk9hccQxiZdX8IxdK-mF2ktN17gap3ZkGQZkGz8NB4Yep3urmucp5990H2tjXIISgUoYssJE=s900-c-k-c0x00ffffff-no-rj"
               />
-              <div>
-                <h2>Fahim</h2>
-                <p>@fahim</p>
-                <p>INE: GMVLMR80070501M100</p>
+              <div style={{}}>
+                <h2>Ahmed Al-Jarah</h2>
               </div>
             </div>
             <div>
               <Button
                 onClick={handleChange}
                 style={{
-                  background: "#000B92",
+                  background:
+                    "linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%)",
                   color: "#fff",
                   display: "flex",
                   alignItems: "center",
@@ -84,35 +90,28 @@ const PersonalInfo = () => {
               <label htmlFor="">Name</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"Fahim"}
+                defaultValue={"Sahinur Islam"}
                 readOnly
               />
             </Col>
           </Row>
-          <Row gutter={15} style={{ marginBottom: "15px" }}>
-            <Col span={12}>
+          <Row style={{ marginBottom: "15px" }}>
+            <Col span={24}>
               <label htmlFor="">Email</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"siffahim25@gmail.com"}
+                defaultValue={"infosahinur@gmail.com"}
                 readOnly
               />
             </Col>
+          </Row>
+
+          <Row gutter={15} style={{ marginBottom: "15px" }}>
             <Col span={12}>
               <label htmlFor="">Phone Number</label>
               <Input
                 style={{ height: "45px" }}
                 defaultValue={"01646524028"}
-                readOnly
-              />
-            </Col>
-          </Row>
-          <Row gutter={15} style={{ marginBottom: "15px" }}>
-            <Col span={12}>
-              <label htmlFor="">INE</label>
-              <Input
-                style={{ height: "45px" }}
-                defaultValue={"GMVLMR80070501M100"}
                 readOnly
               />
             </Col>
@@ -161,9 +160,7 @@ const PersonalInfo = () => {
               </ImgCrop>
 
               <div>
-                <h2>Fahim</h2>
-                <p>@fahim</p>
-                <p>INE: GMVLMR80070501M100</p>
+                <h2>Ahmed Al-Jarah</h2>
               </div>
             </div>
           </div>
@@ -171,29 +168,26 @@ const PersonalInfo = () => {
           <Row style={{ marginBottom: "15px" }}>
             <Col span={24}>
               <label htmlFor="">Name</label>
-              <Input style={{ height: "45px" }} defaultValue={"Fahim"} />
+              <Input
+                style={{ height: "45px" }}
+                defaultValue={"Sahinur Islam"}
+              />
             </Col>
           </Row>
-          <Row gutter={15} style={{ marginBottom: "15px" }}>
-            <Col span={12}>
+          <Row style={{ marginBottom: "15px" }}>
+            <Col span={24}>
               <label htmlFor="">Email</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"siffahim25@gmail.com"}
+                defaultValue={"infosahinur@gmail.com"}
               />
             </Col>
+          </Row>
+
+          <Row gutter={15} style={{ marginBottom: "15px" }}>
             <Col span={12}>
               <label htmlFor="">Phone Number</label>
               <Input style={{ height: "45px" }} defaultValue={"01646524028"} />
-            </Col>
-          </Row>
-          <Row gutter={15} style={{ marginBottom: "15px" }}>
-            <Col span={12}>
-              <label htmlFor="">INE</label>
-              <Input
-                style={{ height: "45px" }}
-                defaultValue={"GMVLMR80070501M100"}
-              />
             </Col>
             <Col span={12}>
               <label htmlFor="">Date of Birth</label>
@@ -212,15 +206,7 @@ const PersonalInfo = () => {
               />
             </Col>
           </Row>
-          <Button
-            style={{
-              height: "45px",
-              background: "#000B92",
-              color: "#fff",
-              marginTop: "20px",
-            }}
-            block
-          >
+          <Button className="btn" block>
             Save
           </Button>
         </>

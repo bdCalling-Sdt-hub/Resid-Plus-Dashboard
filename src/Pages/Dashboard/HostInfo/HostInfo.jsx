@@ -83,11 +83,11 @@ const HostInfo = () => (
     </Row>
 
     <Row>
-      <h2
-        style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}
-      >
+    <h2
+          style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}
+        >
         Host List
-      </h2>
+        </h2>
     </Row>
     <Row>
       <div className={styles.UserCardContainer}>
@@ -97,9 +97,7 @@ const HostInfo = () => (
 
         <Row className={styles.Pagination}>
           <Col>
-            <h1 style={{ fontSize: "20px", color: "#333333" }}>
-              Showing 1-10 OF 250
-            </h1>
+            <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
           </Col>
           <Col>
             <Pagination

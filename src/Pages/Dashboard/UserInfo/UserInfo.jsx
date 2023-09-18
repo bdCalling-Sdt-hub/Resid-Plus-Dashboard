@@ -97,9 +97,7 @@ function UserInfo() {
           ))}
           <Row className={styles.Pagination}>
             <Col>
-              <h1 style={{ fontSize: "20px", color: "#333333" }}>
-                Showing 1-10 OF 250
-              </h1>
+              <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
             </Col>
             <Col>
               <Pagination

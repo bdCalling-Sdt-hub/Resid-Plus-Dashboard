@@ -1,146 +1,98 @@
 import { Button, Drawer, Table, Typography } from "antd";
 import React, { useState } from "react";
-import { BsEye } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
-import { RiDeleteBin5Line} from "react-icons/ri";
-import {
-    UndoOutlined,DeleteOutlined 
-  } from '@ant-design/icons';
 import DrawerPage from "../../../Components/DrawerPage/DrawerPage";
-import LoginActivity from './LoginActivity';
 const { Title, Text } = Typography;
 
 const data = [
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
   {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
+    browser: "Kate Winslate",
+    device: "kate@gmail.com",
+    location: " 014845454545",
     joiningDate: "22/05/2023",
     ine: 20,
   },
-  {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
-    joiningDate: "22/05/2023",
-    ine: 20,
-  },
-  {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
-    joiningDate: "22/05/2023",
-    ine: 20,
-  },
-  {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
-    joiningDate: "22/05/2023",
-    ine: 20,
-  },
-  {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
-    joiningDate: "22/05/2023",
-    ine: 20,
-  },
-  {
-    name: "Kate Winslate",
-    email: "kate@gmail.com",
-    contact: " 014845454545",
-    joiningDate: "22/05/2023",
-    ine: 20,
-  }
- 
 ];
 
 const LoginActivityTable = () => {
   const columns = [
     {
-      title: "NAME",
-      dataIndex: "name",
-      key: "name",
+      title: "BROWSER",
+      dataIndex: "browser",
+      key: "browser",
     },
     {
-      title: "EMAIL",
-      dataIndex: "email",
-      key: "email",
+      title: "DEVICE",
+      dataIndex: "device",
+      key: "device",
       responsive: ["md"],
     },
     {
-      title: "CONTACT",
-      dataIndex: "contact",
-      key: "contact",
+      title: "LOCATION",
+      dataIndex: "location",
+      key: "location",
       responsive: ["lg"],
     },
     {
-      title: "JOINING DATE",
+      title: "TIME",
       dataIndex: "joiningDate",
       key: "joiningDate",
-    },
-    {
-      title: "INE",
-      dataIndex: "ine",
-      key: "ine",
-      responsive: ["md"],
     },
     {
       title: "ACTIONS",
@@ -149,16 +101,18 @@ const LoginActivityTable = () => {
       responsive: ["lg"],
       render: (_, record) => (
         <div style={{ textAlign: "center" }}>
-          <Button
-           
-            type="text"
-            style={{ marginRight: "10px" }}
+          <button
+            style={{
+              background: "linear-gradient(180deg, #FF2340 0%, #AC0016 100%)",
+              borderRadius: "5px",
+              cursor: "pointer",
+              border: "none",
+              padding: "8px 12px",
+              color: "white",
+            }}
           >
-            <DeleteOutlined style={{ fontSize: "25px", color: "#999999" }} />
-          </Button>
-          <Button type="text">
-            <UndoOutlined style={{ fontSize: "25px", color: "#999999"}} />
-          </Button>
+            Sign Out
+          </button>
         </div>
       ),
     },
