@@ -174,12 +174,12 @@ const Dashboard = () => {
         }}
       >
         <Button
-         className="btn"
-         block
+          className="btn"
+          block
         >
-         See All
+          See All
         </Button>
-        
+
       </div>
     </Menu>
   );
@@ -277,7 +277,7 @@ const Dashboard = () => {
             icon={<RiUserSearchLine style={{ fontSize: "14px", color: "white" }} />}
             title={t("kyc.title")}
           >
-             <Menu.Item key="41">
+            <Menu.Item key="41">
               <Link to="/user-kyc">{t("kyc.subTitle1")}</Link>
             </Menu.Item>
             <Menu.Item key="42">
