@@ -11,7 +11,6 @@ const SettingPage = () => {
   const params = useParams();
   const style = {
     settingContainer: {
-      background: "white",
       padding: "30px",
       borderRadius: "10px",
     },
