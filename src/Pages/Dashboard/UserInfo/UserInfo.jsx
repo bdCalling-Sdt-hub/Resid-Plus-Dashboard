@@ -1,6 +1,7 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Col, Input, Row, Pagination } from "antd";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./UserInfo.module.css";
 import UserCard from "./UserCard";
 
@@ -58,6 +59,7 @@ const data = [
 ];
 
 function UserInfo() {
+  const [t, i18n] = useTranslation("global");
   return (
     <div style={{ padding: "0 10px" }}>
       <Row>
@@ -68,17 +70,17 @@ function UserInfo() {
             fontWeight: "normal",
           }}
         >
-          Search User
+          {t("user.search")}
         </h2>
         <Col lg={{ span: 24 }}>
           <div className="" style={{ display: "flex", gap: "15px" }}>
             <Input
               size="large"
               style={{ border: "1px solid #787878" }}
-              placeholder="Search by name/email/phone"
+              placeholder= {t("user.placeholderSearch")}
               prefix={<SearchOutlined style={{ color: "#cccccc" }} />}
             />
-            <Button className="btn">Search</Button>
+            <Button className="btn"> {t("user.searchBtn")}</Button>
           </div>
         </Col>
       </Row>
@@ -87,7 +89,7 @@ function UserInfo() {
         <h2
           style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}
         >
-          User List
+          {t("user.title")}
         </h2>
       </Row>
       <Row>

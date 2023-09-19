@@ -3,36 +3,49 @@
     "title": "Panel"
   },
   "dashboard": "Panel",
+  "booking": "Reserva",
   "setting": {
     "title": "Ajustes"
   },
   "kyc": {
-    "title": "KYC",
-    "subTitle1": "Kyc Anfitriona",
-    "subTitle2": "Usuario KYC",
-    "subTitle3": " Coche KYC",
-    "subTitle4": "Formulario KYC"
+    "title": "Formulario KYC",
+    "subTitle1": "- Usuario",
+    "subTitle2": "- Anfitriona",
+    "subTitle3": "- Residencia"
   },
-  "carInfo": "Información Del Auto",
-  "rentInfo": "Información De Alquiler",
-  "userInfo": "Información Del Usuario",
-  "hostInfo": {
-    "title": "información del anfitrión",
-    "subTitle1": "Todo anfitrión",
-    "subTitle2": "Solicitud de anfitrión"
+  "residenceInfo": "Residencia",
+  "userInfo": "Informacion del usuario",
+  "hostInfo": "Información del anfitrión",
+  "user": {
+    "search": "Buscar usuario",
+    "title": "Lista de usuarios",
+    "searchBtn": "Buscar",
+    "viewDetails": "Ver detalles",
+    "placeholderSearch":"Buscar por nombre/correo electrónico/teléfono",
+    "email": "Correo electrónico",
+    "JoiningDate": "Dia de ingreso",
+    "contact": "Contacto",
+    "address": "DIRECCIÓN",
+    "modalInfo":"informacion del usuario",
+    "modalDetails":"Detalles",
+    "bookComplete":"Reserva completada",
+    "printBtn":"Imprimir",
+    "downloadBtn":"Descargar"
   },
-  "payment": {
-    "title": "Pagos",
-    "subTitle1": "Pagos de usuario",
-    "subTitle2": "Pagos de anfitrión",
-    "subTitle3": "Tirar billetes",
-    "subTitle4": "Ingresos de Renti",
-    "subTitle5": "Monedero"
-  },
-  "earning": {
-    "title": "Ganancias",
-    "subTitle1": "Ingresos De Hoy",
-    "subTitle2": "Ingresos Semanales",
-    "subTitle3": "Ingresos Mensuales"
+  "host": {
+    "search": "Buscar anfitriona",
+    "title": "Lista de anfitriones",
+    "searchBtn": "Buscar",
+    "viewDetails": "Ver detalles",
+    "placeholderSearch":"Buscar por nombre/correo electrónico/teléfono",
+    "email": "Correo electrónico",
+    "JoiningDate": "Dia de ingreso",
+    "contact": "Contacto",
+    "address": "DIRECCIÓN",
+    "modalInfo":"Información del anfitrión",
+    "modalDetails":"Detalles",
+    "bookComplete":"Reserva completada",
+    "printBtn":"Imprimir",
+    "downloadBtn":"Descargar"
   }
 }

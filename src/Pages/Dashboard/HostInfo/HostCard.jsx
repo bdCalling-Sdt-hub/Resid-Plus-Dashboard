@@ -1,8 +1,10 @@
 import { Button, Modal } from "antd";
 import React, { useState } from "react";
 import styles from "./Host.module.css";
+import { useTranslation } from "react-i18next";
 
-function HostCard({data}) {
+function HostCard({ data }) {
+  const [t, i18n] = useTranslation("global");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -21,39 +23,69 @@ function HostCard({data}) {
       <div className={styles.cardDescription}>
         <h1>{data.name}</h1>
         <div>
-          <p>Email: {data.email}</p>
-          <p>Joining Date: {data.joinDate}</p>
-          <p>Contact: {data.phone}</p>
-          <p>Address: {data.address}</p>
+          <p>
+            {" "}
+            {t("host.email")}: {data.email}
+          </p>
+          <p>
+            {" "}
+            {t("host.JoiningDate")}: {data.joinDate}
+          </p>
+          <p>
+            {" "}
+            {t("host.contact")}: {data.phone}
+          </p>
+          <p>
+            {" "}
+            {t("host.address")}: {data.address}
+          </p>
         </div>
         <Button onClick={showModal} className={styles.searchBtn}>
-          View Details
+          {t("host.viewDetails")}
         </Button>
       </div>
 
       <Modal open={isModalOpen} onCancel={handleCancel} centered footer={[]}>
         <div className={styles.modalContainer}>
-          <h1>User information</h1>
+          <h1> {t("host.modalInfo")}</h1>
           <hr />
           <div className={styles.userModalTitle}>
             <img className={styles.modalImage} src={data.image} alt="" />
             <div className={styles.userTitle}>
               <h1>{data.name}</h1>
-              <p>Booking Completed: {data.BookingCompleted}</p>
+              <p>
+                {" "}
+                {t("host.bookComplete")}: {data.BookingCompleted}
+              </p>
             </div>
           </div>
           <hr />
           <div>
             <div className={styles.userDetails}>
-              <h1>Details</h1>
-              <p>Email: {data.email}</p>
-              <p>Joining Date: {data.joinDate}</p>
-              <p>Contact: {data.phone}</p>
-              <p>Address: {data.address}</p>
+              <h1> {t("host.modalDetails")}</h1>
+              <p>
+                {" "}
+                {t("host.email")}: {data.email}
+              </p>
+              <p>
+                {" "}
+                {t("host.JoiningDate")}: {data.joinDate}
+              </p>
+              <p>
+                {" "}
+                {t("host.contact")}: {data.phone}
+              </p>
+              <p>
+                {" "}
+                {t("host.address")}: {data.address}
+              </p>
             </div>
             <div>
-              <Button className={styles.modalBtn}>Print</Button>
-              <Button className={styles.modalBtn1}>Download</Button>
+              <Button className={styles.modalBtn}>{t("user.printBtn")}</Button>
+              <Button className={styles.modalBtn1}>
+                {" "}
+                {t("user.downloadBtn")}
+              </Button>
             </div>
           </div>
         </div>

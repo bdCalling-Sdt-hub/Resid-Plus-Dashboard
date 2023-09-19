@@ -14,21 +14,58 @@
     "subTitle3": "- Residence"
   },
   "residenceInfo": "Residence",
-  "rentInfo": "Rent Information",
   "userInfo": "User Information",
   "hostInfo": "Host Information",
-  "payment": {
-    "title": "Payments",
-    "subTitle1": "User Payments",
-    "subTitle2": "Host Payments",
-    "subTitle3": "Strip Bills",
-    "subTitle4": "Renti's Income",
-    "subTitle5": "Wallet"
+  "user": {
+    "search": "Search User",
+    "title": "User List",
+    "searchBtn": "Search",
+    "viewDetails": "View Details",
+    "placeholderSearch":"Search by name/email/phone",
+    "email": "Email",
+    "JoiningDate": "Joining Date",
+    "contact": "Contact",
+    "address": "Address",
+    "modalInfo":"User Information",
+    "modalDetails":"Details",
+    "bookComplete":"Booking Completed",
+    "printBtn":"Print",
+    "downloadBtn":"Download"
   },
-  "earning": {
-    "title": "Earning",
-    "subTitle1": "Today's income",
-    "subTitle2": "Weekly income",
-    "subTitle3": "Monthly income"
+  "host": {
+    "search": "Search Host",
+    "title": "Host List",
+    "searchBtn": "Search",
+    "viewDetails": "View Details",
+    "placeholderSearch":"Search by name/email/phone",
+    "email": "Email",
+    "JoiningDate": "Joining Date",
+    "contact": "Contact",
+    "address": "Address",
+    "modalInfo":"User Information",
+    "modalDetails":"Details",
+    "bookComplete":"Booking Completed",
+    "printBtn":"Print",
+    "downloadBtn":"Download"
+  },
+  "residence":{
+    "title": "Residence Information",
+    "residenceDetails": "Residence Details",
+    "totalResidence": "Total Residence",
+    "active": "Active",
+    "reserved": "Reserved",
+    "modalInfo":"Residence Information",
+    "modalDetails":"Details",
+    "modalOwner":"Owner Information",
+    "capacity": "Capacity/Person",
+    "beds": "Beds",
+    "baths": "Baths",
+    "rent": "Rent/hr",
+    "address": "Address",
+    "aboutResidence": "About this Residence",
+    "ownerName":"Owner Name",
+    "printBtn":"Print",
+    "downloadBtn":"Download"
   }
 }
+
