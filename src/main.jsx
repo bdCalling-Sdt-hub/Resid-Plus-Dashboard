@@ -5,6 +5,7 @@ import { I18nextProvider } from "react-i18next";
 import App from "./App.jsx";
 import global_en from "./Translation/en/en.global.json";
 import global_es from "./Translation/es/es.global.json";
+import global_fr from "./Translation/fr/fr.global.json";
 import "./index.css";
 
 i18next.init({
@@ -21,6 +22,11 @@ i18next.init({
       // Use "es" instead of "spanish"
       global: global_es,
     },
+    fr: {
+      // Use "es" instead of "France"
+      global: global_fr,
+    },
+    
   },
 });
 

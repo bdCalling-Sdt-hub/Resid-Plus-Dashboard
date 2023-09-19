@@ -173,13 +173,9 @@ const Dashboard = () => {
           margin: "15px",
         }}
       >
-        <Button
-          className="btn"
-          block
-        >
+        <Button className="btn" block>
           See All
         </Button>
-
       </div>
     </Menu>
   );
@@ -196,7 +192,8 @@ const Dashboard = () => {
           position: "fixed",
           height: "100vh",
           zIndex: 2,
-          backgroundColor: "linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%)"
+          backgroundColor:
+            "linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%)",
         }}
       >
         <div className="demo-logo-vertical" />
@@ -218,7 +215,12 @@ const Dashboard = () => {
         </div>
 
         <Menu
-          style={{ padding: collapsed ? "0px" : "20px", border: "none", backgroundColor: "#001529", color: "white" }}
+          style={{
+            padding: collapsed ? "0px" : "20px",
+            border: "none",
+            backgroundColor: "#001529",
+            color: "white",
+          }}
           mode="inline"
           defaultSelectedKeys={["1"]}
         >
@@ -226,20 +228,21 @@ const Dashboard = () => {
             key="1"
             icon={<RxDashboard style={{ fontSize: "14px" }} />}
           >
-            <Link to="/" style={{ fontSize: "16px", }}>
+            <Link to="/" style={{ fontSize: "16px" }}>
               {t("dashboard")}
             </Link>
           </Menu.Item>
 
-
           <Menu.Item
             key="31"
-            icon={<BiBookmarkAltPlus style={{ fontSize: "14px", }} />} >
-            <Link to="/booking" style={{ fontSize: "16px" }}>{t("booking")}</Link>
+            icon={<BiBookmarkAltPlus style={{ fontSize: "14px" }} />}
+          >
+            <Link to="/booking" style={{ fontSize: "16px" }}>
+              {t("booking")}
+            </Link>
           </Menu.Item>
 
           <Divider />
-
 
           <Menu.Item
             key="5"
@@ -250,15 +253,11 @@ const Dashboard = () => {
             </Link>
           </Menu.Item>
 
-          <Menu.Item
-            key="39"
-            icon={<GoPeople style={{ fontSize: "14px" }} />}>
-            <Link to="/host-info" style={{ fontSize: "16px" }}>{t("hostInfo")}</Link>
+          <Menu.Item key="39" icon={<GoPeople style={{ fontSize: "14px" }} />}>
+            <Link to="/host-info" style={{ fontSize: "16px" }}>
+              {t("hostInfo")}
+            </Link>
           </Menu.Item>
-
-
-
-
 
           <Menu.Item
             key="7"
@@ -274,7 +273,9 @@ const Dashboard = () => {
           <SubMenu
             style={{ fontSize: "16px", color: "white" }}
             key="8"
-            icon={<RiUserSearchLine style={{ fontSize: "14px", color: "white" }} />}
+            icon={
+              <RiUserSearchLine style={{ fontSize: "14px", color: "white" }} />
+            }
             title={t("kyc.title")}
           >
             <Menu.Item key="41">
@@ -290,15 +291,15 @@ const Dashboard = () => {
 
           <Menu.Item
             key="9"
-            icon={<SettingOutlined style={{ fontSize: "14px", color: "white" }} />}
+            icon={
+              <SettingOutlined style={{ fontSize: "14px", color: "white" }} />
+            }
           >
             <Link to="/setting" style={{ fontSize: "16px", color: "white" }}>
               {t("setting.title")}
             </Link>
           </Menu.Item>
         </Menu>
-
-
       </Sider>
       <Layout>
         <Header
@@ -340,6 +341,8 @@ const Dashboard = () => {
                 value={selectedLanguage}
                 style={{ width: 150 }}
                 onChange={handleSelectLanguage}
+                placeholder="Select Language"
+                defaultValue="en"
               >
                 <Option value="en">
                   <div style={{ display: "flex", alignItems: "center" }}>
@@ -349,6 +352,15 @@ const Dashboard = () => {
                       style={{ marginRight: 8, width: 16, height: 16 }}
                     />
                     English
+                  </div>
+                </Option>
+                <Option value="fr">
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"
+                      style={{ marginRight: 8, width: 16, height: 16 }}
+                    />
+                    France
                   </div>
                 </Option>
                 <Option value="es">

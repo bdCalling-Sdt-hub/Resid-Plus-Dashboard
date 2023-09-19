@@ -1,0 +1,51 @@
+{
+    "header": {
+        "title": "Panneau"
+    },
+    "dashboard": "Tableau de bord",
+    "booking": "Réservation",
+    "setting": {
+        "title": "Paramètres"
+    },
+    "kyc": {
+        "title": "Formulaire KYC",
+        "subTitle1": "- Utilisateur",
+        "subTitle2": "- Hôte",
+        "subTitle3": "- Résidence"
+    },
+    "residenceInfo": "Résidence",
+    "userInfo": "Informations sur l'utilisateur",
+    "hostInfo": "Informations sur l'hôte",
+    "user": {
+        "search": "Rechercher un utilisateur",
+        "title": "Liste des utilisateurs",
+        "searchBtn": "Rechercher",
+        "viewDetails": "Voir les détails",
+        "placeholderSearch": "Rechercher par nom/adresse e-mail/téléphone",
+        "email": "Adresse e-mail",
+        "JoiningDate": "Date d'inscription",
+        "contact": "Contact",
+        "address": "ADRESSE",
+        "modalInfo": "Informations sur l'utilisateur",
+        "modalDetails": "Détails",
+        "bookComplete": "Réservation complète",
+        "printBtn": "Imprimer",
+        "downloadBtn": "Télécharger"
+    },
+    "host": {
+        "search": "Rechercher un hôte",
+        "title": "Liste des hôtes",
+        "searchBtn": "Rechercher",
+        "viewDetails": "Voir les détails",
+        "placeholderSearch": "Rechercher par nom/adresse e-mail/téléphone",
+        "email": "Adresse e-mail",
+        "JoiningDate": "Date d'inscription",
+        "contact": "Contact",
+        "address": "ADRESSE",
+        "modalInfo": "Informations sur l'hôte",
+        "modalDetails": "Détails",
+        "bookComplete": "Réservation complète",
+        "printBtn": "Imprimer",
+        "downloadBtn": "Télécharger"
+    }
+}
