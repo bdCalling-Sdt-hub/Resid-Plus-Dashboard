@@ -73,7 +73,7 @@ function HostInfo() {
          {t("host.search")}
         </h2>
         <Col lg={{ span: 24 }}>
-          <div className="" style={{ display: "flex", gap: "15px" }}>
+          <div className={styles.SearchOption}>
             <Input
               size="large"
               style={{ border: "1px solid #787878" }}
