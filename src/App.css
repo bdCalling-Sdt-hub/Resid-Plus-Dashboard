@@ -64,7 +64,7 @@
 
 .ant-layout-sider-children {
   background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
-  width: 320px;
+  /* width: 320px; */
 }
 
 .ant-layout-sider-children ul {
@@ -124,4 +124,14 @@ main.ant-layout-content.css-dev-only-do-not-override-17a39f8 {
 
 :where(.css-dev-only-do-not-override-17a39f8).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
   background: #333333;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-menu-light.ant-menu-submenu>.ant-menu{
+  background: #333333;
+  color: white;
+}
+
+:where(.css-dev-only-do-not-override-17a39f8).ant-menu-light.ant-menu-submenu>.ant-menu:hover{
+  background: #333333;
+  color: white !important;
 }
