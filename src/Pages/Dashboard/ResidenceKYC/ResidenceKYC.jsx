@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import { LiaEditSolid } from "react-icons/lia";
 import styles from "./ResidenceKYC.module.css";
 import { PlusOutlined } from "@ant-design/icons";
+import AddProductImage from "./AddProductImage";
 const dateFormat = "YYYY-MM-DD";
 
 const getBase64 = (file) =>
@@ -31,6 +32,7 @@ function ResidenceKYC() {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
+  const [images, setImageURL] = useState([]);
   const [fileList, setFileList] = useState([
     // {
     //   uid: "-1",
@@ -64,6 +66,31 @@ function ResidenceKYC() {
     </div>
   );
 
+  const handleImageUpload = (event) => {
+    const imageData = new FormData();
+    imageData.set("key", "701a71fc100ddc2599c9438b268fee30");
+    imageData.append("image", event.target.files[0]);
+
+    axios
+      .post("https://api.imgbb.com/1/upload", imageData)
+      .then((response) => {
+        let image = [];
+        let newImages = [...images];
+        newImages.push(response.data.data.display_url);
+        image = newImages;
+        setImageURL(image);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const deleteHandler = (params) => {
+    let newImages = [...images];
+    newImages.splice(params, 1);
+    setImageURL(newImages);
+  };
+
   return (
     <div>
       <div>
@@ -78,6 +105,12 @@ function ResidenceKYC() {
           >
             {fileList.length >= 8 ? null : uploadButton}
           </Upload>
+
+          <AddProductImage
+            images={images}
+            handleImageUpload={handleImageUpload}
+            deleteHandler={deleteHandler}
+          />
         </>
         <Button className="btn" block>
           Upload Photo
@@ -174,10 +207,10 @@ function ResidenceKYC() {
             />
           </Col>
         </Row>
-
+{/* 
         <Button className="btn" block>
           Save
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
