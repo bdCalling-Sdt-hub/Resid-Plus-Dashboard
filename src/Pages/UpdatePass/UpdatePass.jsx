@@ -3,11 +3,15 @@ import React, { useState } from "react";
 import logo from "../../Images/Logo.png";
 import style from "./UpdatePass.module.css";
 import { LeftOutlined } from "@ant-design/icons";
+import { useParams } from "react-router-dom";
 
 const UpdatePass = () => {
   const [err, setErr] = useState("");
   const onFinish = (values) => {
     const { password, confirmPassword } = values;
+
+    let { email } = useParams();
+    console.log(email);
 
     if (password.length < 8) {
       setErr("Password must be 8 character");
