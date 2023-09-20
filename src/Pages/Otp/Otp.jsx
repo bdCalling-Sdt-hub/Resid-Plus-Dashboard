@@ -14,7 +14,7 @@ const { Title, Paragraph, Text, Link } = Typography;
 
 const Otp = () => {
   let { email } = useParams();
-  console.log(email);
+  // console.log(email);
   const [otp, setOtp] = useState("");
 
   console.log(otp);

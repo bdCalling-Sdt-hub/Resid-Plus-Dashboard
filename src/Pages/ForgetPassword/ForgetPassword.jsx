@@ -11,8 +11,6 @@ const { Title, Paragraph, Text, Link } = Typography;
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
-  let { email } = useParams();
-  console.log(email);
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
