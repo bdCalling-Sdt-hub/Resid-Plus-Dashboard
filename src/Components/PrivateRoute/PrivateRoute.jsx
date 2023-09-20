@@ -5,11 +5,9 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const UserData = JSON.parse(localStorage.getItem("yourInfo"));
 
-  console.log(UserData);
+  //console.log(UserData);
 
   if (
-    UserData?.approved != false &&
-    UserData?.isBanned == "false" &&
     UserData?.emailVerified != false &&
     UserData?.role == "admin"
   ) {

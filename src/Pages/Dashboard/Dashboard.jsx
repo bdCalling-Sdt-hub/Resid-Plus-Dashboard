@@ -12,87 +12,16 @@ import { GoPeople } from "./../../../node_modules/react-icons/go/index.esm";
 import { RiUserSearchLine } from "react-icons/ri";
 
 import React, { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link, Outlet } from "react-router-dom";
 import rentiLogo from "../../Images/resid-logo.png";
 import Styles from "./Dashboard.module.css";
+import Swal from "sweetalert2";
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 const { Option } = Select;
-
-const profileItems = [
-  {
-    key: 1,
-    label: (
-      <Link to="/notification" style={{ height: "50px" }} rel="noreferrer">
-        <div
-          className={Styles.everyNotify}
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          <img
-            style={{ marginRight: "20px" }}
-            width="30"
-            height="30"
-            src="https://img.icons8.com/windows/32/gender-neutral-user.png"
-            alt="gender-neutral-user"
-          />
-          <div className="" style={{ marginTop: "" }}>
-            <p>Profile</p>
-          </div>
-        </div>
-      </Link>
-    ),
-  },
-  {
-    key: 2,
-    label: (
-      <Link to="/notification" style={{}} rel="noreferrer">
-        <div
-          className={Styles.everyNotify}
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          <img
-            style={{ marginRight: "20px" }}
-            width="30"
-            height="30"
-            src="https://img.icons8.com/ios/50/appointment-reminders--v1.png"
-            alt="appointment-reminders--v1"
-          />
-          <div className="" style={{ marginTop: "" }}>
-            <p>Notification</p>
-          </div>
-        </div>
-      </Link>
-    ),
-  },
-  {
-    key: 3,
-    label: (
-      <div
-        style={{ border: "none", backgroundColor: "transparent" }}
-        rel="noreferrer"
-      >
-        <div
-          className={Styles.everyNotify}
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          <img
-            style={{ marginRight: "20px" }}
-            width="25"
-            height="25"
-            src="https://img.icons8.com/ios/50/exit--v1.png"
-            alt="exit--v1"
-          />
-          <div className="" style={{ marginTop: "" }}>
-            <p>Logout</p>
-          </div>
-        </div>
-      </div>
-    ),
-  },
-];
 
 const items = [...Array(5).keys()].map((item, index) => {
   return {
@@ -131,6 +60,8 @@ const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.lang);
 
+  const navigate = useNavigate();
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -145,6 +76,99 @@ const Dashboard = () => {
   useEffect(() => {
     i18n.changeLanguage(selectedLanguage);
   }, [selectedLanguage, i18n]);
+
+  const logout = () => {
+    Swal.fire({
+      title: "Do you want to Logout from here?",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Yes",
+      denyButtonText: `No`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("yourInfo");
+
+        navigate("/signin");
+      } else if (result.isDenied) {
+        Swal.fire("Ok", "", "info");
+      }
+    });
+  };
+
+  const profileItems = [
+    {
+      key: 1,
+      label: (
+        <Link to="/notification" style={{ height: "50px" }} rel="noreferrer">
+          <div
+            className={Styles.everyNotify}
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <img
+              style={{ marginRight: "20px" }}
+              width="30"
+              height="30"
+              src="https://img.icons8.com/windows/32/gender-neutral-user.png"
+              alt="gender-neutral-user"
+            />
+            <div className="" style={{ marginTop: "" }}>
+              <p>Profile</p>
+            </div>
+          </div>
+        </Link>
+      ),
+    },
+    {
+      key: 2,
+      label: (
+        <Link to="/notification" style={{}} rel="noreferrer">
+          <div
+            className={Styles.everyNotify}
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <img
+              style={{ marginRight: "20px" }}
+              width="30"
+              height="30"
+              src="https://img.icons8.com/ios/50/appointment-reminders--v1.png"
+              alt="appointment-reminders--v1"
+            />
+            <div className="" style={{ marginTop: "" }}>
+              <p>Notification</p>
+            </div>
+          </div>
+        </Link>
+      ),
+    },
+    {
+      key: 3,
+      label: (
+        <div
+          onClick={logout}
+          style={{ border: "none", backgroundColor: "transparent" }}
+          rel="noreferrer"
+        >
+          <div
+            className={Styles.everyNotify}
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <img
+              style={{ marginRight: "20px" }}
+              width="25"
+              height="25"
+              src="https://img.icons8.com/ios/50/exit--v1.png"
+              alt="exit--v1"
+            />
+            <div className="" style={{ marginTop: "" }}>
+              <p>Logout</p>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+  ];
 
   const menu = (
     <Menu>

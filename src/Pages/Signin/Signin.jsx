@@ -10,8 +10,8 @@ import Swal from "sweetalert2";
 const Signin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, isError, isSuccess, userData, accessToken, message } =
-    useSelector((state) => state.UserData);
+  const { isLoading, isError, isSuccess, userData, accessToken, message } = useSelector((state) => state.UserData);
+  
   console.log(userData);
   console.log("token" + accessToken);
   useEffect(() => {
@@ -22,13 +22,14 @@ const Signin = () => {
         text: message,
       });
     }
+    console.log("isSuccess" + isSuccess);
     if (isSuccess == true) {
       localStorage.setItem("yourInfo", JSON.stringify(userData));
       localStorage.setItem("token", accessToken);
       window.location.href = "/";
     }
 
-    dispatch(reset());
+    // dispatch(reset());
   }, [isLoading, isError, isSuccess, dispatch, navigate]);
 
   const onFinish = (values) => {
