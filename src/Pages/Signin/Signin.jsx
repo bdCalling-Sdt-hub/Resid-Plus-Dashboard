@@ -1,16 +1,40 @@
 import { Button, Form, Input } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 import logo from "../../Images/Logo.png";
 import style from "./Signin.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { UserData, reset } from "../../ReduxSlices/SigninSlice";
+import Swal from "sweetalert2";
 
 const Signin = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isLoading, isError, isSuccess, userData, accessToken, message } =
+    useSelector((state) => state.UserData);
+  console.log(userData);
+  console.log("token" + accessToken);
+  useEffect(() => {
+    if (isError == true) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: message,
+      });
+    }
+    if (isSuccess == true) {
+      localStorage.setItem("yourInfo", JSON.stringify(userData));
+      localStorage.setItem("token", accessToken);
+      window.location.href = "/";
+    }
+
+    dispatch(reset());
+  }, [isLoading, isError, isSuccess, dispatch, navigate]);
+
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    dispatch(UserData(values));
   };
-
-  const navigate = useNavigate();
-
   const handleForget = () => {
     navigate("/forget-password");
   };
@@ -87,7 +111,7 @@ const Signin = () => {
 
           <Form.Item>
             <div
-              onClick={(e) => navigate("/")}
+              // onClick={(e) => navigate("/")}
               className={style.buttonContainer}
             >
               <Button htmlType="submit" className={style.loginButton}>

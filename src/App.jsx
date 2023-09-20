@@ -29,9 +29,9 @@ function App() {
               exact
               path="/"
               element={
-                <PrivateRoute>
+                // <PrivateRoute>
                   <Dashboard />
-                </PrivateRoute>
+                // </PrivateRoute>
               }
             >
               <Route path="/" element={<DashboardHome />} />

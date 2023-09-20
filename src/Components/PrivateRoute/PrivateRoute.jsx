@@ -3,16 +3,20 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
+  const UserData = JSON.parse(localStorage.getItem("yourInfo"));
 
-  const user = {
-    email: "tushar@gmail.com",
-  };
+  console.log(UserData);
 
-  if (user.email) {
+  if (
+    UserData?.approved != false &&
+    UserData?.isBanned == "false" &&
+    UserData?.emailVerified != false &&
+    UserData?.role == "admin"
+  ) {
     return children;
+  } else {
+    return <Navigate to="/signin" />;
   }
-
-  return <Navigate to="/signin" state={{ from: location }} />;
 };
 
 export default PrivateRoute;
