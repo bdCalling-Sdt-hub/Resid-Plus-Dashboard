@@ -99,7 +99,7 @@ function HostInfo() {
           <Row className={styles.Pagination}>
             <Col>
               <p style={{ color: "#333333" }}>
-                Showing 1-10 OF {dataPagination.totalDocuments}
+                Showing 1-3 OF {dataPagination.totalDocuments}
               </p>
             </Col>
             <Col>
