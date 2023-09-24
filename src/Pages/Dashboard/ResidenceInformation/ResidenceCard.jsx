@@ -17,13 +17,17 @@ function ResidenceCard({ data }) {
   return (
     <div className={styles.CardContainer}>
       <div>
-        <img className={styles.cardLogo} src={data.image} alt="" />
+        <img
+          className={styles.cardLogo}
+          src={data?.photo[0]?.publicFileUrl}
+          alt=""
+        />
       </div>
       <div className={styles.cardDescription}>
         <div>
           <div className={styles.statusContainer}>
-            <h1>{data.productName}</h1>{" "}
-            {data.status ? (
+            <h1>{data.residenceName}</h1>{" "}
+            {data.status == "active" ? (
               <span className={styles.active}>Active</span>
             ) : (
               <span className={styles.reserved}>Reserved</span>
@@ -31,14 +35,14 @@ function ResidenceCard({ data }) {
           </div>
           <div>
             <StarFilled style={{ color: "#FBA91D" }} />
-            <span style={{ marginLeft: "3px" }}>({data.rating})</span>
+            <span style={{ marginLeft: "3px" }}>({data.rating || 0.0})</span>
           </div>
         </div>
         <div>
           <p>Person/Capacity: {data.capacity}</p>
           <p>Beds: {data.beds}</p>
           <p>Baths: {data.baths}</p>
-          <p>Rent/hr: {data.price}</p>
+          <p>Rent/hr: {data.hourlyAmount}</p>
         </div>
         <Button onClick={showModal} className={styles.ViewDetailsBtn}>
           View Details
@@ -56,11 +60,15 @@ function ResidenceCard({ data }) {
           <h1>Residence information</h1>
           <hr />
           <div className={styles.userModalTitle}>
-            <img className={styles.modalImage} src={data.image} alt="" />
+            <img
+              className={styles.modalImage}
+              src={data?.photo[0]?.publicFileUrl}
+              alt=""
+            />
             <div className={styles.userTitle}>
               <div>
                 <div className={styles.statusContainer}>
-                  <h1>{data.productName}</h1>{" "}
+                  <h1>{data.residenceName}</h1>{" "}
                   {data.status ? (
                     <span className={styles.active}>Active</span>
                   ) : (
@@ -69,7 +77,9 @@ function ResidenceCard({ data }) {
                 </div>
                 <div>
                   <StarFilled style={{ color: "#FBA91D" }} />
-                  <span style={{ marginLeft: "3px" }}>({data.rating})</span>
+                  <span style={{ marginLeft: "3px" }}>
+                    ({data.rating || 0.0})
+                  </span>
                 </div>
               </div>
             </div>
@@ -81,8 +91,10 @@ function ResidenceCard({ data }) {
               <p>Person/Capacity: {data.capacity}</p>
               <p>Beds: {data.beds}</p>
               <p>Baths: {data.baths}</p>
-              <p>Address: {data.address}</p>
-              <p>Rent/hr: {data.price}</p>
+              <p>
+                Address: {data.address}, {data.city}, {data.municipality}
+              </p>
+              <p>Rent/hr: {data.hourlyAmount}</p>
             </div>
             <hr />
             <div className={styles.about}>
@@ -94,7 +106,7 @@ function ResidenceCard({ data }) {
             <hr />
             <div>
               <h2>Owner Information</h2>
-              <p>Owner Name: {data.name}</p>
+              <p>Owner Name: {data.ownerName}</p>
               <h4>About this residence</h4>
               <p style={{ width: "700px" }} className={styles.aboutResidence}>
                 {data.aboutResidence}

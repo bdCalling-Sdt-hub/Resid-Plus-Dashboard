@@ -46,7 +46,7 @@ function UserCard({ data }) {
         <img
           className={styles.cardLogo}
           src={
-            data.image ||
+            data.image?.publicFileUrl ||
             "https://i.ibb.co/cbDmQzv/photo-1535713875002-d1d0cf377fde.jpg"
           }
           alt=""
