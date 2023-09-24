@@ -17,7 +17,7 @@ function UserInfo() {
   const dataPagination = useSelector(
     (state) => state.UserInformationData.pagination
   );
-  console.log(dataPagination);
+  // console.log(dataPagination);
 
   const dispatch = useDispatch();
 
@@ -98,7 +98,7 @@ function UserInfo() {
       <Row>
         <div className={styles.UserCardContainer}>
           {data.map((item) => (
-            <UserCard key={item.id} data={item} />
+            <UserCard key={item._id} data={item} />
           ))}
           <Row className={styles.Pagination}>
             <Col>

@@ -19,7 +19,7 @@ function HostInfo() {
   const dataPagination = useSelector(
     (state) => state.HostInformationData.pagination
   );
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     let data = {
@@ -93,7 +93,7 @@ function HostInfo() {
       <Row>
         <div className={styles.UserCardContainer}>
           {data.map((item) => (
-            <HostCard key={item.id} data={item} />
+            <HostCard key={item._id} data={item} />
           ))}
 
           <Row className={styles.Pagination}>
