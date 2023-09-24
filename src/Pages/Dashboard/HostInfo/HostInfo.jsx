@@ -4,62 +4,55 @@ import { SearchOutlined } from "@ant-design/icons";
 import HostCard from "./HostCard";
 import styles from "./Host.module.css";
 import { useTranslation } from "react-i18next";
-
-const data = [
-  {
-    id: "1",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
-    address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 5,
-  },
-  {
-    id: "2",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
-    address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 45,
-  },
-  {
-    id: "3",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
-    address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 8,
-  },
-  {
-    id: "4",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
-    address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 98,
-  },
-  {
-    id: "5",
-    name: "John Brown",
-    email: "test@gmail.com",
-    phone: "01700000000",
-    address: "New York No. 1 Lake Park",
-    joinDate: "2021-08-15",
-    image: "https://i.ibb.co/txjPMvX/Max-R-Headshot-1.jpg",
-    BookingCompleted: 1,
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
+import { HostInformationData } from "../../../ReduxSlices/HostInformationSlice";
 
 function HostInfo() {
+  const [searchData, setSearchData] = useState("");
+  const pageSize = 3;
+  const [reload, setReload] = useState(1);
+  const dispatch = useDispatch();
   const [t, i18n] = useTranslation("global");
+  const data = useSelector((state) => state.HostInformationData.HostInfoList);
+  const dataPagination = useSelector(
+    (state) => state.HostInformationData.pagination
+  );
+  console.log(data);
+
+  useEffect(() => {
+    let data = {
+      search: searchData,
+      page: 1,
+    };
+    if (searchData === "") {
+      dispatch(HostInformationData(data));
+    }
+  }, [searchData, reload]);
+
+  const userDataGetByPagination = (page) => {
+    let data = {
+      search: searchData,
+      page: page,
+    };
+    if (searchData == "") {
+      dispatch(HostInformationData(data));
+      console.log("without search");
+    }
+  };
+
+  const userDataGetBySearch = (page) => {
+    let data = {
+      search: searchData,
+      page: page,
+    };
+    if (searchData != "") {
+      dispatch(HostInformationData(data));
+      console.log("with search");
+    }
+  };
+
   return (
     <div style={{ padding: "0 10px" }}>
       <Row>
@@ -70,17 +63,22 @@ function HostInfo() {
             fontWeight: "normal",
           }}
         >
-         {t("host.search")}
+          {t("host.search")}
         </h2>
         <Col lg={{ span: 24 }}>
           <div className={styles.SearchOption}>
             <Input
+              onChange={(e) => setSearchData(e.target.value)}
+              value={searchData}
               size="large"
               style={{ border: "1px solid #787878" }}
-              placeholder= {t("host.placeholderSearch")}
+              placeholder={t("host.placeholderSearch")}
               prefix={<SearchOutlined style={{ color: "#cccccc" }} />}
             />
-         <Button className="btn"> {t("host.searchBtn")}</Button>
+            <Button onClick={userDataGetBySearch} className="btn">
+              {" "}
+              {t("host.searchBtn")}
+            </Button>
           </div>
         </Col>
       </Row>
@@ -89,7 +87,7 @@ function HostInfo() {
         <h2
           style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}
         >
-         {t("host.title")}
+          {t("host.title")}
         </h2>
       </Row>
       <Row>
@@ -100,12 +98,16 @@ function HostInfo() {
 
           <Row className={styles.Pagination}>
             <Col>
-              <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
+              <p style={{ color: "#333333" }}>
+                Showing 1-10 OF {dataPagination.totalDocuments}
+              </p>
             </Col>
             <Col>
               <Pagination
+                pageSize={pageSize}
                 defaultCurrent={1}
-                total={5000}
+                onChange={userDataGetByPagination}
+                total={dataPagination.totalDocuments}
                 showQuickJumper={false}
                 showSizeChanger={false}
               />

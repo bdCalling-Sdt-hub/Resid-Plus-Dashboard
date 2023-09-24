@@ -5,18 +5,18 @@ const initialState = {
   Error: false,
   Success: false,
   Loading: false,
-  UserInfoList: [],
+  HostInfoList: [],
   pagination: {},
 };
 
 let token = localStorage.getItem("token");
 
-export const UserInformationData = createAsyncThunk(
-  "UserInfo",
+export const HostInformationData = createAsyncThunk(
+  "HostInfo",
   async (value, thunkAPI) => {
     try {
       let response = await baseAxios.get(
-        `/api/users?limit=3&page=${value.page}&search=${value.search}`,
+        `/api/users?userType=host&limit=3&page=${value.page}&search=${value.search}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -40,38 +40,38 @@ export const UserInformationData = createAsyncThunk(
   }
 );
 
-export const UserInformationSlice = createSlice({
-  name: "userinfo",
+export const HostInformationSlice = createSlice({
+  name: "hostinfo",
   initialState,
   reducers: {
     reset: (state) => {
       state.Loading = false;
       state.Success = false;
       state.Error = false;
-      (state.UserInfoList = []), (state.pagination = {});
+      (state.HostInfoList = []), (state.pagination = {});
     },
   },
   extraReducers: {
-    [UserInformationData.pending]: (state, action) => {
+    [HostInformationData.pending]: (state, action) => {
       state.Loading = true;
     },
-    [UserInformationData.fulfilled]: (state, action) => {
+    [HostInformationData.fulfilled]: (state, action) => {
       state.Loading = false;
       state.Success = true;
       state.Error = false;
-      state.UserInfoList = action.payload.data.attributes.users;
+      state.HostInfoList = action.payload.data.attributes.users;
       state.pagination = action.payload.data.attributes.pagination;
     },
-    [UserInformationData.rejected]: (state, action) => {
+    [HostInformationData.rejected]: (state, action) => {
       state.Loading = false;
       state.Success = false;
       state.Error = true;
-      (state.UserInfoList = []), (state.pagination = {});
+      (state.HostInfoList = []), (state.pagination = {});
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { reset } = UserInformationSlice.actions;
+export const { reset } = HostInformationSlice.actions;
 
-export default UserInformationSlice.reducer;
+export default HostInformationSlice.reducer;
