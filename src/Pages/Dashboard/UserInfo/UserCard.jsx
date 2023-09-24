@@ -15,13 +15,45 @@ function UserCard({ data }) {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const inputDateString = data.createdAt;
+
+  const inputDate = new Date(inputDateString);
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const month = monthNames[inputDate.getMonth()];
+  const day = inputDate.getDate();
+  const year = inputDate.getFullYear();
+
+  const formattedDate = `${month} ${day}, ${year}`;
   return (
     <div className={styles.CardContainer}>
       <div>
-        <img className={styles.cardLogo} src={data.image} alt="" />
+        <img
+          className={styles.cardLogo}
+          src={
+            data.image ||
+            "https://i.ibb.co/cbDmQzv/photo-1535713875002-d1d0cf377fde.jpg"
+          }
+          alt=""
+        />
       </div>
       <div className={styles.cardDescription}>
-        <h1>{data.name}</h1>
+        <h1>{data.fullName}</h1>
         <div>
           <p>
             {" "}
@@ -29,11 +61,11 @@ function UserCard({ data }) {
           </p>
           <p>
             {" "}
-            {t("user.JoiningDate")}: {data.joinDate}
+            {t("user.JoiningDate")}: {formattedDate}
           </p>
           <p>
             {" "}
-            {t("user.contact")}: {data.phone}
+            {t("user.contact")}: {data.phoneNumber}
           </p>
           <p>
             {" "}
@@ -50,12 +82,19 @@ function UserCard({ data }) {
           <h1> {t("user.modalInfo")}</h1>
           <hr />
           <div className={styles.userModalTitle}>
-            <img className={styles.modalImage} src={data.image} alt="" />
+            <img
+              className={styles.modalImage}
+              src={
+                data.image ||
+                "https://i.ibb.co/cbDmQzv/photo-1535713875002-d1d0cf377fde.jpg"
+              }
+              alt=""
+            />
             <div className={styles.userTitle}>
-              <h1>{data.name}</h1>
+              <h1>{data.fullName}</h1>
               <p>
                 {" "}
-                {t("user.bookComplete")}: {data.BookingCompleted}
+                {t("user.bookComplete")}: {data.BookingCompleted || 0}
               </p>
             </div>
           </div>
@@ -69,11 +108,11 @@ function UserCard({ data }) {
               </p>
               <p>
                 {" "}
-                {t("user.JoiningDate")}: {data.joinDate}
+                {t("user.JoiningDate")}: {formattedDate}
               </p>
               <p>
                 {" "}
-                {t("user.contact")}: {data.phone}
+                {t("user.contact")}: {data.phoneNumber}
               </p>
               <p>
                 {" "}
