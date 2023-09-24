@@ -2,72 +2,60 @@ import { Col, Row, Pagination } from "antd";
 import React from "react";
 import "./Residence.css";
 import ResidenceCard from "./ResidenceCard";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
 import styles from "./ResidenceInformation.module.css";
-
-const data = [
-  {
-    id: 1,
-    name: "John Brown",
-    productName: "Hotel blue sky",
-    status: true,
-    capacity: 4,
-    beds: 2,
-    baths: 5,
-    price: 200,
-    address: "New York No. 1 Lake Park",
-    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
-    aboutResidence:
-      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    name: "John Brown",
-    productName: "Hotel redison ",
-    status: false,
-    capacity: 4,
-    beds: 2,
-    baths: 9,
-    price: 200,
-    address: "New York No. 1 Lake Park",
-    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
-    aboutResidence:
-      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
-    rating: 4.5,
-  },
-  {
-    id: 3,
-    name: "John Brown",
-    productName: "Hotel relax relax",
-    status: false,
-    capacity: 4,
-    beds: 25,
-    baths: 8,
-    price: 200,
-    address: "New York No. 1 Lake Park",
-    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
-    aboutResidence:
-      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
-    rating: 4.5,
-  },
-  {
-    id: 4,
-    name: "John Brown",
-    productName: "Abul hotel",
-    status: true,
-    capacity: 4,
-    beds: 2,
-    baths: 2,
-    price: 200,
-    address: "New York No. 1 Lake Park",
-    image: "https://i.ibb.co/F7Fdtzd/Rectangle-32.png",
-    aboutResidence:
-      "Lorem ipsum dolor sit amet magna tempus  dis volutpat ullamcorper in. Class vivamus commodo nunc suscipit venenatis. Potenti hac  morbi sapien auctor tincidunt mauris. Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.Congue tristique parturient tempor mattis felis nisi commodo. Pharetra dignissim augue duis pulvinar  nisl ornare. Proin massa ornare feugiat augue tortor.",
-    rating: 4.5,
-  },
-];
+import { useTranslation } from "react-i18next";
+import { ResidenceInformationData } from "../../../ReduxSlices/ResidenceInformationSlice";
+import { use } from "i18next";
+import baseAxios from "../../../../Config";
 
 function CarInformation() {
+  const pageSize = 3;
+  const [reload, setReload] = useState(1);
+  const dispatch = useDispatch();
+  const [residenceStatus, setResidenceStatus] = useState({});
+  const [t, i18n] = useTranslation("global");
+  const data = useSelector(
+    (state) => state.ResidenceInformationData.ResidenceInfoList
+  );
+
+  // console.log(residenceStatus);
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    baseAxios
+      .get(`/api/residence/dashboard/status`, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setResidenceStatus(res.data.data.attributes);
+      });
+  }, [setResidenceStatus]);
+
+  useEffect(() => {
+    let data = {
+      page: 1,
+    };
+
+    dispatch(ResidenceInformationData(data));
+  }, [reload]);
+
+  const userDataGetByPagination = (page) => {
+    let data = {
+      page: page,
+    };
+    if (searchData == "") {
+      dispatch(ResidenceInformationData(data));
+      console.log("without search");
+    }
+  };
+
   return (
     <div style={{ padding: "0 10px" }}>
       <Row>
@@ -109,7 +97,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              512
+              {residenceStatus?.totalResidence}
             </h3>
           </div>
         </Col>
@@ -139,7 +127,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              112
+              {residenceStatus?.active}
             </h3>
           </div>
         </Col>
@@ -169,7 +157,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              250
+              {residenceStatus?.reserved}
             </h3>
           </div>
         </Col>
@@ -190,18 +178,17 @@ function CarInformation() {
       <Row>
         <div className={styles.UserCardContainer}>
           {data.map((item) => (
-            <ResidenceCard key={item.id} data={item} />
+            <ResidenceCard key={item._id} data={item} />
           ))}
           <Row className={styles.Pagination}>
             <Col>
-              <p style={{  color: "#333333" }}>
-                Showing 1-10 OF 250
-              </p>
+              <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
             </Col>
             <Col>
               <Pagination
+                pageSize={pageSize}
                 defaultCurrent={1}
-                total={5000}
+                onChange={userDataGetByPagination}
                 showQuickJumper={false}
                 showSizeChanger={false}
               />

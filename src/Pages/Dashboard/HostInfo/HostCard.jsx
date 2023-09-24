@@ -15,13 +15,43 @@ function HostCard({ data }) {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const inputDateString = data.createdAt;
+
+  const inputDate = new Date(inputDateString);
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const month = monthNames[inputDate.getMonth()];
+  const day = inputDate.getDate();
+  const year = inputDate.getFullYear();
+
+  const formattedDate = `${month} ${day}, ${year}`;
+
   return (
     <div className={styles.CardContainer}>
       <div>
-        <img className={styles.cardLogo} src={data.image} alt="" />
+        <img
+          className={styles.cardLogo}
+          src={data.image || "https://i.ibb.co/YZbtRDR/Max-R-Headshot-1.jpg"}
+          alt=""
+        />
       </div>
       <div className={styles.cardDescription}>
-        <h1>{data.name}</h1>
+        <h1>{data.fullName}</h1>
         <div>
           <p>
             {" "}
@@ -29,11 +59,11 @@ function HostCard({ data }) {
           </p>
           <p>
             {" "}
-            {t("host.JoiningDate")}: {data.joinDate}
+            {t("host.JoiningDate")}: {formattedDate}
           </p>
           <p>
             {" "}
-            {t("host.contact")}: {data.phone}
+            {t("host.contact")}: {data.phoneNumber}
           </p>
           <p>
             {" "}
@@ -50,12 +80,18 @@ function HostCard({ data }) {
           <h1> {t("host.modalInfo")}</h1>
           <hr />
           <div className={styles.userModalTitle}>
-            <img className={styles.modalImage} src={data.image} alt="" />
+            <img
+              className={styles.modalImage}
+              src={
+                data.image || "https://i.ibb.co/YZbtRDR/Max-R-Headshot-1.jpg"
+              }
+              alt=""
+            />
             <div className={styles.userTitle}>
               <h1>{data.name}</h1>
               <p>
                 {" "}
-                {t("host.bookComplete")}: {data.BookingCompleted}
+                {t("host.bookComplete")}: {data.BookingCompleted || 0}
               </p>
             </div>
           </div>
@@ -69,11 +105,11 @@ function HostCard({ data }) {
               </p>
               <p>
                 {" "}
-                {t("host.JoiningDate")}: {data.joinDate}
+                {t("host.JoiningDate")}: {formattedDate}
               </p>
               <p>
                 {" "}
-                {t("host.contact")}: {data.phone}
+                {t("host.contact")}: {data.phoneNumber}
               </p>
               <p>
                 {" "}

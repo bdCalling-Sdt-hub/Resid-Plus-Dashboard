@@ -42,9 +42,9 @@
     "JoiningDate": "Joining Date",
     "contact": "Contact",
     "address": "Address",
-    "modalInfo":"User Information",
+    "modalInfo":"Host Information",
     "modalDetails":"Details",
-    "bookComplete":"Booking Completed",
+    "bookComplete":"Rent Completed",
     "printBtn":"Print",
     "downloadBtn":"Download"
   },
