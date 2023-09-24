@@ -1,10 +1,14 @@
 import { Button, Modal } from "antd";
 import React, { useState } from "react";
 import { StarFilled } from "@ant-design/icons";
+import { HiOutlineLocationMarker } from 'react-icons/hi';
 import styles from "./Booking.module.css";
+import baseAxios from "../../../../Config";
 
-function BookingCard({ data }) {
+const BookingCard = ({ data }) => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  console.log(data)
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -14,20 +18,21 @@ function BookingCard({ data }) {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   return (
     <div className={styles.CardContainer}>
       <div>
-        <img className={styles.cardLogo} src={data.image} alt="" />
+        <img className={styles.cardLogo} src={data?.residenceId?.photo[0]?.publicFileUrl} alt="" />
       </div>
       <div className={styles.cardDescription}>
         <div>
           <div className={styles.statusContainer}>
-            <h1>{data.productName}</h1>{" "}
-            {data.status === "A" ? (
+            <h1>{data.residenceId?.residenceName}</h1>{" "}
+            {data.status === "completed" ? (
               <span className={styles.active}>Completed</span>
-            ) : data.status === "B" ? (
+            ) : data.status === "reserved" ? (
               <span className={styles.reserved}>Reserved</span>
-            ) : data.status === "C" ? (
+            ) : data.status === "cancelled" ? (
               <span className={styles.cancel}>Canceled</span>
             ) : (
               ""
@@ -39,11 +44,11 @@ function BookingCard({ data }) {
           </div>
         </div>
         <div>
-          <p>Booking ID: #{data.bookingId}</p>
-          <p>Booking Date: {data.bookingDate}</p>
-          <p>User Name: {data.userName}</p>
-          <p>Total Persons: {data.totalPersons}</p>
-          <p>Owner Name: {data.ownerName}</p>
+          <p>Booking ID: #{data._id}</p>
+          <p>Booking Date: {data.createdAt?.slice(0, 10)}</p>
+          <p>User Name: {data?.userId?.fullName}</p>
+          <p>Total Persons: {data.numberOfGuests}</p>
+          <p>Owner Name: {data.hostId.fullName}</p>
         </div>
         <Button onClick={showModal} className={styles.ViewDetailsBtn}>
           View Details
@@ -58,22 +63,22 @@ function BookingCard({ data }) {
         footer={[]}
       >
         <div className={styles.modalContainer}>
-          <h1 style={{ fontSize: "30px" }}>Booking Id: #{data.bookingId}</h1>
+          <h1 style={{ fontSize: "30px" }}>Booking Id: #{data._id}</h1>
           <p style={{ paddingBottom: "10px", color: "#5A5A5A" }}>
-            See all information about Booking ID: #{data.bookingId}
+            See all information about Booking ID: #{data._id}
           </p>
           <hr />
           <div className={styles.userModalTitle}>
-            <img className={styles.modalImage} src={data.image} alt="" />
+            <img className={styles.modalImage} src={data?.residenceId?.photo[0]?.publicFileUrl} alt="" />
             <div className={styles.userTitle}>
               <div>
                 <div className={styles.statusContainer}>
-                  <h1>{data.productName}</h1>{" "}
-                  {data.status === "A" ? (
+                  <h1>{data.residenceId?.residenceName}</h1>{" "}
+                  {data.status === "completed" ? (
                     <span className={styles.active}>Completed</span>
-                  ) : data.status === "B" ? (
+                  ) : data.status === "reserved" ? (
                     <span className={styles.reserved}>Reserved</span>
-                  ) : data.status === "C" ? (
+                  ) : data.status === "cancelled" ? (
                     <span className={styles.cancel}>Canceled</span>
                   ) : (
                     ""
@@ -83,6 +88,9 @@ function BookingCard({ data }) {
                   <StarFilled style={{ color: "#FBA91D" }} />
                   <span style={{ marginLeft: "3px" }}>({data.rating})</span>
                 </div>
+                <div style={{ marginTop: "10px" }}>
+                  <p><HiOutlineLocationMarker></HiOutlineLocationMarker> {data.residenceId?.address}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -90,18 +98,18 @@ function BookingCard({ data }) {
           <div>
             <div className={styles.userDetails}>
               <h1>Booking Information</h1>
-              <p>Booking ID: #{data.bookingId}</p>
-              <p>Booking Date: {data.bookingDate}</p>
-              <p>User Name: {data.userName}</p>
-              <p>Total Persons: {data.totalPersons}</p>
-              <p>Total Amount: ${data.price}</p>
+              <p>Booking ID: #{data._id}</p>
+              <p>Booking Date: {data.createdAt?.slice(0, 10)}</p>
+              <p>User Name: {data?.userId?.fullName}</p>
+              <p>Total Persons: {data.numberOfGuests}</p>
+              <p>Total Amount: ${data.totalAmount}</p>
             </div>
 
             <hr />
-            <div style={{paddingBottom:"15px"}}>
+            <div style={{ paddingBottom: "15px" }}>
               <h2>Owner Information</h2>
-              <p>Owner Name: {data.ownerName}</p>
-              <p>Owner Contact: {data.ownerContact}</p>
+              <p>Owner Name: {data.hostId.fullName}</p>
+              <p>Owner Contact: {data.hostId.phoneNumber}</p>
             </div>
             <div>
               <Button className={styles.modalBtn}>Print</Button>
@@ -112,6 +120,7 @@ function BookingCard({ data }) {
       </Modal>
     </div>
   );
-}
+};
 
 export default BookingCard;
+
