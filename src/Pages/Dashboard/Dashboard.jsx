@@ -24,6 +24,7 @@ const { SubMenu } = Menu;
 const { Option } = Select;
 
 const items = [...Array(5).keys()].map((item, index) => {
+  const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
   return {
     key: index,
     label: (
@@ -41,7 +42,7 @@ const items = [...Array(5).keys()].map((item, index) => {
             }}
             width="30"
             height="30"
-            src="https://img.icons8.com/3d-fluency/94/person-male--v2.png"
+            src={userFromLocalStorage?.image?.publicFileUrl}
             alt="person-male--v2"
           />
           <div className="" style={{ marginTop: "" }}>
@@ -59,6 +60,9 @@ const items = [...Array(5).keys()].map((item, index) => {
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.lang);
+
+  const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
+
 
   const navigate = useNavigate();
 
@@ -429,7 +433,7 @@ const Dashboard = () => {
                   style={{ cursor: "pointer" }}
                   width="40"
                   height="40"
-                  src="https://img.icons8.com/3d-fluency/94/person-male--v2.png"
+                  src={userFromLocalStorage?.image?.publicFileUrl}
                   alt="person-male--v2"
                 />
               </Dropdown>

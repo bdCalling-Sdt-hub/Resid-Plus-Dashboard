@@ -46,7 +46,10 @@ function HostCard({ data }) {
       <div>
         <img
           className={styles.cardLogo}
-          src={data.image || "https://i.ibb.co/YZbtRDR/Max-R-Headshot-1.jpg"}
+          src={
+            data.image?.publicFileUrl ||
+            "https://i.ibb.co/cbDmQzv/photo-1535713875002-d1d0cf377fde.jpg"
+          }
           alt=""
         />
       </div>
@@ -83,7 +86,8 @@ function HostCard({ data }) {
             <img
               className={styles.modalImage}
               src={
-                data.image || "https://i.ibb.co/YZbtRDR/Max-R-Headshot-1.jpg"
+                data.image?.publicFileUrl ||
+                "https://i.ibb.co/cbDmQzv/photo-1535713875002-d1d0cf377fde.jpg"
               }
               alt=""
             />

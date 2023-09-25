@@ -3,39 +3,78 @@ import ImgCrop from "antd-img-crop";
 import dayjs from "dayjs";
 import React, { useState } from "react";
 import { LiaEditSolid } from "react-icons/lia";
-const dateFormat = "YYYY-MM-DD";
+import baseAxios from "../../../../Config";
 
 const PersonalInfo = () => {
-  const [profileEdit, setProfileEdit] = useState(false);
-
-  const handleChange = () => {
-    setProfileEdit(true);
-  };
-
+  const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
   const [fileList, setFileList] = useState([
     {
       uid: "-1",
       name: "image.png",
       status: "done",
-      url: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+      url: userFromLocalStorage.image?.publicFileUrl,
     },
   ]);
-  const onChange = ({ fileList: newFileList }) => {
-    setFileList(newFileList);
+  const [profileEdit, setProfileEdit] = useState(false);
+  const [file, setFile] = useState(null);
+  const [fullName, setFullName] = useState(userFromLocalStorage.fullName);
+  const [email, setEmail] = useState(userFromLocalStorage.email);
+  const [image, setImage] = useState();
+  const [phoneNumber, setPhoneNumber] = useState(
+    userFromLocalStorage.phoneNumber
+  );
+  const [dateOfBirth, setDateOfBirth] = useState(
+    userFromLocalStorage.dateOfBirth
+  );
+  const [address, setAddress] = useState(userFromLocalStorage.address);
+
+  const handleDatePickerChange = (date, dateString) => {
+    console.log(date, dateString);
   };
-  const onPreview = async (file) => {
-    let src = file.url;
-    if (!src) {
-      src = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file.originFileObj);
-        reader.onload = () => resolve(reader.result);
-      });
+
+  // console.log(fullName, +" , " + email, +" , " + phoneNumber, +" , " + address);
+  // console.log(userFromLocalStorage);
+
+  const handleChange = () => {
+    setProfileEdit(true);
+  };
+
+  const handleFileChange = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
+    setImage(newFileList[0].originFileObj);
+    // console.log(newFileList[0].originFileObj);
+  };
+
+  const handleSubmit = () => {
+    const formData = new FormData();
+  
+    // Append individual fields to the FormData object
+    formData.append("fullName", fullName);
+    formData.append("phoneNumber", phoneNumber);
+    formData.append("dateOfBirth", dateOfBirth);
+    formData.append("address", address);
+  
+    // Append the image file if you have it (assuming 'image' is a File object)
+    if (image) {
+      formData.append("image", image);
     }
-    const image = new Image();
-    image.src = src;
-    const imgWindow = window.open(src);
-    imgWindow?.document.write(image.outerHTML);
+  
+    console.log("form data", formData);
+  
+    baseAxios
+      .put(`/api/users`, formData, {
+        headers: {
+          // Do not set Content-Type here; Axios will set it automatically for FormData
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        // here localsotrage is updated
+        localStorage.setItem("yourInfo", JSON.stringify(res.data.data.attributes));
+        setProfileEdit(false);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -62,10 +101,10 @@ const PersonalInfo = () => {
               <Image
                 width={200}
                 style={{ borderRadius: "6px" }}
-                src="https://yt3.googleusercontent.com/Qy5Gk9hccQxiZdX8IxdK-mF2ktN17gap3ZkGQZkGz8NB4Yep3urmucp5990H2tjXIISgUoYssJE=s900-c-k-c0x00ffffff-no-rj"
+                src={userFromLocalStorage.image?.publicFileUrl}
               />
               <div style={{}}>
-                <h2>Ahmed Al-Jarah</h2>
+                <h2>{userFromLocalStorage.fullName}</h2>
               </div>
             </div>
             <div>
@@ -90,7 +129,7 @@ const PersonalInfo = () => {
               <label htmlFor="">Name</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"Sahinur Islam"}
+                defaultValue={userFromLocalStorage.fullName}
                 readOnly
               />
             </Col>
@@ -100,7 +139,7 @@ const PersonalInfo = () => {
               <label htmlFor="">Email</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"infosahinur@gmail.com"}
+                defaultValue={userFromLocalStorage.email}
                 readOnly
               />
             </Col>
@@ -111,7 +150,7 @@ const PersonalInfo = () => {
               <label htmlFor="">Phone Number</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"01646524028"}
+                defaultValue={userFromLocalStorage.phoneNumber}
                 readOnly
               />
             </Col>
@@ -119,7 +158,10 @@ const PersonalInfo = () => {
               <label htmlFor="">Date of Birth</label>
               <DatePicker
                 style={{ height: "45px", width: "100%" }}
-                defaultValue={dayjs("2023-08-27", dateFormat)}
+                defaultValue={dayjs(
+                  userFromLocalStorage.dateOfBirth,
+                  "DD-MM-YY"
+                )}
                 disabled
               />
             </Col>
@@ -129,7 +171,7 @@ const PersonalInfo = () => {
               <label htmlFor="">Address</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"Mogbazer,Dhaka"}
+                defaultValue={userFromLocalStorage.address}
                 readOnly
               />
             </Col>
@@ -149,18 +191,16 @@ const PersonalInfo = () => {
             >
               <ImgCrop rotationSlider>
                 <Upload
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                   listType="picture-card"
                   fileList={fileList}
-                  onChange={onChange}
-                  onPreview={onPreview}
+                  onChange={handleFileChange}
                 >
-                  {fileList.length < 5 && "+ Upload"}
+                  {fileList.length < 1 && "+ Upload"}
                 </Upload>
               </ImgCrop>
 
               <div>
-                <h2>Ahmed Al-Jarah</h2>
+                <h2>{userFromLocalStorage?.fullName}</h2>
               </div>
             </div>
           </div>
@@ -170,7 +210,8 @@ const PersonalInfo = () => {
               <label htmlFor="">Name</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"Sahinur Islam"}
+                defaultValue={userFromLocalStorage.fullName}
+                onChange={(e) => setFullName(e.target.value)}
               />
             </Col>
           </Row>
@@ -178,8 +219,11 @@ const PersonalInfo = () => {
             <Col span={24}>
               <label htmlFor="">Email</label>
               <Input
+                disabled
+                type="email"
                 style={{ height: "45px" }}
-                defaultValue={"infosahinur@gmail.com"}
+                defaultValue={userFromLocalStorage.email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Col>
           </Row>
@@ -187,13 +231,21 @@ const PersonalInfo = () => {
           <Row gutter={15} style={{ marginBottom: "15px" }}>
             <Col span={12}>
               <label htmlFor="">Phone Number</label>
-              <Input style={{ height: "45px" }} defaultValue={"01646524028"} />
+              <Input
+                style={{ height: "45px" }}
+                defaultValue={userFromLocalStorage.phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
             </Col>
             <Col span={12}>
               <label htmlFor="">Date of Birth</label>
               <DatePicker
+                onChange={handleDatePickerChange}
                 style={{ height: "45px", width: "100%" }}
-                defaultValue={dayjs("2023-08-27", dateFormat)}
+                defaultValue={dayjs(
+                  userFromLocalStorage.dateOfBirth,
+                  "DD-MM-YY"
+                )}
               />
             </Col>
           </Row>
@@ -202,11 +254,12 @@ const PersonalInfo = () => {
               <label htmlFor="">Address</label>
               <Input
                 style={{ height: "45px" }}
-                defaultValue={"Mogbazer,Dhaka"}
+                defaultValue={userFromLocalStorage.address}
+                onChange={(e) => setAddress(e.target.value)}
               />
             </Col>
           </Row>
-          <Button className="btn" block>
+          <Button type="submit" onClick={handleSubmit} className="btn" block>
             Save
           </Button>
         </>
