@@ -14,7 +14,7 @@ function DashboardHome() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(DashboardHomeData());
+    dispatch(DashboardHomeData()); 
   }, []);
 
   const data = useSelector((state) => state.DashboardHomeData?.bookings?.monthlyCounts)
