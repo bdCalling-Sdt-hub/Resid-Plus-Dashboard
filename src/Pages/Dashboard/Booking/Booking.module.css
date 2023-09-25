@@ -1,4 +1,6 @@
 .filterContainer {
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,7 +45,8 @@
   background: var(--Black-BG,
       linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
-.modalBtn:hover{
+
+.modalBtn:hover {
   color: white;
 }
 
@@ -148,6 +151,7 @@
   padding: 20px;
   border-top: 4px solid #E2E2E2;
 }
+
 .active {
   background-color: #34DE00;
 }
@@ -155,7 +159,8 @@
 .reserved {
   background-color: yellow;
 }
-.cancel{
+
+.cancel {
   background-color: red;
 }
 
@@ -170,7 +175,7 @@
   border-radius: 8px;
   height: 40px;
   background: var(--Black-BG,
-          linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+      linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
 
 
@@ -186,7 +191,7 @@
   border-radius: 8px;
   height: 40px;
   background: var(--Black-BG,
-          linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+      linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
 
 .modalBtn1 {
@@ -202,7 +207,7 @@
   border-radius: 8px;
   height: 40px;
   background: var(--Black-BG,
-          linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+      linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
 
 .cardLogo {
@@ -286,14 +291,15 @@
 }
 
 .reserved {
-  background:  linear-gradient(180deg, #FFCE50 0%, #E0A100 100%);
+  background: linear-gradient(180deg, #FFCE50 0%, #E0A100 100%);
   border-radius: 8px;
   padding: 7px 30px;
   font-size: 12px;
   color: white;
   margin-left: 10px;
 }
-.cancel{
+
+.cancel {
   background: linear-gradient(180deg, #FF2340 0%, #AC0016 100%);
   border-radius: 8px;
   padding: 7px 30px;

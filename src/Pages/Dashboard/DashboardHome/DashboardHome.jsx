@@ -1,20 +1,25 @@
 import { Col, Row } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { LiaHandHoldingUsdSolid } from "react-icons/lia";
 import "./DashboardHome.css";
-
-import { BsFillCheckCircleFill } from "react-icons/bs";
-import { GrHistory } from "react-icons/gr";
-import { MdCarRental } from "react-icons/md";
-import { SlRefresh } from "react-icons/sl";
-import InvoiceTable from "./InvoiceTable";
-import MostRentCarChart from "./MostRentCarChart";
 import DailyRentChart from "./dailyRentChart";
+import { useDispatch, useSelector } from "react-redux";
+import { DashboardHomeData } from "../../../ReduxSlices/DashboardHomeSlice";
 
 function DashboardHome() {
   const onChange = (pageNumber) => {
     console.log("Page: ", pageNumber);
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(DashboardHomeData());
+  }, []);
+
+  const data = useSelector((state) => state.DashboardHomeData?.bookings?.monthlyCounts)
+  const status = useSelector((state) => state.DashboardHomeData?.bookings?.status)
+  console.log(status)
 
   return (
     <div>
@@ -23,19 +28,19 @@ function DashboardHome() {
         <Col className="gutter-row" style={{ marginBottom: "10px" }} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
           <div className='completed-card'>
             <h1 style={{ fontSize: "1.5rem", fontWeight: "100", marginTop: "30px", marginBottom: "30px" }}><LiaHandHoldingUsdSolid style={{ fontSize: "24px" }} /> Completed</h1>
-            <h3 style={{ fontSize: "1.5rem", letterSpacing: ".2rem", marginBottom: "15px" }}>250</h3>
+            <h3 style={{ fontSize: "1.5rem", letterSpacing: ".2rem", marginBottom: "15px" }}>{status?.completed}</h3>
           </div>
         </Col>
         <Col className="gutter-row" style={{ marginBottom: "10px" }} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
           <div className='reserved-card'>
             <h1 style={{ fontSize: "1.5rem", fontWeight: "100", marginTop: "30px", marginBottom: "30px" }}><LiaHandHoldingUsdSolid style={{ fontSize: "24px" }} /> Reserved</h1>
-            <h3 style={{ fontSize: "1.5rem", letterSpacing: "1px", marginBottom: "15px" }}>250</h3>
+            <h3 style={{ fontSize: "1.5rem", letterSpacing: "1px", marginBottom: "15px" }}>{status?.reserved}</h3>
           </div>
         </Col>
         <Col className="gutter-row" style={{ marginBottom: "10px" }} xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 8 }} lg={{ span: 8 }}>
           <div className='canceled-card'>
             <h1 style={{ fontSize: "1.5rem", fontWeight: "100", marginTop: "30px", marginBottom: "30px" }}><LiaHandHoldingUsdSolid style={{ fontSize: "24px" }} /> Canceled</h1>
-            <h3 style={{ fontSize: "1.5rem", letterSpacing: "1px", marginBottom: "15px" }}>$ 250</h3>
+            <h3 style={{ fontSize: "1.5rem", letterSpacing: "1px", marginBottom: "15px" }}>{status?.cancelled}</h3>
           </div>
         </Col>
       </Row>
@@ -43,7 +48,8 @@ function DashboardHome() {
 
       <Row style={{ marginTop: "20px" }} gutter={24}>
         <Col lg={{ span: 24 }}>
-          <DailyRentChart />
+          <DailyRentChart
+            data={data} />
         </Col>
         {/* <Col lg={{ span: 12 }}>
           <div

@@ -136,3 +136,7 @@ main.ant-layout-content.css-dev-only-do-not-override-17a39f8 {
   color: white !important;
 }
 
+
+ul.recharts-default-legend {
+  display: none;
+}

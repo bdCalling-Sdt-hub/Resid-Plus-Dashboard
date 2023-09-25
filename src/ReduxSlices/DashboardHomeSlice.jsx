@@ -5,20 +5,17 @@ const initialState = {
     Error: false,
     Success: false,
     Loading: false,
-    data: {},
-    pagination: {},
+    data: {}
 }
 
 let token = localStorage.getItem("token");
-console.log(token)
 
-export const BookingData = createAsyncThunk(
-    "BookingData",
+export const DashboardHomeData = createAsyncThunk(
+    "DashboardData",
     async (value, thunkAPI) => {
-        console.log("Booking Page Number", value);
         try {
             let response = await baseAxios.get(
-                `/api/booking/?limit=2&page=${value.page}&checkingMonth=${value.search}`,
+                `/api/booking/dashboard/ratio`,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -41,42 +38,39 @@ export const BookingData = createAsyncThunk(
     }
 );
 
-export const bookingSlice = createSlice({
+export const dashboardHomeSlice = createSlice({
 
-    name: "booking",
+    name: "dashboardHome",
     initialState,
     reducers: {
         reset: (state) => {
             state.Loading = false;
             state.Success = false;
             state.Error = false;
-            (state.data = {}),
-                (state.pagination = {});
+            (state.data = {})
         },
     },
     extraReducers: {
-        [BookingData.pending]: (state, action) => {
+        [DashboardHomeData.pending]: (state, action) => {
             state.Loading = true;
         },
-        [BookingData.fulfilled]: (state, action) => {
-            console.log("Payload", action.payload.data.attributes?.bookings)
+        [DashboardHomeData.fulfilled]: (state, action) => {
+            console.log("Payload", action.payload.data.attributes)
             state.Loading = false;
             state.Success = true;
             state.Error = false;
-            (state.bookings = action?.payload?.data?.attributes?.bookings),
-                (state.pagination = action.payload.data?.attributes?.pagination);
+            (state.bookings = action?.payload?.data?.attributes)
         },
-        [BookingData.rejected]: (state, action) => {
+        [DashboardHomeData.rejected]: (state, action) => {
             state.Loading = false;
             state.Success = false;
             state.Error = true;
-            (state.data = {}),
-                (state.pagination = {});
+            (state.data = {})
         },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { reset } = bookingSlice.actions
+export const { reset } = dashboardHomeSlice.actions
 
-export default bookingSlice.reducer
+export default dashboardHomeSlice.reducer

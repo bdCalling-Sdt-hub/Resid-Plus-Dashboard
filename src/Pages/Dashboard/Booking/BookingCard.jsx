@@ -44,7 +44,7 @@ const BookingCard = ({ data }) => {
           </div>
         </div>
         <div>
-          <p>Booking ID: #{data._id}</p>
+          <p>Booking ID: #{data.bookingId}</p>
           <p>Booking Date: {data.createdAt?.slice(0, 10)}</p>
           <p>User Name: {data?.userId?.fullName}</p>
           <p>Total Persons: {data.numberOfGuests}</p>
@@ -63,9 +63,9 @@ const BookingCard = ({ data }) => {
         footer={[]}
       >
         <div className={styles.modalContainer}>
-          <h1 style={{ fontSize: "30px" }}>Booking Id: #{data._id}</h1>
+          <h1 style={{ fontSize: "30px" }}>Booking Id: #{data.bookingId}</h1>
           <p style={{ paddingBottom: "10px", color: "#5A5A5A" }}>
-            See all information about Booking ID: #{data._id}
+            See all information about Booking ID: #{data.bookingId}
           </p>
           <hr />
           <div className={styles.userModalTitle}>
@@ -98,7 +98,7 @@ const BookingCard = ({ data }) => {
           <div>
             <div className={styles.userDetails}>
               <h1>Booking Information</h1>
-              <p>Booking ID: #{data._id}</p>
+              <p>Booking ID: #{data.bookingId}</p>
               <p>Booking Date: {data.createdAt?.slice(0, 10)}</p>
               <p>User Name: {data?.userId?.fullName}</p>
               <p>Total Persons: {data.numberOfGuests}</p>

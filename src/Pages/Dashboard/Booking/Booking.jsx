@@ -8,25 +8,18 @@ import { BookingData } from "../../../ReduxSlices/BookingSlice";
 import BookingCard from "../Booking/BookingCard"
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
+const monthFormat = 'YYYY/MM';
 
 const Booking = () => {
 
   const [checkingMonth, setCheckingMonth] = useState("");
   const dispatch = useDispatch();
 
-  console.log("ck", checkingMonth)
-
-  const {
-    // bookingCompletedTotalAmount,
-    // bookingReservedTotalAmount,
-    // totalRejectedAmount,
-
-  } = useSelector((state) => state.BookingData);
-
-  const data = useSelector((state) => state.BookingData.bookings)
-  console.log(data)
+  const { } = useSelector((state) => state.BookingData);
+  const data = useSelector((state) => state.BookingData?.bookings?.bookings)
+  const status = useSelector((state) => state.BookingData?.bookings?.status)
   const pagination = useSelector((state) => state.BookingData.pagination)
-  console.log(pagination)
+
 
 
   useEffect(() => {
@@ -67,10 +60,7 @@ const Booking = () => {
   };
 
 
-  const disabledDate = (current) => {
-    // Can not select days before today and today
-    return current && current < dayjs().endOf('day');
-  };
+  const customFormat = (value) => `custom format: ${value.format(monthFormat)}`;
 
   return (
     <div style={{ padding: "0px 10px" }}>
@@ -102,7 +92,7 @@ const Booking = () => {
                 marginBottom: "15px",
               }}
             >
-              250
+              {status?.completed}
             </h3>
           </div>
         </Col>
@@ -132,7 +122,7 @@ const Booking = () => {
                 marginBottom: "15px",
               }}
             >
-              250
+              {status?.reserved}
             </h3>
           </div>
         </Col>
@@ -162,7 +152,7 @@ const Booking = () => {
                 marginBottom: "15px",
               }}
             >
-              $ 250
+              {status?.cancelled}
             </h3>
           </div>
         </Col>
@@ -175,22 +165,13 @@ const Booking = () => {
       <div>
         <div className={styles.UserCardContainer}>
           <div className={styles.filterContainer}>
-            <h3 className={styles.cardTitle}>Booking List/ August, 2023</h3>
-            {/* <Form.Item label="" className={styles.filterLabel}>
-              <Select
-                placeholder="Monthly Booking"
-                onChange={bookingDataGetBySearch}
-                value={checkingMonth} >
-                <Option value="2023-09">2023-09</Option>
-                <Option value="2023-08">2023-08</Option>
-                <Option value="October/2023">October/2023</Option>
-              </Select>
-            </Form.Item> */}
+            <h3 className={styles.cardTitle}>Booking List / {checkingMonth ? new Date(checkingMonth).toLocaleDateString('en-US', { year: 'numeric', month: 'long' }) : "Select Month"}</h3>
             <DatePicker
               placeholder="Select Month"
               onChange={bookingDataGetBySearch} // Call the function on change
               allowClear={false} // Disable the clear button
-              picker="month" disabledDate={disabledDate} />
+              picker="month"
+              format="MMMM" />
           </div>
           {data?.map((item) => (
             <BookingCard
@@ -199,10 +180,11 @@ const Booking = () => {
           ))}
           <Row className={styles.Pagination}>
             <Col>
-              <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
+              <p style={{ color: "#333333" }}>Showing {pagination?.currentPage}-{pagination?.totalDocuments} OF {pagination?.totalDocuments}</p>
             </Col>
             <Col>
               <Pagination
+                pageSize={2}
                 onChange={bookingDataGetByPagination}
                 defaultCurrent={pagination?.totalDocuments}
                 total={pagination?.totalPage}
