@@ -16,7 +16,7 @@ export const ResidenceInformationData = createAsyncThunk(
   async (value, thunkAPI) => {
     try {
       let response = await baseAxios.get(
-        `/api/residence`,
+        `/api/residence/dashboard/status`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -61,6 +61,7 @@ export const ResidenceInformationSlice = createSlice({
       state.Error = false;
       state.ResidenceInfoList = action.payload.data.attributes.residences;
       state.pagination = action.payload.data.attributes.pagination;
+      state.status = action.payload.data.attributes.status;
     },
     [ResidenceInformationData.rejected]: (state, action) => {
       state.Loading = false;

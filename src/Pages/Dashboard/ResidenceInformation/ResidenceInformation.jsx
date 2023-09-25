@@ -20,8 +20,14 @@ function CarInformation() {
   const data = useSelector(
     (state) => state.ResidenceInformationData.ResidenceInfoList
   );
+  const dataPagination = useSelector(
+    (state) => state.ResidenceInformationData.pagination
+  );
+  const statusData = useSelector(
+    (state) => state.ResidenceInformationData.status
+  );
 
-  // console.log(residenceStatus);
+  console.log(statusData);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -97,7 +103,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              {residenceStatus?.totalResidence}
+            {dataPagination.totalDocuments}
             </h3>
           </div>
         </Col>
@@ -127,7 +133,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              {residenceStatus?.active}
+              {statusData?.active}
             </h3>
           </div>
         </Col>
@@ -157,7 +163,7 @@ function CarInformation() {
                 marginBottom: "15px",
               }}
             >
-              {residenceStatus?.reserved}
+              {statusData?.reserved}
             </h3>
           </div>
         </Col>
@@ -182,7 +188,7 @@ function CarInformation() {
           ))}
           <Row className={styles.Pagination}>
             <Col>
-              <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
+              <p style={{ color: "#333333" }}>Showing 1-10 OF {dataPagination.totalDocuments}</p>
             </Col>
             <Col>
               <Pagination
