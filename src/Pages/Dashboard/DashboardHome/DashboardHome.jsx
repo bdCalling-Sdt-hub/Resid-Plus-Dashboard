@@ -19,6 +19,7 @@ function DashboardHome() {
 
   const data = useSelector((state) => state.DashboardHomeData?.bookings?.monthlyCounts)
   const status = useSelector((state) => state.DashboardHomeData?.bookings?.status)
+  const isLoading = useSelector((state) => state.DashboardHomeData.Loading);
   console.log(status)
 
   return (

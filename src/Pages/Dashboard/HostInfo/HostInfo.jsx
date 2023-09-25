@@ -1,4 +1,4 @@
-import { Button, Col, Input, Row, Pagination } from "antd";
+import { Button, Col, Input, Row, Pagination, Spin } from "antd";
 import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import HostCard from "./HostCard";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { HostInformationData } from "../../../ReduxSlices/HostInformationSlice";
+import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
 
 function HostInfo() {
   const [searchData, setSearchData] = useState("");
@@ -19,6 +20,8 @@ function HostInfo() {
   const dataPagination = useSelector(
     (state) => state.HostInformationData.pagination
   );
+
+  const isLoading = useSelector((state) => state.HostInformationData.Loading);
   // console.log(data);
 
   useEffect(() => {
@@ -54,68 +57,81 @@ function HostInfo() {
   };
 
   return (
-    <div style={{ padding: "0 10px" }}>
-      <Row>
-        <h2
-          style={{
-            fontSize: "25px",
-            marginBottom: "10px",
-            fontWeight: "normal",
-          }}
-        >
-          {t("host.search")}
-        </h2>
-        <Col lg={{ span: 24 }}>
-          <div className={styles.SearchOption}>
-            <Input
-              onChange={(e) => setSearchData(e.target.value)}
-              value={searchData}
-              size="large"
-              style={{ border: "1px solid #787878" }}
-              placeholder={t("host.placeholderSearch")}
-              prefix={<SearchOutlined style={{ color: "#cccccc" }} />}
-            />
-            <Button onClick={userDataGetBySearch} className="btn">
-              {" "}
-              {t("host.searchBtn")}
-            </Button>
-          </div>
-        </Col>
-      </Row>
-
-      <Row>
-        <h2
-          style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}
-        >
-          {t("host.title")}
-        </h2>
-      </Row>
-      <Row>
-        <div className={styles.UserCardContainer}>
-          {data.map((item) => (
-            <HostCard key={item._id} data={item} />
-          ))}
-
-          <Row className={styles.Pagination}>
-            <Col>
-              <p style={{ color: "#333333" }}>
-                Showing 1-3 OF {dataPagination.totalDocuments}
-              </p>
-            </Col>
-            <Col>
-              <Pagination
-                pageSize={pageSize}
-                defaultCurrent={1}
-                onChange={userDataGetByPagination}
-                total={dataPagination.totalDocuments}
-                showQuickJumper={false}
-                showSizeChanger={false}
-              />
+    <>
+      {!isLoading ? (
+        <div style={{ padding: "0 10px" }}>
+          <Row>
+            <h2
+              style={{
+                fontSize: "25px",
+                marginBottom: "10px",
+                fontWeight: "normal",
+              }}
+            >
+              {t("host.search")}
+            </h2>
+            <Col lg={{ span: 24 }}>
+              <div className={styles.SearchOption}>
+                <Input
+                  onChange={(e) => setSearchData(e.target.value)}
+                  value={searchData}
+                  size="large"
+                  style={{ border: "1px solid #787878" }}
+                  placeholder={t("host.placeholderSearch")}
+                  prefix={<SearchOutlined style={{ color: "#cccccc" }} />}
+                />
+                <Button onClick={userDataGetBySearch} className="btn">
+                  {" "}
+                  {t("host.searchBtn")}
+                </Button>
+              </div>
             </Col>
           </Row>
+
+          <Row>
+            <h2
+              style={{
+                fontSize: "25px",
+                margin: "30px 0px",
+                fontWeight: "normal",
+              }}
+            >
+              {t("host.title")}
+            </h2>
+          </Row>
+          <Row>
+            <div className={styles.UserCardContainer}>
+              {data.map((item) => (
+                <HostCard key={item._id} data={item} />
+              ))}
+
+              <Row className={styles.Pagination}>
+                <Col>
+                  <p style={{ color: "#333333" }}>
+                    Showing 1-3 OF {dataPagination.totalDocuments}
+                    <ShowingPegination pagination={dataPagination} />
+                  </p>
+                </Col>
+                <Col>
+                  <Pagination
+                    pageSize={pageSize}
+                    defaultCurrent={1}
+                    onChange={userDataGetByPagination}
+                    total={dataPagination.totalDocuments}
+                    showQuickJumper={false}
+                    showSizeChanger={false}
+                  />
+                </Col>
+              </Row>
+            </div>
+          </Row>
         </div>
-      </Row>
-    </div>
+      ) : (
+        <Spin tip="Loading" size="large">
+          <div className="content" />
+        </Spin>
+      )}
+    </>
   );
 }
 

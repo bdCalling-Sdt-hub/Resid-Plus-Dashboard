@@ -59,12 +59,13 @@ export const bookingSlice = createSlice({
             state.Loading = true;
         },
         [BookingData.fulfilled]: (state, action) => {
-            console.log("Payload", action.payload.data.attributes?.bookings)
+            // console.log("Payload", action.payload.data.attributes?.bookings)
             state.Loading = false;
             state.Success = true;
             state.Error = false;
             (state.bookings = action?.payload?.data?.attributes?.bookings),
                 (state.pagination = action.payload.data?.attributes?.pagination);
+                console.log("Pagination", state.pagination)
         },
         [BookingData.rejected]: (state, action) => {
             state.Loading = false;

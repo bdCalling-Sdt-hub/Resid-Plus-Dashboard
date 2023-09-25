@@ -14,9 +14,10 @@ let token = localStorage.getItem("token");
 export const ResidenceInformationData = createAsyncThunk(
   "ResidenceInfo",
   async (value, thunkAPI) => {
+    console.log(value);
     try {
       let response = await baseAxios.get(
-        `/api/residence/dashboard/status`,
+        `/api/residence/dashboard/status?limit=2&page=${value.page}`,
         {
           headers: {
             "Content-Type": "application/json",

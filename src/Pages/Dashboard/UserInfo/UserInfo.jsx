@@ -1,5 +1,5 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Col, Input, Row, Pagination } from "antd";
+import { Button, Col, Input, Row, Pagination, Spin } from "antd";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./UserInfo.module.css";
@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { UserInformationData } from "../../../ReduxSlices/UserInformationSlice";
+import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
 
 function UserInfo() {
   const [searchData, setSearchData] = useState("");
@@ -17,6 +18,8 @@ function UserInfo() {
   const dataPagination = useSelector(
     (state) => state.UserInformationData.pagination
   );
+  const isLoading = useSelector((state) => state.UserInformationData.Loading);
+
   // console.log(dataPagination);
 
   const dispatch = useDispatch();
@@ -59,67 +62,79 @@ function UserInfo() {
   // console.log(userInfoList);
 
   return (
-    <div style={{ padding: "0 10px" }}>
-      <Row>
-        <h2
-          style={{
-            fontSize: "25px",
-            marginBottom: "10px",
-            fontWeight: "normal",
-          }}
-        >
-          {t("user.search")}
-        </h2>
-        <Col lg={{ span: 24 }}>
-          <div className={styles.SearchOption}>
-            <Input
-              onChange={(e) => setSearchData(e.target.value)}
-              value={searchData}
-              size="large"
-              style={{ border: "1px solid #787878" }}
-              placeholder={t("user.placeholderSearch")}
-              prefix={<SearchOutlined style={{ color: "#cccccc" }} />}
-            />
-            <Button onClick={userDataGetBySearch} className="btn">
-              {" "}
-              {t("user.searchBtn")}
-            </Button>
-          </div>
-        </Col>
-      </Row>
-
-      <Row>
-        <h2
-          style={{ fontSize: "25px", margin: "30px 0px", fontWeight: "normal" }}
-        >
-          {t("user.title")}
-        </h2>
-      </Row>
-      <Row>
-        <div className={styles.UserCardContainer}>
-          {data.map((item) => (
-            <UserCard key={item._id} data={item} />
-          ))}
-          <Row className={styles.Pagination}>
-            <Col>
-              <p style={{ color: "#333333" }}>
-                Showing 1-3 OF {dataPagination.totalDocuments}
-              </p>
-            </Col>
-            <Col>
-              <Pagination
-                pageSize={pageSize}
-                defaultCurrent={1}
-                onChange={userDataGetByPagination}
-                total={dataPagination.totalDocuments}
-                showQuickJumper={false}
-                showSizeChanger={false}
-              />
+    <>
+      {!isLoading ? (
+        <div style={{ padding: "0 10px" }}>
+          <Row>
+            <h2
+              style={{
+                fontSize: "25px",
+                marginBottom: "10px",
+                fontWeight: "normal",
+              }}
+            >
+              {t("user.search")}
+            </h2>
+            <Col lg={{ span: 24 }}>
+              <div className={styles.SearchOption}>
+                <Input
+                  onChange={(e) => setSearchData(e.target.value)}
+                  value={searchData}
+                  size="large"
+                  style={{ border: "1px solid #787878" }}
+                  placeholder={t("user.placeholderSearch")}
+                  prefix={<SearchOutlined style={{ color: "#cccccc" }} />}
+                />
+                <Button onClick={userDataGetBySearch} className="btn">
+                  {" "}
+                  {t("user.searchBtn")}
+                </Button>
+              </div>
             </Col>
           </Row>
+
+          <Row>
+            <h2
+              style={{
+                fontSize: "25px",
+                margin: "30px 0px",
+                fontWeight: "normal",
+              }}
+            >
+              {t("user.title")}
+            </h2>
+          </Row>
+          <Row>
+            <div className={styles.UserCardContainer}>
+              {data.map((item) => (
+                <UserCard key={item._id} data={item} />
+              ))}
+              <Row className={styles.Pagination}>
+                <Col>
+                  <p style={{ color: "#333333" }}>
+                    <ShowingPegination pagination={dataPagination} />
+                  </p>
+                </Col>
+                <Col>
+                  <Pagination
+                    pageSize={pageSize}
+                    defaultCurrent={1}
+                    onChange={userDataGetByPagination}
+                    total={dataPagination.totalDocuments}
+                    showQuickJumper={false}
+                    showSizeChanger={false}
+                  />
+                </Col>
+              </Row>
+            </div>
+          </Row>
         </div>
-      </Row>
-    </div>
+      ) : (
+        <Spin tip="Loading" size="large">
+          <div className="content" />
+        </Spin>
+      )}
+    </>
   );
 }
 
