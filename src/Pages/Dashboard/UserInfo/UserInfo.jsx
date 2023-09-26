@@ -44,7 +44,7 @@ function UserInfo() {
     };
     if (searchData == "") {
       dispatch(UserInformationData(data));
-      console.log("without search");
+      // console.log("without search");
     }
   };
 
@@ -55,7 +55,7 @@ function UserInfo() {
     };
     if (searchData != "") {
       dispatch(UserInformationData(data));
-      console.log("with search");
+      // console.log("with search");
     }
   };
 

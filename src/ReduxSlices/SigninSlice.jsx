@@ -13,7 +13,6 @@ const initialState = {
 export const UserData = createAsyncThunk(
   "UserData",
   async (value, thunkAPI) => {
-    console.log("redux", value);
     try {
       let response = await axios.post("api/users/signin", value);
       // console.log(response.data)

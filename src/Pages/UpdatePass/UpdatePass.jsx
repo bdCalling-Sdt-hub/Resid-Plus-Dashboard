@@ -14,11 +14,9 @@ const UpdatePass = () => {
   const navigate = useNavigate();
 
   let { email } = useParams();
-  console.log(email);
 
   const onFinish = (values) => {
     const { password, confirmPassword } = values;
-    console.log("Received values of form: ", password);
 
     // if (password.length < 8) {
     //   setErr("Password must be 8 character");
@@ -52,8 +50,6 @@ const UpdatePass = () => {
       baseAxios
         .post("/api/users/reset/password", { email, password })
         .then((response) => {
-          console.log(response);
-          console.log(response.data);
           // sweet alert for success and error set
           Swal.fire({
             icon: "success",
@@ -63,7 +59,6 @@ const UpdatePass = () => {
           navigate(`/signin`);
         })
         .catch((error) => {
-          console.log(error);
           Swal.fire({
             icon: "error",
             title: "Oops...",

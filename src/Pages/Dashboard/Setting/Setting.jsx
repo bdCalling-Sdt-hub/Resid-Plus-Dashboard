@@ -11,8 +11,6 @@ const { Paragraph, Title, Text } = Typography;
 
 const Setting = () => {
   const [otp, setOtp] = useState("");
-
-  console.log(otp);
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
   const [openChangePassModel, setOpenChangePassModel] = useState(false);
@@ -150,9 +148,6 @@ const Setting = () => {
         }
       )
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
-        // sweet alert for success and error set
         setOpenChangePassModel(false);
         Swal.fire({
           icon: "success",
@@ -161,7 +156,6 @@ const Setting = () => {
         });
       })
       .catch((error) => {
-        console.log(error);
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -174,13 +168,10 @@ const Setting = () => {
     baseAxios
       .post("/api/users/forget/password", { email: userFromLocalStorage.email })
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
         setVerify(true);
         setOpenChangePassModel(false);
       })
       .catch((error) => {
-        console.log(error);
       });
 
     Swal.fire({
@@ -197,8 +188,6 @@ const Setting = () => {
         oneTimeCode: otp,
       })
       .then((response) => {
-        console.log(response);
-        console.log(response.data);
         // sweet alert for success and error set
         Swal.fire({
           icon: "success",
@@ -209,7 +198,6 @@ const Setting = () => {
         setVerify(false);
       })
       .catch((error) => {
-        console.log(error);
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -226,8 +214,6 @@ const Setting = () => {
           password,
         })
         .then((response) => {
-          console.log(response);
-          console.log(response.data);
           // sweet alert for success and error set
           setOpenModal(true);
           setUpdatePassword(false);
@@ -238,7 +224,6 @@ const Setting = () => {
           });
         })
         .catch((error) => {
-          console.log(error);
           Swal.fire({
             icon: "error",
             title: "Oops...",

@@ -14,7 +14,6 @@ let token = localStorage.getItem("token");
 export const ResidenceInformationData = createAsyncThunk(
   "ResidenceInfo",
   async (value, thunkAPI) => {
-    console.log(value);
     try {
       let response = await baseAxios.get(
         `/api/residence/dashboard/status?limit=5&page=${value.page}`,
@@ -26,7 +25,6 @@ export const ResidenceInformationData = createAsyncThunk(
         }
       );
 
-      console.log(response.data);
       return response.data;
     } catch (error) {
       const message =

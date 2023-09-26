@@ -23,7 +23,6 @@ export const DashboardHomeData = createAsyncThunk(
                     },
                 }
             );
-            console.log("Response Data", response.data);
             return response.data;
         } catch (error) {
             const message =
@@ -55,7 +54,6 @@ export const dashboardHomeSlice = createSlice({
             state.Loading = true;
         },
         [DashboardHomeData.fulfilled]: (state, action) => {
-            console.log("Payload", action.payload.data.attributes)
             state.Loading = false;
             state.Success = true;
             state.Error = false;

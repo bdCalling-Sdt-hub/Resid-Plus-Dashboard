@@ -12,8 +12,6 @@ const Signin = () => {
   const navigate = useNavigate();
   const { isLoading, isError, isSuccess, userData, accessToken, message } = useSelector((state) => state.UserData);
   
-  console.log(userData);
-  console.log("token" + accessToken);
   useEffect(() => {
     if (isError == true) {
       Swal.fire({
@@ -22,7 +20,6 @@ const Signin = () => {
         text: message,
       });
     }
-    console.log("isSuccess" + isSuccess);
     if (isSuccess == true) {
       localStorage.setItem("yourInfo", JSON.stringify(userData));
       localStorage.setItem("token", accessToken);
@@ -33,7 +30,6 @@ const Signin = () => {
   }, [isLoading, isError, isSuccess, dispatch, navigate]);
 
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
     dispatch(UserData(values));
   };
   const handleForget = () => {
