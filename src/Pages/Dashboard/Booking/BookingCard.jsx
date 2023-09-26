@@ -1,14 +1,13 @@
 import { Button, Modal } from "antd";
 import React, { useState } from "react";
 import { StarFilled } from "@ant-design/icons";
-import { HiOutlineLocationMarker } from 'react-icons/hi';
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import styles from "./Booking.module.css";
 import baseAxios from "../../../../Config";
 
 const BookingCard = ({ data }) => {
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(data)
+  console.log(data);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -22,7 +21,11 @@ const BookingCard = ({ data }) => {
   return (
     <div className={styles.CardContainer}>
       <div>
-        <img className={styles.cardLogo} src={data?.residenceId?.photo[0]?.publicFileUrl} alt="" />
+        <img
+          className={styles.cardLogo}
+          src={data?.residenceId?.photo[0]?.publicFileUrl}
+          alt=""
+        />
       </div>
       <div className={styles.cardDescription}>
         <div>
@@ -40,7 +43,7 @@ const BookingCard = ({ data }) => {
           </div>
           <div>
             <StarFilled style={{ color: "#FBA91D" }} />
-            <span style={{ marginLeft: "3px" }}>({data.rating})</span>
+            <span style={{ marginLeft: "3px" }}>({data.ratings || 0})</span>
           </div>
         </div>
         <div>
@@ -69,7 +72,11 @@ const BookingCard = ({ data }) => {
           </p>
           <hr />
           <div className={styles.userModalTitle}>
-            <img className={styles.modalImage} src={data?.residenceId?.photo[0]?.publicFileUrl} alt="" />
+            <img
+              className={styles.modalImage}
+              src={data?.residenceId?.photo[0]?.publicFileUrl}
+              alt=""
+            />
             <div className={styles.userTitle}>
               <div>
                 <div className={styles.statusContainer}>
@@ -86,10 +93,15 @@ const BookingCard = ({ data }) => {
                 </div>
                 <div>
                   <StarFilled style={{ color: "#FBA91D" }} />
-                  <span style={{ marginLeft: "3px" }}>({data.rating})</span>
+                  <span style={{ marginLeft: "3px" }}>
+                    ({data.ratings || 0})
+                  </span>
                 </div>
                 <div style={{ marginTop: "10px" }}>
-                  <p><HiOutlineLocationMarker></HiOutlineLocationMarker> {data.residenceId?.address}</p>
+                  <p>
+                    <HiOutlineLocationMarker></HiOutlineLocationMarker>{" "}
+                    {data.residenceId?.address}
+                  </p>
                 </div>
               </div>
             </div>
@@ -123,4 +135,3 @@ const BookingCard = ({ data }) => {
 };
 
 export default BookingCard;
-

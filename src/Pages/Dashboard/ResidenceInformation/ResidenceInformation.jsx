@@ -278,9 +278,9 @@ function CarInformation() {
                 <Col>
                   <Pagination
                     pageSize={pageSize}
-                    defaultCurrent={dataPagination.totalDocuments}
+                    defaultCurrent={1}
                     onChange={userDataGetByPagination}
-                    total={3}
+                    total={dataPagination.totalDocuments}
                     showQuickJumper={false}
                     showSizeChanger={false}
                   />

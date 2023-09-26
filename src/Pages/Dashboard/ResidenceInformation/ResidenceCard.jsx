@@ -35,7 +35,7 @@ function ResidenceCard({ data }) {
           </div>
           <div>
             <StarFilled style={{ color: "#FBA91D" }} />
-            <span style={{ marginLeft: "3px" }}>({data.rating || 0.0})</span>
+            <span style={{ marginLeft: "3px" }}>({data.ratings || 0.0})</span>
           </div>
         </div>
         <div>
@@ -78,7 +78,7 @@ function ResidenceCard({ data }) {
                 <div>
                   <StarFilled style={{ color: "#FBA91D" }} />
                   <span style={{ marginLeft: "3px" }}>
-                    ({data.rating || 0.0})
+                    ({data.ratings || 0.0})
                   </span>
                 </div>
               </div>
