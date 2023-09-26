@@ -13,7 +13,7 @@ import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegi
 
 function UserInfo() {
   const [searchData, setSearchData] = useState("");
-  const pageSize = 3;
+  const pageSize = 5;
   const [reload, setReload] = useState(1);
   const data = useSelector((state) => state.UserInformationData.UserInfoList);
   const dataPagination = useSelector(
@@ -120,7 +120,7 @@ function UserInfo() {
                 <Col>
                   <Pagination
                     pageSize={pageSize}
-                    defaultCurrent={1}
+                    defaultCurrent={dataPagination.currentPage}
                     onChange={userDataGetByPagination}
                     total={dataPagination.totalDocuments}
                     showQuickJumper={false}

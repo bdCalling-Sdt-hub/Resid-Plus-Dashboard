@@ -1,7 +1,9 @@
-const ShowingPegination = ({pagination}) => {
-  const startIndex = (pagination.currentPage - 1) * pagination.totalPage + 1;
+const ShowingPegination = ({ pagination }) => {
+  // if pageSize is 5 this size change also slice and page components
+  const pageSize = 5;
+  const startIndex = (pagination.currentPage - 1) * pageSize + 1;
   const endIndex = Math.min(
-    pagination.currentPage * pagination.totalPage,
+    startIndex + pageSize - 1,
     pagination.totalDocuments
   );
 

@@ -16,7 +16,7 @@ export const UserInformationData = createAsyncThunk(
   async (value, thunkAPI) => {
     try {
       let response = await baseAxios.get(
-        `/api/users?limit=3&page=${value.page}&search=${value.search}`,
+        `/api/users?limit=5&page=${value.page}&search=${value.search}`,
         {
           headers: {
             "Content-Type": "application/json",

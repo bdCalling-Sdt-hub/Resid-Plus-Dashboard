@@ -14,7 +14,7 @@ import baseAxios from "../../../../Config";
 import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
 
 function CarInformation() {
-  const pageSize = 2;
+  const pageSize = 5;
   const [reload, setReload] = useState(1);
   const dispatch = useDispatch();
   const [residenceStatus, setResidenceStatus] = useState({});
@@ -278,7 +278,7 @@ function CarInformation() {
                 <Col>
                   <Pagination
                     pageSize={pageSize}
-                    defaultCurrent={1}
+                    defaultCurrent={dataPagination.currentPage}
                     onChange={userDataGetByPagination}
                     total={dataPagination.totalDocuments}
                     showQuickJumper={false}

@@ -18,7 +18,7 @@ export const BookingData = createAsyncThunk(
         console.log("Booking Page Number", value);
         try {
             let response = await baseAxios.get(
-                `/api/booking/?limit=2&page=${value.page}&checkingMonth=${value.search}`,
+                `/api/booking/?limit=5&page=${value.page}&checkingMonth=${value.search}`,
                 {
                     headers: {
                         "Content-Type": "application/json",

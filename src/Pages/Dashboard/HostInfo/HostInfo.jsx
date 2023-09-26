@@ -13,7 +13,7 @@ import { HashLoader } from "react-spinners";
 
 function HostInfo() {
   const [searchData, setSearchData] = useState("");
-  const pageSize = 3;
+  const pageSize = 5;
   const [reload, setReload] = useState(1);
   const dispatch = useDispatch();
   const [t, i18n] = useTranslation("global");
@@ -116,7 +116,7 @@ function HostInfo() {
                 <Col>
                   <Pagination
                     pageSize={pageSize}
-                    defaultCurrent={1}
+                    defaultCurrent={dataPagination.currentPage}
                     onChange={userDataGetByPagination}
                     total={dataPagination.totalDocuments}
                     showQuickJumper={false}

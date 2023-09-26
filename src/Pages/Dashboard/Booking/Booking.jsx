@@ -15,7 +15,7 @@ const monthFormat = "YYYY/MM";
 const Booking = () => {
   const [checkingMonth, setCheckingMonth] = useState("");
   const dispatch = useDispatch();
-  const pageSize = 2;
+  const pageSize = 5;
 
   const {} = useSelector((state) => state.BookingData);
   const data = useSelector((state) => state.BookingData?.bookings?.bookings);
@@ -288,7 +288,7 @@ const Booking = () => {
                   <Pagination
                     pageSize={pageSize}
                     onChange={bookingDataGetByPagination}
-                    defaultCurrent={1}
+                    defaultCurrent={pagination.currentPage}
                     total={pagination?.totalDocuments}
                     showQuickJumper={false}
                     showSizeChanger={false}

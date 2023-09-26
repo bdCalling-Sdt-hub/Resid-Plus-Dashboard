@@ -17,7 +17,7 @@ export const ResidenceInformationData = createAsyncThunk(
     console.log(value);
     try {
       let response = await baseAxios.get(
-        `/api/residence/dashboard/status?limit=2&page=${value.page}`,
+        `/api/residence/dashboard/status?limit=5&page=${value.page}`,
         {
           headers: {
             "Content-Type": "application/json",
