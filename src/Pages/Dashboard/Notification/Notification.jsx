@@ -3,10 +3,18 @@ import React from "react";
 import "./Notification.css";
 
 function Notification() {
+  const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
+
   return (
     <div>
       <Row>
-        <h2 style={{ fontSize: "30px", marginBottom: "30px",background:"black;" }}>
+        <h2
+          style={{
+            fontSize: "30px",
+            marginBottom: "30px",
+            background: "black;",
+          }}
+        >
           All Notifications
         </h2>
 
@@ -25,7 +33,7 @@ function Notification() {
                       borderRadius: "100%",
                       border: "2px solid gray",
                     }}
-                    src="https://img.freepik.com/free-photo/everything-is-okay-cheerful-friendly-looking-caucasian-guy-with-moustache-beard-raising-hand-with-ok-great-gesture-giving-approval-like-having-situation-control_176420-22386.jpg"
+                    src={userFromLocalStorage?.image?.publicFileUrl}
                   />
                 </div>
                 <div className="">

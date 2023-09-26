@@ -14,10 +14,7 @@ const { Title, Paragraph, Text, Link } = Typography;
 
 const Otp = () => {
   let { email } = useParams();
-  // console.log(email);
   const [otp, setOtp] = useState("");
-
-  console.log(otp);
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -25,9 +22,6 @@ const Otp = () => {
 
   const navigate = useNavigate();
 
-  // /update-password
-
-  // /api/users/verify this api for verify otp
   const handelOtp = () => {
     baseAxios
       .post("/api/users/verify", { email, oneTimeCode: otp })
