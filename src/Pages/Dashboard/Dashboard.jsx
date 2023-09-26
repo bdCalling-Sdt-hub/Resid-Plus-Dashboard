@@ -12,7 +12,7 @@ import { GoPeople } from "./../../../node_modules/react-icons/go/index.esm";
 import { RiUserSearchLine } from "react-icons/ri";
 
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link, Outlet } from "react-router-dom";
 import rentiLogo from "../../Images/resid-logo.png";
@@ -63,13 +63,15 @@ const Dashboard = () => {
 
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
 
-
   const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   const [t, i18n] = useTranslation("global");
+
+  // console.log()
 
   const handleSelectLanguage = (value) => {
     setSelectedLanguage(value);
@@ -258,6 +260,7 @@ const Dashboard = () => {
           >
             <Link to="/" style={{ fontSize: "16px" }}>
               {t("dashboard")}
+              {/*  */}
             </Link>
           </Menu.Item>
 
@@ -357,7 +360,41 @@ const Dashboard = () => {
                 marginRight: "10px",
               }}
             />
-            <h2>{t("header.title")}</h2>
+            <h2>
+              {location.pathname === "/" ? (
+                "Dashboard"
+              ) : location.pathname === "/booking" ? (
+                "Bookings"
+              ) : location.pathname === "/user-info" ? (
+                "User Information"
+              ) : location.pathname === "/host-info" ? (
+                "Host Information"
+              ) : location.pathname === "/residence-info" ? (
+                "Residence"
+              ) : location.pathname === "/setting" ? (
+                "Settings"
+              ) : location.pathname === "/setting/personal-information" ? (
+                "Settings"
+              ) : location.pathname === "/setting/login-activity" ? (
+                "Settings"
+              ) : location.pathname === "/setting/privacy-policy" ? (
+                "Settings"
+              ) : location.pathname === "/setting/terms-condition" ? (
+                "Settings"
+              ) : location.pathname === "/setting/about-us" ? (
+                "Settings"
+              ) : location.pathname === "/user-kyc" ? (
+                "KYC Form"
+              ) : location.pathname === "/host-kyc" ? (
+                "KYC Form"
+              ) : location.pathname === "/residence-kyc" ? (
+                "KYC Form"
+              ) : location.pathname === "/notification" ? (
+                "Notification"
+              ) : (
+                <></>
+              )}
+            </h2>
           </div>
 
           <div
