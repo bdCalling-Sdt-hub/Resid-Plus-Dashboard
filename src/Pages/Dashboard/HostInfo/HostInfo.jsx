@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { HostInformationData } from "../../../ReduxSlices/HostInformationSlice";
 import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
+import { HashLoader } from "react-spinners";
 
 function HostInfo() {
   const [searchData, setSearchData] = useState("");
@@ -127,9 +128,15 @@ function HostInfo() {
           </Row>
         </div>
       ) : (
-        <Spin tip="Loading" size="large">
-          <div className="content" />
-        </Spin>
+        <HashLoader
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "30%",
+        }}
+        color="#1f1c1c"
+        size={50}
+      />
       )}
     </>
   );

@@ -6,6 +6,7 @@ import { Form, Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { BookingData } from "../../../ReduxSlices/BookingSlice";
 import BookingCard from "../Booking/BookingCard";
+import { HashLoader } from "react-spinners";
 import { DatePicker } from "antd";
 import dayjs from "dayjs";
 import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
@@ -64,31 +65,58 @@ const Booking = () => {
     <>
       {!isLoading ? (
         <div style={{ padding: "0px 10px" }}>
-          <h2 style={{ fontSize: "25px", fontWeight: "normal" }}>Bookings</h2>
-          <Row gutter={16} style={{ marginTop: "20px" }}>
+          <h1 style={{ fontSize: "30px", marginBottom: "20px" }}>
+            Booking Status
+          </h1>
+          <Row gutter={16} style={{ marginBottom: "20px" }}>
             <Col
               className="gutter-row"
               style={{ marginBottom: "10px" }}
               xs={{ span: 24 }}
               sm={{ span: 24 }}
-              md={{ span: 12 }}
+              md={{ span: 8 }}
               lg={{ span: 8 }}
             >
               <div className="completed-card">
-                <h1
+                <div
                   style={{
-                    fontSize: "1.5rem",
-                    fontWeight: "100",
-                    marginTop: "30px",
-                    marginBottom: "30px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  <LiaHandHoldingUsdSolid style={{ fontSize: "24px" }} />{" "}
-                  Completed
-                </h1>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <h1
+                    style={{
+                      fontSize: "1.5rem",
+                      fontWeight: "600",
+                      marginTop: "30px",
+                      marginBottom: "30px",
+                      alignItems: "center",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    Completed
+                  </h1>
+                </div>
                 <h3
                   style={{
-                    fontSize: "1.5rem",
+                    fontSize: "40px",
+                    fontWeight: "700",
                     letterSpacing: ".2rem",
                     marginBottom: "15px",
                   }}
@@ -102,24 +130,49 @@ const Booking = () => {
               style={{ marginBottom: "10px" }}
               xs={{ span: 24 }}
               sm={{ span: 24 }}
-              md={{ span: 12 }}
+              md={{ span: 8 }}
               lg={{ span: 8 }}
             >
               <div className="reserved-card">
-                <h1
+                <div
                   style={{
-                    fontSize: "1.5rem",
-                    fontWeight: "100",
-                    marginTop: "30px",
-                    marginBottom: "30px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  <LiaHandHoldingUsdSolid style={{ fontSize: "24px" }} />{" "}
-                  Reserved
-                </h1>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <h1
+                    style={{
+                      fontSize: "1.5rem",
+                      fontWeight: "600",
+                      marginTop: "30px",
+                      marginBottom: "30px",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    Reserved
+                  </h1>
+                </div>
+
                 <h3
                   style={{
-                    fontSize: "1.5rem",
+                    fontSize: "40px",
+                    fontWeight: "700",
                     letterSpacing: "1px",
                     marginBottom: "15px",
                   }}
@@ -133,24 +186,49 @@ const Booking = () => {
               style={{ marginBottom: "10px" }}
               xs={{ span: 24 }}
               sm={{ span: 24 }}
-              md={{ span: 12 }}
+              md={{ span: 8 }}
               lg={{ span: 8 }}
             >
               <div className="canceled-card">
-                <h1
+                <div
                   style={{
-                    fontSize: "1.5rem",
-                    fontWeight: "100",
-                    marginTop: "30px",
-                    marginBottom: "30px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
-                  <LiaHandHoldingUsdSolid style={{ fontSize: "24px" }} />{" "}
-                  Canceled
-                </h1>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10 14L12 12M12 12L14 10M12 12L10 10M12 12L14 14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                      stroke="white"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <h1
+                    style={{
+                      fontSize: "1.5rem",
+                      fontWeight: "600",
+                      marginTop: "30px",
+                      marginBottom: "30px",
+                      marginLeft: "8px",
+                    }}
+                  >
+                    Canceled
+                  </h1>
+                </div>
+
                 <h3
                   style={{
-                    fontSize: "1.5rem",
+                    fontSize: "40px",
+                    fontWeight: "700",
                     letterSpacing: "1px",
                     marginBottom: "15px",
                   }}
@@ -217,9 +295,15 @@ const Booking = () => {
           {/* <BookingHistoryTable /> */}
         </div>
       ) : (
-        <Spin tip="Loading" size="large">
-          <div className="content" />
-        </Spin>
+        <HashLoader
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "30%",
+          }}
+          color="#1f1c1c"
+          size={50}
+        />
       )}
     </>
   );

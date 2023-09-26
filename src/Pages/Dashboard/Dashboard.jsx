@@ -179,7 +179,7 @@ const Dashboard = () => {
       <Menu.Item disabled>
         <h2
           style={{
-            color: "#000b90",
+            color: "black",
             fontWeight: "500",
             borderBottom: "1px solid #e6e7f4",
             paddingBottom: "20px",

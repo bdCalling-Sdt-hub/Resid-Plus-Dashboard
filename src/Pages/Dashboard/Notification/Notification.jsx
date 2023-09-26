@@ -6,7 +6,7 @@ function Notification() {
   return (
     <div>
       <Row>
-        <h2 style={{ fontSize: "30px", marginBottom: "30px" }}>
+        <h2 style={{ fontSize: "30px", marginBottom: "30px",background:"black;" }}>
           All Notifications
         </h2>
 
@@ -49,7 +49,7 @@ function Notification() {
         <Col lg={{ span: 8, offset: 4 }}>
           <Pagination
             defaultCurrent={1}
-            total={5000}
+            total={20}
             showQuickJumper={false}
             showSizeChanger={false}
           />

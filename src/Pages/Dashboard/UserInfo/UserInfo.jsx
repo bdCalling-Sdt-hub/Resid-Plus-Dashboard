@@ -6,6 +6,7 @@ import styles from "./UserInfo.module.css";
 import UserCard from "./UserCard";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { HashLoader } from "react-spinners";
 import { useEffect } from "react";
 import { UserInformationData } from "../../../ReduxSlices/UserInformationSlice";
 import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
@@ -130,9 +131,15 @@ function UserInfo() {
           </Row>
         </div>
       ) : (
-        <Spin tip="Loading" size="large">
-          <div className="content" />
-        </Spin>
+        <HashLoader
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "30%",
+          }}
+          color="#1f1c1c"
+          size={50}
+        />
       )}
     </>
   );
