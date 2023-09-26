@@ -171,8 +171,7 @@ const Setting = () => {
         setVerify(true);
         setOpenChangePassModel(false);
       })
-      .catch((error) => {
-      });
+      .catch((error) => {});
 
     Swal.fire({
       icon: "success",
@@ -250,7 +249,7 @@ const Setting = () => {
       <h2 style={{ fontSize: "30px", marginBottom: "20px", fontWeight: "600" }}>
         Settings
       </h2>
-      <div style={style.formContainer}>
+      <div style={{}}>
         {menuItems.map((item) => (
           <Button
             onClick={() => handleNavigate(item.link)}
