@@ -131,12 +131,43 @@ const Setting = () => {
   };
 
   const setPercentage = () => {
-    alert("tushar");
     setOpenModal(false);
   };
 
   const handleChangePassword = (values) => {
-    console.log("Received values of form: ", values);
+    let token = localStorage.getItem("token");
+    baseAxios
+      .patch(
+        "/api/users",
+        {
+          currentPassword: values.currentPassword,
+          newPassword: values.newPassword,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        // sweet alert for success and error set
+        setOpenChangePassModel(false);
+        Swal.fire({
+          icon: "success",
+          title: "Password Updated Successfully",
+          // text: "Please Check Your Email!",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Password is not updated",
+        });
+      });
   };
 
   const handelForgetPassword = () => {
@@ -482,8 +513,6 @@ const Setting = () => {
             </Form.Item>
           </Form>
         </Modal>
-
-
       </div>
     </div>
   );

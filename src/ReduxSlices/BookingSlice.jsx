@@ -10,7 +10,7 @@ const initialState = {
 }
 
 let token = localStorage.getItem("token");
-console.log(token)
+// console.log(token)
 
 export const BookingData = createAsyncThunk(
     "BookingData",
