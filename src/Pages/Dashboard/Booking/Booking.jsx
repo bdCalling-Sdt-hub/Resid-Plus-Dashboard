@@ -65,7 +65,13 @@ const Booking = () => {
     <>
       {!isLoading ? (
         <div style={{ padding: "0px 10px" }}>
-          <h1 style={{ fontSize: "30px", marginBottom: "20px" }}>
+          <h1
+            style={{
+              fontSize: "30px",
+              marginBottom: "20px",
+              fontWeight: "600",
+            }}
+          >
             Booking Status
           </h1>
           <Row gutter={16} style={{ marginBottom: "20px" }}>
@@ -241,9 +247,9 @@ const Booking = () => {
 
           <h2
             style={{
-              fontSize: "25px",
-              margin: "30px 0px",
-              fontWeight: "normal",
+              fontSize: "30px",
+              marginBottom: "20px",
+              fontWeight: "600",
             }}
           >
             Booking History

@@ -69,9 +69,9 @@ function UserInfo() {
           <Row>
             <h2
               style={{
-                fontSize: "25px",
-                marginBottom: "10px",
-                fontWeight: "normal",
+                fontSize: "30px",
+                marginBottom: "20px",
+                fontWeight: "600",
               }}
             >
               {t("user.search")}
@@ -97,9 +97,10 @@ function UserInfo() {
           <Row>
             <h2
               style={{
-                fontSize: "25px",
                 margin: "30px 0px",
-                fontWeight: "normal",
+                fontSize: "30px",
+                marginBottom: "20px",
+                fontWeight: "600",
               }}
             >
               {t("user.title")}

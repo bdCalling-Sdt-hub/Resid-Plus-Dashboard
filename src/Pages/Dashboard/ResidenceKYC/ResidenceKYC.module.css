@@ -1,19 +1,28 @@
-.formContainer{
+.formContainer {
     margin-top: 30px;
 }
-.radioBtnContainer{
+
+.radioBtnContainer {
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
     margin-top: 20px;
     padding-bottom: 30px;
 }
-.radioBtnContainer span{
+
+.radioBtnContainer span {
     margin-left: 20px;
 }
-.radioBtnContainer:first-child{
+
+.radioBtnContainer:first-child {
     margin-left: 0 !important;
 }
-.kycTitle{
-    padding-bottom: 40px;
+
+.kycTitle {
+    font-family: Raleway;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-bottom: 35px;
 }

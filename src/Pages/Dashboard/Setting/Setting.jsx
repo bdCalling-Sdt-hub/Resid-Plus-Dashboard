@@ -165,7 +165,9 @@ const Setting = () => {
           "linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%) !important",
       }}
     >
-      <h2 style={{ marginBottom: "20px", fontWeight: "normal" }}>Settings</h2>
+      <h2 style={{ fontSize: "30px", marginBottom: "20px", fontWeight: "600" }}>
+        Settings
+      </h2>
       <div style={style.formContainer}>
         {menuItems.map((item) => (
           <Button

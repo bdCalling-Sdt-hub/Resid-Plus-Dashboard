@@ -72,9 +72,9 @@ function CarInformation() {
           <Row>
             <h3
               style={{
-                fontSize: "25px",
-                marginBottom: "10px",
-                fontWeight: "normal",
+                fontSize: "30px",
+                marginBottom: "20px",
+                fontWeight: "600",
               }}
             >
               Residence Information
@@ -254,9 +254,9 @@ function CarInformation() {
           <Row>
             <h2
               style={{
-                fontSize: "25px",
-                marginBottom: "10px",
-                fontWeight: "normal",
+                fontSize: "30px",
+                marginBottom: "20px",
+                fontWeight: "600",
               }}
             >
               Residence Details

@@ -64,9 +64,9 @@ function HostInfo() {
           <Row>
             <h2
               style={{
-                fontSize: "25px",
-                marginBottom: "10px",
-                fontWeight: "normal",
+                fontSize: "30px",
+                marginBottom: "20px",
+                fontWeight: "600",
               }}
             >
               {t("host.search")}
@@ -92,9 +92,10 @@ function HostInfo() {
           <Row>
             <h2
               style={{
-                fontSize: "25px",
                 margin: "30px 0px",
-                fontWeight: "normal",
+                fontSize: "30px",
+                marginBottom: "20px",
+                fontWeight: "600",
               }}
             >
               {t("host.title")}
@@ -129,14 +130,14 @@ function HostInfo() {
         </div>
       ) : (
         <HashLoader
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "30%",
-        }}
-        color="#1f1c1c"
-        size={50}
-      />
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "30%",
+          }}
+          color="#1f1c1c"
+          size={50}
+        />
       )}
     </>
   );
