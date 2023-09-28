@@ -1,7 +1,7 @@
 import React from "react";
 import { Col } from "antd";
 
-function SingleNotification({ singleNotifications }) {
+function SingleNotification({ singleNotifications,notificationUpdateHandler }) {
   function getTimeAgo(timestamp) {
     const now = new Date();
     const date = new Date(timestamp);
@@ -26,7 +26,7 @@ function SingleNotification({ singleNotifications }) {
   }
 
   return (
-    <Col key={singleNotifications._id} lg={{ span: 24 }}>
+    <Col onClick={e =>notificationUpdateHandler(singleNotifications._id)} key={singleNotifications._id} lg={{ span: 24 }}>
       <div
         className={`${
           singleNotifications.viewStatus

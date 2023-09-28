@@ -8,16 +8,60 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NotificationsData } from "../../../ReduxSlices/NotificationsSlice";
 import SingleNotification from "./SingleNotification";
+import baseAxios from "../../../../Config";
+import { useNavigate } from "react-router-dom";
 
 function Notification() {
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
   const data = useSelector((state) => state.NotificationsData.AllNotifications);
+
+  const navigate = useNavigate();
+
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+    // Connect to server using socket.io-client
+    var socket = io("http://192.168.10.18:9000");
+    socket.on("connect", () => {
+      // Emit events or listen for events here
+      socket.on("admin-notification", (data) => {
+        console.log(data);
+        setNotifications(data);
+      });
+    });
+  }, []);
+
+  console.log(notifications);
+
+  const notificationUpdateHandler = (id) => {
+    let token = localStorage.getItem("token");
+    baseAxios
+      .patch(
+        `/api/notifications/${id}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        // navigate("/booking");
+      })
+      .catch((err) => console.log(err));
+  };
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(NotificationsData());
   }, []);
+
+  const comomnData = notifications?.allNotification
+    ? notifications?.allNotification
+    : data?.allNotification;
 
   return (
     <div
@@ -38,9 +82,12 @@ function Notification() {
           All Notifications
         </h2>
 
-        {data?.allNotification?.map((singleNotifications) => {
+        {comomnData?.map((singleNotifications) => {
           return (
-            <SingleNotification singleNotifications={singleNotifications} />
+            <SingleNotification
+              notificationUpdateHandler={notificationUpdateHandler}
+              singleNotifications={singleNotifications}
+            />
           );
         })}
       </Row>

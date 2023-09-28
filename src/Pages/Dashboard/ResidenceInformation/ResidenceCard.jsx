@@ -68,11 +68,11 @@ function ResidenceCard({ data }) {
             <div className={styles.userTitle}>
               <div>
                 <div className={styles.statusContainer}>
-                  <h1>{data.residenceName}</h1>{" "}
-                  {data.status ? (
-                    <span className={styles.active}>Active</span>
+                  <h1>{data?.residenceName}</h1>{" "}
+                  {data?.status ? (
+                    <span className={styles?.active}>Active</span>
                   ) : (
-                    <span className={styles.reserved}>Reserved</span>
+                    <span className={styles?.reserved}>Reserved</span>
                   )}
                 </div>
                 <div>
@@ -88,28 +88,28 @@ function ResidenceCard({ data }) {
           <div>
             <div className={styles.userDetails}>
               <h1>Details</h1>
-              <p>Person/Capacity: {data.capacity}</p>
-              <p>Beds: {data.beds}</p>
-              <p>Baths: {data.baths}</p>
+              <p>Person/Capacity: {data?.capacity}</p>
+              <p>Beds: {data?.beds}</p>
+              <p>Baths: {data?.baths}</p>
               <p>
-                Address: {data.address}, {data.city}, {data.municipality}
+                Address: {data?.address}, {data?.city}, {data?.municipality}
               </p>
-              <p>Rent/hr: {data.hourlyAmount}</p>
+              <p>Rent/hr: {data?.hourlyAmount}</p>
             </div>
             <hr />
             <div className={styles.about}>
               <h4>About this residence</h4>
               <p style={{ width: "700px" }} className={styles.aboutResidence}>
-                {data.aboutResidence}
+                {data?.aboutResidence}
               </p>
             </div>
             <hr />
             <div>
               <h2>Owner Information</h2>
-              <p>Owner Name: {data.ownerName}</p>
-              <h4>About this residence</h4>
+              <p>Owner Name: {data?.ownerName}</p>
+              <h4>Owner About</h4>
               <p style={{ width: "700px" }} className={styles.aboutResidence}>
-                {data.aboutResidence}
+                {data?.aboutOwner}
               </p>
             </div>
             <div>
