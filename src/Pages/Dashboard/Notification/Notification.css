@@ -7,3 +7,37 @@
     background-color: yourHoverBackgroundColor;
     color: yourHoverTextColor;
   } */
+
+  .single-notification{
+  
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .single-notification:hover{
+    background:  #dddddd;
+
+  }
+  .single-notificationTrue{
+    background:  rgb(208, 232, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    
+  }
+  .single-notificationTrue:hover{
+    background:  #dddddd;
+  }
+
+  .single-notificationContainer{
+    border-bottom: 1px solid #e8e8e8;
+    padding: 8px;
+    margin: 5px;
+  }
+
+.notificationp{
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

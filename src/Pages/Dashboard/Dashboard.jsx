@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { CarOutlined, MenuOutlined, SettingOutlined } from "@ant-design/icons";
-import { Button, Dropdown, Layout, Menu, Select, theme } from "antd";
+import { Badge, Button, Dropdown, Layout, Menu, Select, theme } from "antd";
 
 import { Divider } from "antd";
 import { GiReceiveMoney } from "react-icons/gi";
@@ -8,6 +8,7 @@ import { MdCarRental, MdPayment, MdPeopleOutline } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { BiBookmarkAltPlus } from "react-icons/bi";
 import { GoPeople } from "./../../../node_modules/react-icons/go/index.esm";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 import { RiUserSearchLine } from "react-icons/ri";
 
@@ -18,53 +19,68 @@ import { Link, Outlet } from "react-router-dom";
 import rentiLogo from "../../Images/resid-logo.png";
 import Styles from "./Dashboard.module.css";
 import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { NotificationsData } from "../../ReduxSlices/NotificationsSlice";
+import { io } from "socket.io-client";
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 const { Option } = Select;
-
-const items = [...Array(5).keys()].map((item, index) => {
-  const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
-  return {
-    key: index,
-    label: (
-      <Link to="/notification" style={{}} rel="noreferrer">
-        <div
-          className={Styles.everyNotify}
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          <img
-            style={{
-              backgroundColor: "#d9cffb",
-              borderRadius: "100%",
-              padding: "5px",
-              marginRight: "15px",
-            }}
-            width="30"
-            height="30"
-            src={userFromLocalStorage?.image?.publicFileUrl}
-            alt="person-male--v2"
-          />
-          <div className="" style={{ marginTop: "" }}>
-            <p>
-              <span>Sanchej haro manual </span>started a new trip from mexico.
-            </p>
-            <span style={{ color: "#d2d2d2" }}>1 hr ago</span>
-          </div>
-        </div>
-      </Link>
-    ),
-  };
-});
 
 const Dashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.lang);
 
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
+  const data = useSelector((state) => state.NotificationsData.AllNotifications);
+
+  const [notifications, setNotifications] = useState([]);
+
+  useEffect(() => {
+    // Connect to server using socket.io-client
+    var socket = io("http://192.168.10.18:9000");
+    socket.on("connect", () => {
+      // Emit events or listen for events here
+      socket.on("admin-notification", (data) => {
+        console.log(data);
+        setNotifications(data);
+      });
+    });
+  }, []);
+
+  function getTimeAgo(timestamp) {
+    const now = new Date();
+    const date = new Date(timestamp);
+
+    const secondsAgo = Math.floor((now - date) / 1000);
+    const minutesAgo = Math.floor(secondsAgo / 60);
+    const hoursAgo = Math.floor(minutesAgo / 60);
+    const daysAgo = Math.floor(hoursAgo / 24);
+    const yearsAgo = Math.floor(daysAgo / 365);
+
+    if (yearsAgo > 0) {
+      return yearsAgo === 1 ? "1 year ago" : `${yearsAgo} years ago`;
+    } else if (daysAgo > 0) {
+      return daysAgo === 1 ? "1 day ago" : `${daysAgo} days ago`;
+    } else if (hoursAgo > 0) {
+      return hoursAgo === 1 ? "1 hour ago" : `${hoursAgo} hours ago`;
+    } else if (minutesAgo > 0) {
+      return minutesAgo === 1 ? "1 minute ago" : `${minutesAgo} minutes ago`;
+    } else {
+      return "just now";
+    }
+  }
+
+  console.log(data?.notViewed);
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(NotificationsData());
+  }, []);
 
   const {
     token: { colorBgContainer },
@@ -102,6 +118,39 @@ const Dashboard = () => {
       }
     });
   };
+
+  const items = data?.allNotification?.slice(0, 5).map((item, index) => {
+    return {
+      key: index,
+      label: (
+        <Link to="/notification" style={{}} rel="noreferrer">
+          <div
+            className={Styles.everyNotify}
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <img
+              style={{
+                backgroundColor: "#d9cffb",
+                borderRadius: "100%",
+                padding: "5px",
+                marginRight: "15px",
+              }}
+              width="30"
+              height="30"
+              src={item?.image?.publicFileUrl}
+              alt="person-male--v2"
+            />
+            <div className="" style={{ marginTop: "" }}>
+              <p>{item?.message}</p>
+              <span style={{ color: "#d2d2d2" }}>
+                {getTimeAgo(item.createdAt)}
+              </span>
+            </div>
+          </div>
+        </Link>
+      ),
+    };
+  });
 
   const profileItems = [
     {
@@ -191,7 +240,7 @@ const Dashboard = () => {
         </h2>
         {/* <span style={{ fontWeight: 'bold', color: '#000' }}>Notifications</span> */}
       </Menu.Item>
-      {items.map((item) => (
+      {items?.map((item) => (
         <Menu.Item key={item.key}>{item.label}</Menu.Item>
       ))}
       <div
@@ -203,7 +252,11 @@ const Dashboard = () => {
           margin: "15px",
         }}
       >
-        <Button className="btn" block>
+        <Button
+          onClick={(e) => navigate("/notification")}
+          className="btn"
+          block
+        >
           See All
         </Button>
       </div>
@@ -439,7 +492,8 @@ const Dashboard = () => {
                 </Option>
               </Select>
             </div>
-            <div className={Styles.notificaton}>
+
+            <div className={Styles.notificaton} style={{ marginRight: "30px" }}>
               <Dropdown
                 overlay={menu}
                 placement="bottomRight"
@@ -447,15 +501,23 @@ const Dashboard = () => {
                   pointAtCenter: true,
                 }}
               >
-                <img
-                  style={{ cursor: "pointer" }}
-                  width="30"
-                  height="30"
-                  src="https://img.icons8.com/ios/50/appointment-reminders--v1.png"
-                  alt="appointment-reminders--v1"
-                />
+                <Badge
+                  count={
+                    notifications?.notViewed
+                      ? notifications?.notViewed
+                      : data?.notViewed
+                  }
+                  color="#333333"
+                >
+                  <IoIosNotificationsOutline
+                    className="cursor-pointer"
+                    fontSize={35}
+                    color="#333333"
+                  />
+                </Badge>
               </Dropdown>
             </div>
+
             <div className={Styles.profile}>
               <Dropdown
                 menu={{
