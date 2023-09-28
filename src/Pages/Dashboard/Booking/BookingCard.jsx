@@ -7,7 +7,7 @@ import baseAxios from "../../../../Config";
 
 const BookingCard = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(data);
+  // console.log(data);
   const showModal = () => {
     setIsModalOpen(true);
   };

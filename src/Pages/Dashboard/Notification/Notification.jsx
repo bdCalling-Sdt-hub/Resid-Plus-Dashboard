@@ -1,9 +1,38 @@
 import { Col, Divider, Pagination, Row } from "antd";
 import React from "react";
 import "./Notification.css";
+import { use } from "i18next";
+import { useEffect } from "react";
+import { io } from "socket.io-client";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NotificationsData } from "../../../ReduxSlices/NotificationsSlice";
 
 function Notification() {
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
+  const data = useSelector((state) => state.NotificationsData.AllNotifications);
+  console.log(data);
+
+  const [notifications, setNotifications] = useState([]);
+
+  // useEffect(() =>{
+  //      // Connect to server using socket.io-client
+  //      var socket = io("http://192.168.10.18:9000");
+  //      socket.on("connect", () => {
+
+  //          // Emit events or listen for events here
+  //          socket.on('admin-notification', (data) => {
+  //              console.log(data)
+  //               setNotifications(data.allNotification)
+  //          })
+  //      });
+  // },[])
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(NotificationsData());
+  }, []);
 
   return (
     <div>
@@ -18,9 +47,9 @@ function Notification() {
           All Notifications
         </h2>
 
-        {[...Array(5).keys()].map((_, index) => {
+        {data?.allNotification.map((singleNotifications) => {
           return (
-            <Col lg={{ span: 24 }}>
+            <Col key={singleNotifications._id} lg={{ span: 24 }}>
               <div
                 className="single-notification"
                 style={{ display: "flex", alignItems: "center" }}
@@ -33,14 +62,11 @@ function Notification() {
                       borderRadius: "100%",
                       border: "2px solid gray",
                     }}
-                    src={userFromLocalStorage?.image?.publicFileUrl}
+                    src={singleNotifications?.image?.publicFileUrl}
                   />
                 </div>
                 <div className="">
-                  <p>
-                    <span>Sanchez haro manuel</span> start a new trip at 5pm.
-                    Trip No.56. Trip started from Mexico city.....
-                  </p>
+                  <p>{singleNotifications?.message}</p>
                   <p style={{ color: "gray", marginTop: "10px" }}>1hr ago</p>
                 </div>
               </div>
