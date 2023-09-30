@@ -89,7 +89,7 @@ const LoginActivityTable = () => {
       dataIndex: "createdAt",
       key: "createdAt",
       render: (_, record) => (
-        <div style={{ textAlign: "center" }}>
+        <div >
           {formatDateString(record.createdAt)}
         </div>
       ),
@@ -100,7 +100,7 @@ const LoginActivityTable = () => {
       key: "actions",
       responsive: ["lg"],
       render: (_, record) => (
-        <div style={{ textAlign: "center" }}>
+        <div >
           <button
             onClick={(e) => handelSignOut(record._id)}
             style={{
