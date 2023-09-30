@@ -156,7 +156,7 @@ const Dashboard = () => {
     {
       key: 1,
       label: (
-        <Link to="/notification" style={{ height: "50px" }} rel="noreferrer">
+        <Link to="/setting/personal-information" style={{ height: "50px" }} rel="noreferrer">
           <div
             className={Styles.everyNotify}
             style={{ display: "flex", alignItems: "center" }}
