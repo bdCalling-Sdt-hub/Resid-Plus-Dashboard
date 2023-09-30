@@ -15,7 +15,7 @@ export const DashboardHomeData = createAsyncThunk(
     async (value, thunkAPI) => {
         try {
             let response = await baseAxios.get(
-                `/api/booking/dashboard/ratio`,
+                `/api/bookings/dashboard/ratio`,
                 {
                     headers: {
                         "Content-Type": "application/json",

@@ -17,7 +17,7 @@ export const BookingData = createAsyncThunk(
   async (value, thunkAPI) => {
     try {
       let response = await baseAxios.get(
-        `/api/booking/?limit=5&page=${value.page}&checkingMonth=${value.search}`,
+        `/api/bookings/?limit=5&page=${value.page}&checkingMonth=${value.search}`,
         {
           headers: {
             "Content-Type": "application/json",

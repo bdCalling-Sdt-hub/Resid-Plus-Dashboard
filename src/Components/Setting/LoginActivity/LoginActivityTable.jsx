@@ -1,25 +1,60 @@
-import { Button, Drawer, Table, Typography } from "antd";
+import { Table } from "antd";
 import React, { useState } from "react";
-import { IoMdClose } from "react-icons/io";
-import DrawerPage from "../../../Components/DrawerPage/DrawerPage";
-const { Title, Text } = Typography;
-
-const data = [
-  {
-    browser: "Kate Winslate",
-    device: "kate@gmail.com",
-    joiningDate: "22/05/2023",
-    ine: 20,
-  },
-  {
-    browser: "Kate Winslate",
-    device: "kate@gmail.com",
-    joiningDate: "22/05/2023",
-    ine: 20,
-  },
-];
+import { useSelector } from "react-redux";
+import baseAxios from "../../../../Config";
 
 const LoginActivityTable = () => {
+  const { loginActivity } = useSelector((state) => state.LoginActivity);
+
+  function formatDateString(inputDateString) {
+    const inputDate = new Date(inputDateString);
+
+    if (isNaN(inputDate)) {
+      return "Invalid Date";
+    }
+
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const day = inputDate.getDate();
+    const month = months[inputDate.getMonth()];
+    const year = inputDate.getFullYear();
+
+    let hours = inputDate.getHours();
+    const minutes = inputDate.getMinutes();
+    const ampm = hours >= 12 ? "pm" : "am";
+
+    if (hours > 12) {
+      hours -= 12;
+    }
+
+    return `${day} ${month}, ${year}-${hours}:${
+      minutes < 10 ? "0" : ""
+    }${minutes}${ampm}`;
+  }
+
+  const handelSignOut = (id) => {
+    let token = localStorage.getItem("token");
+    baseAxios.delete(`/api/activities/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+    });
+  };
+
   const columns = [
     {
       title: "BROWSER",
@@ -28,14 +63,19 @@ const LoginActivityTable = () => {
     },
     {
       title: "DEVICE",
-      dataIndex: "device",
-      key: "device",
+      dataIndex: "operatingSystem",
+      key: "operatingSystem",
       responsive: ["md"],
     },
     {
       title: "TIME",
-      dataIndex: "joiningDate",
-      key: "joiningDate",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (_, record) => (
+        <div style={{ textAlign: "center" }}>
+          {formatDateString(record.createdAt)}
+        </div>
+      ),
     },
     {
       title: "ACTIONS",
@@ -45,6 +85,7 @@ const LoginActivityTable = () => {
       render: (_, record) => (
         <div style={{ textAlign: "center" }}>
           <button
+            onClick={(e) => handelSignOut(record._id)}
             style={{
               background: "linear-gradient(180deg, #FF2340 0%, #AC0016 100%)",
               borderRadius: "5px",
@@ -61,50 +102,12 @@ const LoginActivityTable = () => {
     },
   ];
 
-  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
-  const [hostData, setHostData] = useState(null);
-
-  const showDrawer = (record) => {
-    setIsDrawerVisible(true);
-    setHostData(record);
-  };
-
-  const closeDrawer = () => {
-    setIsDrawerVisible(false);
-    setHostData(null);
-  };
-
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
-      <Drawer
-        title={
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography>
-              <Title level={5} strong>
-                Invoice# Trip No.{hostData?.tripNo}
-              </Title>
-              <Text>See all information about the trip no. 68656</Text>
-            </Typography>
-            <Button type="text" onClick={closeDrawer}>
-              <IoMdClose fontSize={25} />
-            </Button>
-          </div>
-        }
-        closable={false}
-        placement="right"
-        onClose={closeDrawer}
-        open={isDrawerVisible}
-        width={600}
-      >
-        {hostData && <DrawerPage hostData={hostData} />}
-      </Drawer>
+      <Table
+        columns={columns}
+        dataSource={loginActivity?.data?.attributes?.activitys}
+      />
     </div>
   );
 };

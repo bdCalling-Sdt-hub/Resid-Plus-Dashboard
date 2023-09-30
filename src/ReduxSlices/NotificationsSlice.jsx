@@ -22,17 +22,8 @@ export const NotificationsData = createAsyncThunk(
         },
       });
 
-      console.log(response);
-
-      // if (response.data.data.type === "auth") {
-      //   localStorage.removeItem("token");
-      //   localStorage.removeItem("user");
-      // }
-
       return response.data;
     } catch (error) {
-      // console.log(error.response.data.statusCode);
-
       if (
         "You are not authorised to sign in now" === error.response.data.message
       ) {

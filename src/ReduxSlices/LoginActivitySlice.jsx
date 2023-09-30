@@ -16,7 +16,7 @@ export const LoginActivitys = createAsyncThunk(
   "LoginActivitys",
   async (value, thunkAPI) => {
     try {
-      const response = await axios.get("api/user/activity", {
+      const response = await axios.get("/api/activities", {
         headers: {
           "Content-type": "application/json",
           authorization: `Bearer ${token}`,
@@ -24,6 +24,12 @@ export const LoginActivitys = createAsyncThunk(
       });
       return response.data;
     } catch (err) {
+      if (
+        "You are not authorised to sign in now" === error.response.data.message
+      ) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("yourInfo");
+      }
       const message =
         (error.response &&
           error.response.data &&
@@ -57,8 +63,8 @@ const loginActivitySlice = createSlice({
       state.isError = false;
       state.isSuccess = true;
       state.isLoading = false;
-      state.message = action.payload.message;
-      state.loginActivity = action.payload.activity;
+      state.message = action.payload.data?.attributes;
+      state.loginActivity = action.payload;
     },
     [LoginActivitys.rejected]: (state, action) => {
       state.isError = false;

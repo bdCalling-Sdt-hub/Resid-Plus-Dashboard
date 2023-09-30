@@ -1,34 +1,34 @@
 {
     "header": {
-        "title": "Panneau"
+        "title": "Tableau de bord"
     },
     "dashboard": "Tableau de bord",
-    "booking": "Réservation",
+    "booking": "Reservation",
     "setting": {
         "title": "Paramètres"
     },
     "kyc": {
         "title": "Formulaire KYC",
         "subTitle1": "- Utilisateur",
-        "subTitle2": "- Hôte",
+        "subTitle2": "- Propriétaire/ Gérant",
         "subTitle3": "- Résidence"
     },
     "residenceInfo": "Résidence",
-    "userInfo": "Informations sur l'utilisateur",
-    "hostInfo": "Informations sur l'hôte",
+    "userInfo": "Infos Utilisateurs",
+    "hostInfo": "Infos Gérant",
     "user": {
-        "search": "Rechercher un utilisateur",
-        "title": "Liste des utilisateurs",
-        "searchBtn": "Rechercher",
-        "viewDetails": "Voir les détails",
-        "placeholderSearch": "Rechercher par nom/adresse e-mail/téléphone",
-        "email": "Adresse e-mail",
-        "JoiningDate": "Date d'inscription",
-        "contact": "Contact",
-        "address": "ADRESSE",
-        "modalInfo": "Informations sur l'utilisateur",
-        "modalDetails": "Détails",
-        "bookComplete": "Réservation complète",
+        "search": "Chercher un utilisateur",
+        "title": "Liste d’utilisateurs",
+        "searchBtn": "Recherche",
+        "viewDetails": "Voir les details",
+        "placeholderSearch": "Recherches par nom/email/téléphone",
+        "email": "Email",
+        "JoiningDate": "Date d’inscription",
+        "contact": "Contacts",
+        "address": "Adresse",
+        "modalInfo": "Infos Utilisateurs",
+        "modalDetails": "Details",
+        "bookComplete": "Reservation complétée",
         "printBtn": "Imprimer",
         "downloadBtn": "Télécharger"
     },
@@ -37,7 +37,7 @@
         "title": "Liste des hôtes",
         "searchBtn": "Rechercher",
         "viewDetails": "Voir les détails",
-        "placeholderSearch": "Rechercher par nom/adresse e-mail/téléphone",
+        "placeholderSearch": "Recherches par nom/email/téléphone",
         "email": "Adresse e-mail",
         "JoiningDate": "Date d'inscription",
         "contact": "Contact",

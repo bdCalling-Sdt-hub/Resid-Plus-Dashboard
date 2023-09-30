@@ -6,6 +6,7 @@ import UserInformationReducer from "./ReduxSlices/UserInformationSlice";
 import HostInformationReducer from "./ReduxSlices/HostInformationSlice";
 import ResidenceInformationReducer from "./ReduxSlices/ResidenceInformationSlice";
 import NotificationsSlice from "./ReduxSlices/NotificationsSlice";
+import LoginActivitySlice from "./ReduxSlices/LoginActivitySlice";
 
 export const Store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const Store = configureStore({
     HostInformationData: HostInformationReducer,
     ResidenceInformationData: ResidenceInformationReducer,
     NotificationsData: NotificationsSlice,
+    LoginActivity: LoginActivitySlice,
   },
 });
