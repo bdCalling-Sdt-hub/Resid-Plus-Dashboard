@@ -2,8 +2,10 @@ import { Table } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import baseAxios from "../../../../Config";
+import Swal from "sweetalert2";
 
 const LoginActivityTable = () => {
+  let token = localStorage.getItem("token");
   const { loginActivity } = useSelector((state) => state.LoginActivity);
 
   function formatDateString(inputDateString) {
@@ -46,12 +48,27 @@ const LoginActivityTable = () => {
   }
 
   const handelSignOut = (id) => {
-    let token = localStorage.getItem("token");
-    baseAxios.delete(`/api/activities/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${token}`,
-      },
+    Swal.fire({
+      title: "Do you want to Sign Out this device?",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Yes",
+      denyButtonText: `No`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        baseAxios.delete(`/api/activities/${id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        // page reload here
+        window.location.reload();
+      } else if (result.isDenied) {
+        Swal.fire("Ok", "", "info");
+      }
     });
   };
 
