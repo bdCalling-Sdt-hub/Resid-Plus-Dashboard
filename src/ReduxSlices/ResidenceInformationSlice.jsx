@@ -27,6 +27,12 @@ export const ResidenceInformationData = createAsyncThunk(
 
       return response.data;
     } catch (error) {
+      if (
+        "You are not authorised to sign in now" === error.response.data.message
+      ) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("yourInfo");
+      }
       const message =
         (error.response &&
           error.response.data &&

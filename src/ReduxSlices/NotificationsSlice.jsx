@@ -22,9 +22,24 @@ export const NotificationsData = createAsyncThunk(
         },
       });
 
-      console.log(response.data);
+      console.log(response);
+
+      // if (response.data.data.type === "auth") {
+      //   localStorage.removeItem("token");
+      //   localStorage.removeItem("user");
+      // }
+
       return response.data;
     } catch (error) {
+      // console.log(error.response.data.statusCode);
+
+      if (
+        "You are not authorised to sign in now" === error.response.data.message
+      ) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("yourInfo");
+      }
+
       const message =
         (error.response &&
           error.response.data &&
@@ -57,7 +72,7 @@ export const NotificationsSlice = createSlice({
       state.Success = true;
       state.Error = false;
       state.AllNotifications = action.payload.data.attributes;
-    //   console.log(state.AllNotifications);
+      //   console.log(state.AllNotifications);
       state.pagination = action.payload.data;
     },
     [NotificationsData.rejected]: (state, action) => {

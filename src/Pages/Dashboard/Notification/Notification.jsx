@@ -12,6 +12,7 @@ import baseAxios from "../../../../Config";
 import { useNavigate } from "react-router-dom";
 
 function Notification() {
+  const dispatch = useDispatch();
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
   const data = useSelector((state) => state.NotificationsData.AllNotifications);
 
@@ -53,7 +54,7 @@ function Notification() {
       .catch((err) => console.log(err));
   };
 
-  const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(NotificationsData());
