@@ -64,7 +64,8 @@ const PersonalInfo = () => {
     baseAxios
       .put(`/api/users`, formData, {
         headers: {
-          // Do not set Content-Type here; Axios will set it automatically for FormData
+          // Do not set Content-Type here; Axios will set it automatically for FormData 
+          "Content-Type": "multipart/form-data",
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
