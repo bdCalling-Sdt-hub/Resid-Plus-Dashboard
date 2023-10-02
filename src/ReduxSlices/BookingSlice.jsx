@@ -27,8 +27,11 @@ export const BookingData = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
+
+      // give console status code
+      console.log(error.response.status);
       if (
-        "You are not authorised to sign in now" === error.response.data.message
+        "You are not authorised to sign in now" === error.response.data.message || "Error authorization" === error.response.data.message
       ) {
         localStorage.removeItem("token");
         localStorage.removeItem("yourInfo");

@@ -45,26 +45,27 @@ const PersonalInfo = () => {
     // console.log(newFileList[0].originFileObj);
   };
 
+  console.log(image);
   const handleSubmit = () => {
     const formData = new FormData();
-  
+
     // Append individual fields to the FormData object
     formData.append("fullName", fullName);
     formData.append("phoneNumber", phoneNumber);
     formData.append("dateOfBirth", dateOfBirth);
     formData.append("address", address);
-  
+
     // Append the image file if you have it (assuming 'image' is a File object)
     if (image) {
       formData.append("image", image);
     }
-  
+
     console.log("form data", formData);
-  
+
     baseAxios
       .put(`/api/users`, formData, {
         headers: {
-          // Do not set Content-Type here; Axios will set it automatically for FormData 
+          // Do not set Content-Type here; Axios will set it automatically for FormData
           "Content-Type": "multipart/form-data",
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -72,7 +73,10 @@ const PersonalInfo = () => {
       .then((res) => {
         console.log(res.data);
         // here localsotrage is updated
-        localStorage.setItem("yourInfo", JSON.stringify(res.data.data.attributes));
+        localStorage.setItem(
+          "yourInfo",
+          JSON.stringify(res.data.data.attributes)
+        );
         setProfileEdit(false);
       })
       .catch((err) => console.log(err));
@@ -104,7 +108,7 @@ const PersonalInfo = () => {
                 style={{ borderRadius: "6px" }}
                 src={userFromLocalStorage.image?.publicFileUrl}
               />
-              <div style={{}}>
+              <div style={{width:"400px"}}>
                 <h2>{userFromLocalStorage.fullName}</h2>
               </div>
             </div>
@@ -190,7 +194,7 @@ const PersonalInfo = () => {
                 marginBottom: "20px",
               }}
             >
-              <ImgCrop rotationSlider>
+              <ImgCrop rotationSlider >
                 <Upload
                   listType="picture-card"
                   fileList={fileList}
