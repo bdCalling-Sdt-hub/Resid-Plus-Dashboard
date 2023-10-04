@@ -29,7 +29,11 @@ function Notification() {
         console.log(data);
         setNotifications(data);
       });
+
+      socket.off("admin-notification", (data));
     });
+
+
   }, []);
 
   console.log(notifications);
