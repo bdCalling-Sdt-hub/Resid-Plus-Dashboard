@@ -7,13 +7,23 @@
 
   text-align: center;
 }
+
 .profile img {
   background-color: #d9cffb;
   padding: 2px;
   border-radius: 100%;
 }
 
+.everyNotify {
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
 
-
-
-
+.everyNotifyUnView {
+  background: rgb(208, 232, 255);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+}

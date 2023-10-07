@@ -141,3 +141,8 @@ main.ant-layout-content.css-dev-only-do-not-override-17a39f8 {
 ul.recharts-default-legend {
   display: none;
 }
+
+/* n */
+:where(.css-dev-only-do-not-override-17a39f8).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+  padding: 5px 20px !important;
+}

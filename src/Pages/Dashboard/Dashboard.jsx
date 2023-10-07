@@ -22,6 +22,7 @@ import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { NotificationsData } from "../../ReduxSlices/NotificationsSlice";
 import { io } from "socket.io-client";
+import baseAxios from "../../../Config";
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -32,7 +33,9 @@ const Dashboard = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.lang);
 
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
-  const data = useSelector((state) => state.NotificationsData.AllNotifications);
+  const dataApi = useSelector(
+    (state) => state.NotificationsData.AllNotifications
+  );
 
   const [notifications, setNotifications] = useState([]);
 
@@ -48,6 +51,11 @@ const Dashboard = () => {
     });
   }, []);
 
+  const data = notifications?.allNotification
+    ? notifications?.allNotification
+    : dataApi.allNotification;
+
+  console.log(data);
   function getTimeAgo(timestamp) {
     const now = new Date();
     const date = new Date(timestamp);
@@ -119,13 +127,38 @@ const Dashboard = () => {
     });
   };
 
-  const items = data?.allNotification?.slice(0, 5).map((item, index) => {
+  const notificationUpdateHandler = (id) => {
+    console.log(id);
+    let token = localStorage.getItem("token");
+    baseAxios
+      .patch(
+        `/api/notifications/${id}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        navigate("/notification");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  console.log(data);
+
+  const items = data?.slice(0, 5).map((item, index) => {
     return {
       key: index,
       label: (
-        <Link to="/notification" style={{}} rel="noreferrer">
           <div
-            className={Styles.everyNotify}
+            onClick={(e) => notificationUpdateHandler(item._id)}
+            className={
+              item?.viewStatus ? Styles.everyNotify : Styles.everyNotifyUnView
+            }
             style={{ display: "flex", alignItems: "center" }}
           >
             <img
@@ -147,7 +180,6 @@ const Dashboard = () => {
               </span>
             </div>
           </div>
-        </Link>
       ),
     };
   });
@@ -156,7 +188,11 @@ const Dashboard = () => {
     {
       key: 1,
       label: (
-        <Link to="/setting/personal-information" style={{ height: "50px" }} rel="noreferrer">
+        <Link
+          to="/setting/personal-information"
+          style={{ height: "50px" }}
+          rel="noreferrer"
+        >
           <div
             className={Styles.everyNotify}
             style={{ display: "flex", alignItems: "center" }}
@@ -445,7 +481,7 @@ const Dashboard = () => {
               ) : location.pathname === "/notification" ? (
                 "Notification"
               ) : (
-                <></> 
+                <></>
               )}
             </h2>
           </div>
@@ -505,7 +541,7 @@ const Dashboard = () => {
                   count={
                     notifications?.notViewed
                       ? notifications?.notViewed
-                      : data?.notViewed
+                      : dataApi?.notViewed
                   }
                   color="#333333"
                 >
