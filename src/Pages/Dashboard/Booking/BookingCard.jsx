@@ -43,15 +43,15 @@ const BookingCard = ({ data }) => {
           </div>
           <div>
             <StarFilled style={{ color: "#FBA91D" }} />
-            <span style={{ marginLeft: "3px" }}>({data.ratings || 0})</span>
+            <span style={{ marginLeft: "3px" }}>({data?.ratings || 0})</span>
           </div>
         </div>
         <div>
-          <p>Booking ID: #{data.bookingId}</p>
-          <p>Booking Date: {data.createdAt?.slice(0, 10)}</p>
+          <p>Booking ID: #{data?.bookingId}</p>
+          <p>Booking Date: {data?.createdAt?.slice(0, 10)}</p>
           <p>User Name: {data?.userId?.fullName}</p>
-          <p>Total Persons: {data.numberOfGuests}</p>
-          <p>Owner Name: {data.hostId.fullName}</p>
+          <p>Total Persons: {data?.numberOfGuests}</p>
+          <p>Owner Name: {data?.hostId?.fullName}</p>
         </div>
         <Button onClick={showModal} className={styles.ViewDetailsBtn}>
           View Details
@@ -66,9 +66,9 @@ const BookingCard = ({ data }) => {
         footer={[]}
       >
         <div className={styles.modalContainer}>
-          <h1 style={{ fontSize: "30px" }}>Booking Id: #{data.bookingId}</h1>
+          <h1 style={{ fontSize: "30px" }}>Booking Id: #{data?.bookingId}</h1>
           <p style={{ paddingBottom: "10px", color: "#5A5A5A" }}>
-            See all information about Booking ID: #{data.bookingId}
+            See all information about Booking ID: #{data?.bookingId}
           </p>
           <hr />
           <div className={styles.userModalTitle}>
@@ -110,18 +110,18 @@ const BookingCard = ({ data }) => {
           <div>
             <div className={styles.userDetails}>
               <h1>Booking Information</h1>
-              <p>Booking ID: #{data.bookingId}</p>
-              <p>Booking Date: {data.createdAt?.slice(0, 10)}</p>
+              <p>Booking ID: #{data?.bookingId}</p>
+              <p>Booking Date: {data?.createdAt?.slice(0, 10)}</p>
               <p>User Name: {data?.userId?.fullName}</p>
-              <p>Total Persons: {data.numberOfGuests}</p>
-              <p>Total Amount: ${data.totalAmount}</p>
+              <p>Total Persons: {data?.numberOfGuests}</p>
+              <p>Total Amount: ${data?.totalAmount}</p>
             </div>
 
             <hr />
             <div style={{ paddingBottom: "15px" }}>
               <h2>Owner Information</h2>
-              <p>Owner Name: {data.hostId.fullName}</p>
-              <p>Owner Contact: {data.hostId.phoneNumber}</p>
+              <p>Owner Name: {data?.hostId?.fullName}</p>
+              <p>Owner Contact: {data?.hostId?.phoneNumber}</p>
             </div>
             <div>
               <Button className={styles.modalBtn}>Print</Button>
