@@ -26,6 +26,7 @@ const { SubMenu } = Menu;
 const { Option } = Select;
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(localStorage.lang);
 
@@ -46,8 +47,10 @@ const Dashboard = () => {
         setNotifications(data);
       });
     });
+    dispatch(NotificationsData());
     socket.off("admin-notification", (data));
   }, []);
+
 
   const data = notifications?.allNotification
     ? notifications?.allNotification
@@ -82,11 +85,11 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(NotificationsData());
-  }, []);
+
+  // useEffect(() => {
+   
+  // }, []);
 
   const {
     token: { colorBgContainer },

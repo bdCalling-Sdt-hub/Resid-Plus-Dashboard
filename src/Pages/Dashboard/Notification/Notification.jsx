@@ -29,6 +29,9 @@ function Notification() {
         console.log(data);
         setNotifications(data);
       });
+      socket.emit("give-notification", {
+        userId: userFromLocalStorage?.role,
+      });
 
       socket.off("admin-notification", (data));
     });
@@ -53,16 +56,12 @@ function Notification() {
       )
       .then((res) => {
         console.log(res);
+        dispatch(NotificationsData());
         // navigate("/booking");
       })
       .catch((err) => console.log(err));
   };
 
-
-
-  useEffect(() => {
-    dispatch(NotificationsData());
-  }, []);
 
   const comomnData = notifications?.allNotification
     ? notifications?.allNotification
