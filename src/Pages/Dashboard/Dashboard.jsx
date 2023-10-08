@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { CarOutlined, MenuOutlined, SettingOutlined } from "@ant-design/icons";
 import { Badge, Button, Dropdown, Layout, Menu, Select, theme } from "antd";
-
 import { Divider } from "antd";
 import { GiReceiveMoney } from "react-icons/gi";
 import { MdCarRental, MdPayment, MdPeopleOutline } from "react-icons/md";
@@ -9,9 +8,7 @@ import { RxDashboard } from "react-icons/rx";
 import { BiBookmarkAltPlus } from "react-icons/bi";
 import { GoPeople } from "./../../../node_modules/react-icons/go/index.esm";
 import { IoIosNotificationsOutline } from "react-icons/io";
-
 import { RiUserSearchLine } from "react-icons/ri";
-
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -49,6 +46,7 @@ const Dashboard = () => {
         setNotifications(data);
       });
     });
+    socket.off("admin-notification", (data));
   }, []);
 
   const data = notifications?.allNotification
@@ -95,7 +93,6 @@ const Dashboard = () => {
   } = theme.useToken();
   const [t, i18n] = useTranslation("global");
 
-  // console.log()
 
   const handleSelectLanguage = (value) => {
     setSelectedLanguage(value);
