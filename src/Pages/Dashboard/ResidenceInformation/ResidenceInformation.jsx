@@ -9,15 +9,12 @@ import styles from "./ResidenceInformation.module.css";
 import { HashLoader } from "react-spinners";
 import { useTranslation } from "react-i18next";
 import { ResidenceInformationData } from "../../../ReduxSlices/ResidenceInformationSlice";
-import { use } from "i18next";
-import baseAxios from "../../../../Config";
 import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
 
 function CarInformation() {
   const pageSize = 5;
   const [reload, setReload] = useState(1);
   const dispatch = useDispatch();
-  const [residenceStatus, setResidenceStatus] = useState({});
   const [t, i18n] = useTranslation("global");
   const data = useSelector(
     (state) => state.ResidenceInformationData.ResidenceInfoList
@@ -33,22 +30,6 @@ function CarInformation() {
     (state) => state.ResidenceInformationData.Loading
   );
 
-  console.log("gfuy", isLoading);
-
-  useEffect(() => {
-    let token = localStorage.getItem("token");
-    baseAxios
-      .get(`/api/residence/dashboard/status`, {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setResidenceStatus(res.data.data.attributes);
-      });
-  }, [setResidenceStatus]);
 
   useEffect(() => {
     let data = {
