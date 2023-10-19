@@ -124,6 +124,8 @@ const LoginActivityTable = () => {
       <Table
         columns={columns}
         dataSource={loginActivity?.data?.attributes?.activitys}
+        pagination={{}}
+
       />
     </div>
   );

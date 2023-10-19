@@ -10,6 +10,7 @@ import { NotificationsData } from "../../../ReduxSlices/NotificationsSlice";
 import SingleNotification from "./SingleNotification";
 import baseAxios from "../../../../Config";
 import { useNavigate } from "react-router-dom";
+import { getAdminNotification } from "../../../lib/Notification";
 
 function Notification() {
   const dispatch = useDispatch();
@@ -22,20 +23,9 @@ function Notification() {
 
   useEffect(() => {
     // Connect to server using socket.io-client
-    var socket = io("http://192.168.10.18:9000");
-    socket.on("connect", () => {
-      // Emit events or listen for events here
-      socket.on("admin-notification", (data) => {
-        console.log(data);
-        setNotifications(data);
-      });
-      socket.emit("give-notification", {
-        userId: userFromLocalStorage?.role,
-      });
-
-      socket.off("admin-notification", (data));
+    getAdminNotification().then((res) => {
+      console.log(res);
     });
-
 
   }, []);
 
