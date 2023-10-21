@@ -2,9 +2,9 @@ import { Col, Row } from "antd";
 import React, { useEffect } from "react";
 import { LiaHandHoldingUsdSolid } from "react-icons/lia";
 import "./DashboardHome.css";
-import DailyRentChart from "./dailyRentChart";
 import { useDispatch, useSelector } from "react-redux";
 import { DashboardHomeData } from "../../../ReduxSlices/DashboardHomeSlice";
+import DailyRentChart from "./DailyRentChart";
 
 function DashboardHome() {
   const onChange = (pageNumber) => {
