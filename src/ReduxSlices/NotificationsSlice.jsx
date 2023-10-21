@@ -15,12 +15,16 @@ export const NotificationsData = createAsyncThunk(
   "notificationsData",
   async (value, thunkAPI) => {
     try {
-      let response = await baseAxios.get(`/api/notifications`, {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${token}`,
-        },
-      });
+      console.log("slice page", value);
+      let response = await baseAxios.get(
+        `/api/notifications?limit=5&page=${value?.page}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       return response.data;
     } catch (error) {
@@ -64,7 +68,7 @@ export const NotificationsSlice = createSlice({
       state.Error = false;
       state.AllNotifications = action.payload.data.attributes;
       //   console.log(state.AllNotifications);
-      state.pagination = action.payload.data;
+      state.pagination = action.payload.data.attributes.pagination;
     },
     [NotificationsData.rejected]: (state, action) => {
       state.Loading = false;

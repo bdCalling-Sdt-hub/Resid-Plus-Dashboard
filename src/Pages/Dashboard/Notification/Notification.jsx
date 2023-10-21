@@ -1,9 +1,7 @@
 import { Col, Divider, Pagination, Row } from "antd";
 import React from "react";
 import "./Notification.css";
-import { use } from "i18next";
 import { useEffect } from "react";
-import { io } from "socket.io-client";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NotificationsData } from "../../../ReduxSlices/NotificationsSlice";
@@ -11,27 +9,37 @@ import SingleNotification from "./SingleNotification";
 import baseAxios from "../../../../Config";
 import { useNavigate } from "react-router-dom";
 import { getAdminNotification } from "../../../lib/Notification";
+import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
 
 function Notification() {
+  const pageSize = 5;
   const dispatch = useDispatch();
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
   const data = useSelector((state) => state.NotificationsData.AllNotifications);
+  const [page, setPage] = useState();
+  const dataPagination = useSelector(
+    (state) => state.NotificationsData.pagination
+  );
+
+  console.log("pegination data", dataPagination);
 
   const navigate = useNavigate();
 
+  const [notificationsDetails, setNotificationsDetails] = useState([]);
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    // Connect to server using socket.io-client
     getAdminNotification().then((res) => {
       console.log(res);
     });
-
   }, []);
 
   console.log(notifications);
 
   const notificationUpdateHandler = (id) => {
+    let data = {
+      page: page,
+    };
     let token = localStorage.getItem("token");
     baseAxios
       .patch(
@@ -45,13 +53,20 @@ function Notification() {
         }
       )
       .then((res) => {
-        console.log(res);
-        dispatch(NotificationsData());
-        // navigate("/booking");
+        dispatch(NotificationsData(data));
       })
       .catch((err) => console.log(err));
   };
 
+  const notificationsDataGetByPagination = (page) => {
+    let data = {
+      page: page,
+    };
+    setPage(page);
+    dispatch(NotificationsData(data));
+  };
+
+  console.log("notificationsDetails", notificationsDetails);
 
   const comomnData = notifications?.allNotification
     ? notifications?.allNotification
@@ -85,19 +100,30 @@ function Notification() {
           );
         })}
       </Row>
-      <Row>
-        <Col lg={{ span: 12 }} style={{ marginBottom: "20px" }}>
-          <p style={{ color: "#333333" }}>Showing 1-10 OF 250</p>
-        </Col>
-        <Col lg={{ span: 8, offset: 4 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginTop: "20px",
+        }}
+      >
+        <div>
+          <p style={{ color: "#333333" }}>
+            <ShowingPegination pagination={dataPagination} />
+          </p>
+        </div>
+        <div>
           <Pagination
-            defaultCurrent={1}
-            total={20}
+            pageSize={pageSize}
+            defaultCurrent={dataPagination?.currentPage}
+            total={dataPagination?.totalDocuments}
+            onChange={notificationsDataGetByPagination}
             showQuickJumper={false}
             showSizeChanger={false}
           />
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   );
 }
