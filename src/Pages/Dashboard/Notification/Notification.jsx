@@ -143,153 +143,175 @@ function Notification() {
         </div>
       </div>
 
-      {modalData.type === "residence" ? <>
-      <Modal
-        open={isModalOpen}
-        width={1000}
-        onCancel={handleCancel}
-        centered
-        footer={[]}
-      >
-        <div className={styles.modalContainer}>
-          <h1>Residence information</h1>
-          <hr />
-          <div className={styles.userModalTitle}>
-            <img
-              className={styles.modalImage}
-              src={modalData?.attributes?.photo[0]?.publicFileUrl}
-              alt=""
-            />
-            <div className={styles.userTitle}>
-              <div>
-                <div className={styles.statusContainer}>
-                  <h1>{modalData?.attributes?.residenceName}</h1>{" "}
-                  {modalData?.attributes?.status ? (
-                    <span className={styles?.active}>Active</span>
-                  ) : (
-                    <span className={styles?.reserved}>Reserved</span>
-                  )}
-                </div>
-                <div>
-                  <StarFilled style={{ color: "#FBA91D" }} />
-                  <span style={{ marginLeft: "3px" }}>
-                    ({modalData?.attributes?.ratings || 0.0})
-                  </span>
+      {modalData.type === "residence" ? (
+        <>
+          <Modal
+            open={isModalOpen}
+            width={1000}
+            onCancel={handleCancel}
+            centered
+            footer={[]}
+          >
+            <div className={styles.modalContainer}>
+              <h1>Residence information</h1>
+              <hr />
+              <div className={styles.userModalTitle}>
+                <img
+                  className={styles.modalImage}
+                  src={modalData?.attributes?.photo[0]?.publicFileUrl}
+                  alt=""
+                />
+                <div className={styles.userTitle}>
+                  <div>
+                    <div className={styles.statusContainer}>
+                      <h1>{modalData?.attributes?.residenceName}</h1>{" "}
+                      {modalData?.attributes?.status ? (
+                        <span className={styles?.active}>Active</span>
+                      ) : (
+                        <span className={styles?.reserved}>Reserved</span>
+                      )}
+                    </div>
+                    <div>
+                      <StarFilled style={{ color: "#FBA91D" }} />
+                      <span style={{ marginLeft: "3px" }}>
+                        ({modalData?.attributes?.ratings || 0.0})
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <hr />
-          <div>
-            <div className={styles.userDetails}>
-              <h1>Details</h1>
-              <p>Person/Capacity: {modalData?.attributes?.capacity}</p>
-              <p>Beds: {modalData?.attributes?.beds}</p>
-              <p>Baths: {modalData?.attributes?.baths}</p>
-              <p>
-                Address: {modalData?.attributes?.address}, {modalData?.attributes?.city}, {modalData?.attributes?.municipality}
-              </p>
-              <p>Rent/hr: {modalData?.attributes?.hourlyAmount}</p>
-            </div>
-            <hr />
-            <div className={styles.about}>
-              <h4>About this residence</h4>
-              <p style={{ width: "700px" }} className={styles.aboutResidence}>
-                {modalData?.attributes?.aboutResidence}
-              </p>
-            </div>
-            <hr />
-            <div>
-              <h2>Owner Information</h2>
-              <p>Owner Name: {modalData?.attributes?.ownerName}</p>
-              <h4>Owner About</h4>
-              <p style={{ width: "700px" }} className={styles.aboutResidence}>
-                {modalData?.attributes?.aboutOwner}
-              </p>
-            </div>
-            <div>
-              <Button className={styles.modalBtn}>Print</Button>
-              <Button className={styles.modalBtn1}>Download</Button>
-            </div>
-          </div>
-        </div>
-      </Modal>
-      </>:<>
-      <Modal
-        open={isModalOpen}
-        width={1000}
-        onCancel={handleCancel}
-        centered
-        footer={[]}
-      >
-        <div className={styles.modalContainer}>
-          <h1 style={{ fontSize: "30px" }}>Booking Id: #{modalData?.attributes?.bookingId}</h1>
-          <p style={{ paddingBottom: "10px", color: "#5A5A5A" }}>
-            See all information about Booking ID: #{modalData?.attributes?.bookingId}
-          </p>
-          <hr />
-          <div className={styles.userModalTitle}>
-            <img
-              className={styles.modalImage}
-              src={modalData?.attributes?.residenceId?.photo[0]?.publicFileUrl}
-              alt=""
-            />
-            <div className={styles.userTitle}>
+              <hr />
               <div>
-                <div className={styles.statusContainer}>
-                  <h1>{modalData?.attributes?.residenceId?.residenceName}</h1>{" "}
-                  {data.status === "completed" ? (
-                    <span className={styles.active}>Completed</span>
-                  ) : data.status === "reserved" ? (
-                    <span className={styles.reserved}>Reserved</span>
-                  ) : data.status === "cancelled" ? (
-                    <span className={styles.cancel}>Canceled</span>
-                  ) : (
-                    ""
-                  )}
-                </div>
-                <div>
-                  <StarFilled style={{ color: "#FBA91D" }} />
-                  <span style={{ marginLeft: "3px" }}>
-                    ({modalData?.attributes?.ratings || 0})
-                  </span>
-                </div>
-                <div style={{ marginTop: "10px" }}>
+                <div className={styles.userDetails}>
+                  <h1>Details</h1>
+                  <p>Person/Capacity: {modalData?.attributes?.capacity}</p>
+                  <p>Beds: {modalData?.attributes?.beds}</p>
+                  <p>Baths: {modalData?.attributes?.baths}</p>
                   <p>
-                    <HiOutlineLocationMarker></HiOutlineLocationMarker>{" "}
-                    {modalData?.attributes?.residenceId?.address}
+                    Address: {modalData?.attributes?.address},{" "}
+                    {modalData?.attributes?.city},{" "}
+                    {modalData?.attributes?.municipality}
+                  </p>
+                  <p>Rent/hr: {modalData?.attributes?.hourlyAmount}</p>
+                </div>
+                <hr />
+                <div className={styles.about}>
+                  <h4>About this residence</h4>
+                  <p
+                    style={{ width: "700px" }}
+                    className={styles.aboutResidence}
+                  >
+                    {modalData?.attributes?.aboutResidence}
                   </p>
                 </div>
+                <hr />
+                <div>
+                  <h2>Owner Information</h2>
+                  <p>Owner Name: {modalData?.attributes?.ownerName}</p>
+                  <h4>Owner About</h4>
+                  <p
+                    style={{ width: "700px" }}
+                    className={styles.aboutResidence}
+                  >
+                    {modalData?.attributes?.aboutOwner}
+                  </p>
+                </div>
+                <div>
+                  <Button className={styles.modalBtn}>Print</Button>
+                  <Button className={styles.modalBtn1}>Download</Button>
+                </div>
               </div>
             </div>
-          </div>
-          <hr />
-          <div>
-            <div className={styles.userDetails}>
-              <h1>Booking Information</h1>
-              <p>Booking ID: #{modalData?.attributes?.bookingId}</p>
-              <p>Booking Date: {modalData?.attributes?.createdAt?.slice(0, 10)}</p>
-              <p>User Name: {modalData?.attributes?.userId?.fullName}</p>
-              <p>Total Persons: {modalData?.attributes?.numberOfGuests}</p>
-              <p>Total Amount: ${modalData?.attributes?.totalAmount}</p>
-            </div>
+          </Modal>
+        </>
+      ) : (
+        <>
+          <Modal
+            open={isModalOpen}
+            width={1000}
+            onCancel={handleCancel}
+            centered
+            footer={[]}
+          >
+            <div className={styles.modalContainer}>
+              <h1 style={{ fontSize: "30px" }}>
+                Booking Id: #{modalData?.attributes?.bookingId}
+              </h1>
+              <p style={{ paddingBottom: "10px", color: "#5A5A5A" }}>
+                See all information about Booking ID: #
+                {modalData?.attributes?.bookingId}
+              </p>
+              <hr />
+              <div className={styles.userModalTitle}>
+                <img
+                  className={styles.modalImage}
+                  src={
+                    modalData?.attributes?.residenceId?.photo[0]?.publicFileUrl
+                  }
+                  alt=""
+                />
+                <div className={styles.userTitle}>
+                  <div>
+                    <div className={styles.statusContainer}>
+                      <h1>
+                        {modalData?.attributes?.residenceId?.residenceName}
+                      </h1>{" "}
+                      {data.status === "completed" ? (
+                        <span className={styles.active}>Completed</span>
+                      ) : data.status === "reserved" ? (
+                        <span className={styles.reserved}>Reserved</span>
+                      ) : data.status === "cancelled" ? (
+                        <span className={styles.cancel}>Canceled</span>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                    <div>
+                      <StarFilled style={{ color: "#FBA91D" }} />
+                      <span style={{ marginLeft: "3px" }}>
+                        ({modalData?.attributes?.ratings || 0})
+                      </span>
+                    </div>
+                    <div style={{ marginTop: "10px" }}>
+                      <p>
+                        <HiOutlineLocationMarker></HiOutlineLocationMarker>{" "}
+                        {modalData?.attributes?.residenceId?.address}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div>
+                <div className={styles.userDetails}>
+                  <h1>Booking Information</h1>
+                  <p>Booking ID: #{modalData?.attributes?.bookingId}</p>
+                  <p>
+                    Booking Date:{" "}
+                    {modalData?.attributes?.createdAt?.slice(0, 10)}
+                  </p>
+                  <p>User Name: {modalData?.attributes?.userId?.fullName}</p>
+                  <p>Total Persons: {modalData?.attributes?.numberOfGuests}</p>
+                  <p>Total Amount: ${modalData?.attributes?.totalAmount}</p>
+                </div>
 
-            <hr />
-            <div style={{ paddingBottom: "15px" }}>
-              <h2>Owner Information</h2>
-              <p>Owner Name: {modalData?.attributes?.hostId?.fullName}</p>
-              <p>Owner Contact: {modalData?.attributes?.hostId?.phoneNumber}</p>
+                <hr />
+                <div style={{ paddingBottom: "15px" }}>
+                  <h2>Owner Information</h2>
+                  <p>Owner Name: {modalData?.attributes?.hostId?.fullName}</p>
+                  <p>
+                    Owner Contact: {modalData?.attributes?.hostId?.phoneNumber}
+                  </p>
+                </div>
+                <div>
+                  <Button className={styles.modalBtn}>Print</Button>
+                  <Button className={styles.modalBtn1}>Download</Button>
+                </div>
+              </div>
             </div>
-            <div>
-              <Button className={styles.modalBtn}>Print</Button>
-              <Button className={styles.modalBtn1}>Download</Button>
-            </div>
-          </div>
-        </div>
-      </Modal>
-      </>}
-
-     
+          </Modal>
+        </>
+      )}
     </div>
   );
 }
