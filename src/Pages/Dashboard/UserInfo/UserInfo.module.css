@@ -57,6 +57,7 @@
     flex-direction: row;
     border-top: 4px solid #E2E2E2;
     padding: 30px;
+    background: linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%);
 }
 
 
