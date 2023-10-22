@@ -114,7 +114,7 @@ const BookingCard = ({ data }) => {
           <div>
             <div className={styles.userDetails}>
               <h1>Booking Information</h1>
-              <p>Booking ID: #{data?.bookingId}</p>
+              <p style={{fontFamily:'Open Sans'}}>Booking ID: #{data?.bookingId}</p>
               <p>Booking Date: {data?.createdAt?.slice(0, 10)}</p>
               <p>User Name: {data?.userId?.fullName}</p>
               <p>Total Persons: {data?.numberOfGuests}</p>
