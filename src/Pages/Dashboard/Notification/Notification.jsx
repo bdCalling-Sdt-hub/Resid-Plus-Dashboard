@@ -13,8 +13,15 @@ import { getAdminNotification } from "../../../lib/Notification";
 import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
 import styles from "./Notification.module.css";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 function Notification() {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    pageStyle: "",
+  });
   const pageSize = 5;
   const dispatch = useDispatch();
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
@@ -152,7 +159,7 @@ function Notification() {
             centered
             footer={[]}
           >
-            <div className={styles.modalContainer}>
+            <div ref={componentRef} className={styles.modalContainer}>
               <h1>Residence information</h1>
               <hr />
               <div className={styles.userModalTitle}>
@@ -216,11 +223,15 @@ function Notification() {
                     {modalData?.attributes?.aboutOwner}
                   </p>
                 </div>
-                <div>
-                  <Button className={styles.modalBtn}>Print</Button>
-                  <Button className={styles.modalBtn1}>Download</Button>
-                </div>
               </div>
+            </div>
+            <div>
+              <Button onClick={handlePrint} className={styles.modalBtn}>
+                Print
+              </Button>
+              <Button onClick={handlePrint} className={styles.modalBtn1}>
+                Download
+              </Button>
             </div>
           </Modal>
         </>
@@ -233,7 +244,7 @@ function Notification() {
             centered
             footer={[]}
           >
-            <div className={styles.modalContainer}>
+            <div ref={componentRef} className={styles.modalContainer}>
               <h1 style={{ fontSize: "30px" }}>
                 Booking Id: #{modalData?.attributes?.bookingId}
               </h1>
@@ -303,11 +314,15 @@ function Notification() {
                     Owner Contact: {modalData?.attributes?.hostId?.phoneNumber}
                   </p>
                 </div>
-                <div>
-                  <Button className={styles.modalBtn}>Print</Button>
-                  <Button className={styles.modalBtn1}>Download</Button>
-                </div>
               </div>
+            </div>
+            <div>
+              <Button onClick={handlePrint} className={styles.modalBtn}>
+                Print
+              </Button>
+              <Button onClick={handlePrint} className={styles.modalBtn1}>
+                Download
+              </Button>
             </div>
           </Modal>
         </>

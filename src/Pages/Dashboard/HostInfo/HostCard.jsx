@@ -2,8 +2,15 @@ import { Button, Modal } from "antd";
 import React, { useState } from "react";
 import styles from "./Host.module.css";
 import { useTranslation } from "react-i18next";
+import { useReactToPrint } from "react-to-print";
+import { useRef } from "react";
 
 function HostCard({ data }) {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    pageStyle: "",
+  });
   const [t, i18n] = useTranslation("global");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
@@ -79,7 +86,7 @@ function HostCard({ data }) {
       </div>
 
       <Modal open={isModalOpen} onCancel={handleCancel} centered footer={[]}>
-        <div className={styles.modalContainer}>
+        <div ref={componentRef} className={styles.modalContainer}>
           <h1> {t("host.modalInfo")}</h1>
           <hr />
           <div className={styles.userModalTitle}>
@@ -120,14 +127,15 @@ function HostCard({ data }) {
                 {t("host.address")}: {data.address}
               </p>
             </div>
-            <div>
-              <Button className={styles.modalBtn}>{t("user.printBtn")}</Button>
-              <Button className={styles.modalBtn1}>
-                {" "}
-                {t("user.downloadBtn")}
-              </Button>
-            </div>
           </div>
+        </div>
+        <div>
+          <Button onClick={handlePrint} className={styles.modalBtn}>
+            {t("user.printBtn")}
+          </Button>
+          <Button onClick={handlePrint} className={styles.modalBtn1}>
+            {t("user.downloadBtn")}
+          </Button>
         </div>
       </Modal>
     </div>

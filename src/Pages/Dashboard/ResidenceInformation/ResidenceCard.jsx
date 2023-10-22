@@ -1,10 +1,17 @@
 import { Button, Modal } from "antd";
 import styles from "./ResidenceInformation.module.css";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { StarFilled } from "@ant-design/icons";
+import { useReactToPrint } from "react-to-print";
 
 function ResidenceCard({ data }) {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    pageStyle: "",
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -56,7 +63,7 @@ function ResidenceCard({ data }) {
         centered
         footer={[]}
       >
-        <div className={styles.modalContainer}>
+        <div ref={componentRef} className={styles.modalContainer}>
           <h1>Residence information</h1>
           <hr />
           <div className={styles.userModalTitle}>
@@ -112,11 +119,15 @@ function ResidenceCard({ data }) {
                 {data?.aboutOwner}
               </p>
             </div>
-            <div>
-              <Button className={styles.modalBtn}>Print</Button>
-              <Button className={styles.modalBtn1}>Download</Button>
-            </div>
           </div>
+        </div>
+        <div>
+          <Button onClick={handlePrint} className={styles.modalBtn}>
+            Print
+          </Button>
+          <Button onClick={handlePrint} className={styles.modalBtn1}>
+            Download
+          </Button>
         </div>
       </Modal>
     </div>

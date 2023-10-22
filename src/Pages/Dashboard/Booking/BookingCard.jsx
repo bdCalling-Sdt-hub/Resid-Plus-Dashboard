@@ -1,11 +1,17 @@
 import { Button, Modal } from "antd";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { StarFilled } from "@ant-design/icons";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import styles from "./Booking.module.css";
 import baseAxios from "../../../../Config";
+import { useReactToPrint } from "react-to-print";
 
 const BookingCard = ({ data }) => {
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+    pageStyle: "",
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   // console.log(data);
   const showModal = () => {
@@ -63,7 +69,7 @@ const BookingCard = ({ data }) => {
         centered
         footer={[]}
       >
-        <div className={styles.modalContainer}>
+        <div ref={componentRef} className={styles.modalContainer}>
           <h1 style={{ fontSize: "30px" }}>Booking Id: #{data?.bookingId}</h1>
           <p style={{ paddingBottom: "10px", color: "#5A5A5A" }}>
             See all information about Booking ID: #{data?.bookingId}
@@ -121,11 +127,15 @@ const BookingCard = ({ data }) => {
               <p>Owner Name: {data?.hostId?.fullName}</p>
               <p>Owner Contact: {data?.hostId?.phoneNumber}</p>
             </div>
-            <div>
-              <Button className={styles.modalBtn}>Print</Button>
-              <Button className={styles.modalBtn1}>Download</Button>
-            </div>
           </div>
+        </div>
+        <div>
+          <Button onClick={handlePrint} className={styles.modalBtn}>
+            Print
+          </Button>
+          <Button onClick={handlePrint} className={styles.modalBtn1}>
+            Download
+          </Button>
         </div>
       </Modal>
     </div>
