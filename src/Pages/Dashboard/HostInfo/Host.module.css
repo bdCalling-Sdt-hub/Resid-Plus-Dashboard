@@ -11,6 +11,43 @@
     background: var(--Black-BG,
             linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
 }
+.cardBtn {
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background: var(--Black-BG,
+            linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+}
+.bannedBtn {
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background:red;
+}
+.suspendedBtn {
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background: #d9534f;
+}
 
 .modalBtn {
     margin-top: 10px;

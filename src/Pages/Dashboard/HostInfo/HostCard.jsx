@@ -80,9 +80,14 @@ function HostCard({ data }) {
             {t("host.address")}: {data.address}
           </p>
         </div>
-        <Button onClick={showModal} className={styles.searchBtn}>
-          {t("host.viewDetails")}
-        </Button>
+        <div style={{ display: "flex", columnGap: "10px" }}>
+          {" "}
+          <Button onClick={showModal} className={styles.cardBtn}>
+            {t("host.viewDetails")}
+          </Button>
+          <Button className={styles.suspendedBtn}>Suspended</Button>
+          <Button className={styles.bannedBtn}>Banned</Button>
+        </div>
       </div>
 
       <Modal open={isModalOpen} onCancel={handleCancel} centered footer={[]}>

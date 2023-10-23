@@ -16,7 +16,7 @@ export const HostInformationData = createAsyncThunk(
   async (value, thunkAPI) => {
     try {
       let response = await baseAxios.get(
-        `/api/users?userType=host&limit=5&page=${value.page}&search=${value.search}`,
+        `/api/users?userType=host&limit=5&page=${value.page}&search=${value.search}&requestType=accepted`,
         {
           headers: {
             "Content-Type": "application/json",

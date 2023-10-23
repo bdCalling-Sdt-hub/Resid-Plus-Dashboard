@@ -125,6 +125,7 @@ const Booking = () => {
                     fontWeight: "700",
                     letterSpacing: ".2rem",
                     marginBottom: "15px",
+                    fontFamily: "Open Sans !important"
                   }}
                 >
                   {status?.completed}
