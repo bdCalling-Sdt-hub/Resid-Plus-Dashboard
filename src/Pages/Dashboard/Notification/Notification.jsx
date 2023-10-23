@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { NotificationsData } from "../../../ReduxSlices/NotificationsSlice";
 import SingleNotification from "./SingleNotification";
 import baseAxios from "../../../../Config";
-import { getAdminNotification } from "../../../lib/Notification";
 import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
 import styles from "./Notification.module.css";
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -51,11 +50,7 @@ function Notification() {
   const [notificationsDetails, setNotificationsDetails] = useState([]);
   const [notifications, setNotifications] = useState([]);
 
-  useEffect(() => {
-    getAdminNotification().then((res) => {
-      console.log(res);
-    });
-  }, []);
+
 
   console.log(notifications);
 
