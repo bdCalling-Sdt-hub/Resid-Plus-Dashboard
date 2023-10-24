@@ -2,8 +2,7 @@
 import { CarOutlined, MenuOutlined, SettingOutlined } from "@ant-design/icons";
 import { Badge, Button, Dropdown, Layout, Menu, Select, theme } from "antd";
 import { Divider } from "antd";
-import { GiReceiveMoney } from "react-icons/gi";
-import { MdCarRental, MdPayment, MdPeopleOutline } from "react-icons/md";
+import { MdPeopleOutline } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { BiBookmarkAltPlus } from "react-icons/bi";
 import { GoPeople } from "./../../../node_modules/react-icons/go/index.esm";
@@ -13,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link, Outlet } from "react-router-dom";
-import rentiLogo from "../../Images/resid-logo.png";
+import residLogo from "../../Images/resid-logo.png";
 import Styles from "./Dashboard.module.css";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +38,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Connect to server using socket.io-client
-    var socket = io("http://134.209.188.175:9000");
+    var socket = io("http://192.168.10.18:9005");
     socket.on("connect", () => {
       // Emit events or listen for events here
       socket.on("admin-notification", (data) => {
@@ -48,9 +47,8 @@ const Dashboard = () => {
       });
     });
     dispatch(NotificationsData());
-    socket.off("admin-notification", (data));
+    socket.off("admin-notification", data);
   }, []);
-
 
   const data = notifications?.allNotification
     ? notifications?.allNotification
@@ -85,17 +83,10 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
-
-  // useEffect(() => {
-   
-  // }, []);
-
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   const [t, i18n] = useTranslation("global");
-
 
   const handleSelectLanguage = (value) => {
     setSelectedLanguage(value);
@@ -115,7 +106,6 @@ const Dashboard = () => {
       confirmButtonText: "Yes",
       denyButtonText: `No`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         localStorage.removeItem("token");
         localStorage.removeItem("yourInfo");
@@ -154,32 +144,32 @@ const Dashboard = () => {
     return {
       key: index,
       label: (
-          <div
-            onClick={(e) => notificationUpdateHandler(item._id)}
-            className={
-              item?.viewStatus ? Styles.everyNotify : Styles.everyNotifyUnView
-            }
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <img
-              style={{
-                backgroundColor: "#d9cffb",
-                borderRadius: "100%",
-                padding: "5px",
-                marginRight: "15px",
-              }}
-              width="30"
-              height="30"
-              src={item?.image?.publicFileUrl}
-              alt="person-male--v2"
-            />
-            <div className="" style={{ marginTop: "" }}>
-              <p>{item?.message}</p>
-              <span style={{ color: "#d2d2d2" }}>
-                {getTimeAgo(item.createdAt)}
-              </span>
-            </div>
+        <div
+          onClick={(e) => notificationUpdateHandler(item._id)}
+          className={
+            item?.viewStatus ? Styles.everyNotify : Styles.everyNotifyUnView
+          }
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <img
+            style={{
+              backgroundColor: "#d9cffb",
+              borderRadius: "100%",
+              padding: "5px",
+              marginRight: "15px",
+            }}
+            width="30"
+            height="30"
+            src={item?.image?.publicFileUrl}
+            alt="person-male--v2"
+          />
+          <div className="" style={{ marginTop: "" }}>
+            <p>{item?.message}</p>
+            <span style={{ color: "#d2d2d2" }}>
+              {getTimeAgo(item.createdAt)}
+            </span>
           </div>
+        </div>
       ),
     };
   });
@@ -274,7 +264,6 @@ const Dashboard = () => {
         >
           Notifications
         </h2>
-        {/* <span style={{ fontWeight: 'bold', color: '#000' }}>Notifications</span> */}
       </Menu.Item>
       {items?.map((item) => (
         <Menu.Item key={item.key}>{item.label}</Menu.Item>
@@ -317,6 +306,7 @@ const Dashboard = () => {
       >
         <div className="demo-logo-vertical" />
         <div
+          onClick={() => navigate("/")}
           className="logo"
           style={{
             display: "flex",
@@ -324,10 +314,11 @@ const Dashboard = () => {
             alignItems: "center",
             marginTop: "60px",
             marginBottom: "40px",
+            cursor: "pointer",
           }}
         >
           <img
-            src={rentiLogo}
+            src={residLogo}
             height={collapsed ? "40px" : "76px"}
             width={collapsed ? "40px" : "66px"}
           />
@@ -349,7 +340,6 @@ const Dashboard = () => {
           >
             <Link to="/" style={{ fontSize: "16px" }}>
               {t("dashboard")}
-              {/*  */}
             </Link>
           </Menu.Item>
 
@@ -429,7 +419,6 @@ const Dashboard = () => {
             height: "80px",
             zIndex: 1,
             padding: 0,
-            // background: colorBgContainer,
             background: "#FDFBFB",
             display: "flex",
             justifyContent: "space-between",
@@ -465,6 +454,10 @@ const Dashboard = () => {
               ) : location.pathname === "/setting/personal-information" ? (
                 "Settings"
               ) : location.pathname === "/setting/login-activity" ? (
+                "Settings"
+              ) : location.pathname === "/setting/suspended-list" ? (
+                "Settings"
+              ) : location.pathname === "/setting/banned-list" ? (
                 "Settings"
               ) : location.pathname === "/setting/privacy-policy" ? (
                 "Settings"

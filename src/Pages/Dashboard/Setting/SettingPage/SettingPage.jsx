@@ -6,6 +6,8 @@ import LoginActivity from "../../../../Components/Setting/LoginActivity/LoginAct
 import PersonalInfo from "../../../../Components/Setting/PersonalInfo/PersonalInfo";
 import PrivacyPolicy from "../../../../Components/Setting/PrivacyPolicy/PrivacyPolicy";
 import TermsAndCondition from "../../../../Components/Setting/TermsAndCondition/TermsAndCondition";
+import SuspendedList from "../../../../Components/Setting/SuspendedList/SuspendedList";
+import BannedList from "../../../../Components/Setting/BannedList/BannedList";
 
 const SettingPage = () => {
   const params = useParams();
@@ -41,6 +43,8 @@ const SettingPage = () => {
         {text === "login activity" && <LoginActivity />}
         {text === "privacy policy" && <PrivacyPolicy />}
         {text === "terms condition" && <TermsAndCondition />}
+        {text === "suspended list" && <SuspendedList />}
+        {text === "banned list" && <BannedList />}
         {text === "about us" && <About />}
       </div>
     </>
