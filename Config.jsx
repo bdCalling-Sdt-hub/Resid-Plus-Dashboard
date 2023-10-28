@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseAxios = axios.create({
 
-  baseURL: "http://192.168.10.18:3005",
+  baseURL: "http://138.68.184.31:3000",
   timeout: 10000,
   headers: { 'X-Custom-Header': 'foobar' }
 });
