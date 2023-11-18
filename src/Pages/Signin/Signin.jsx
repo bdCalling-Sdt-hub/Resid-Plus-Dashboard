@@ -10,8 +10,7 @@ import Swal from "sweetalert2";
 const Signin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLoading, isError, isSuccess, userData, accessToken, message } =
-    useSelector((state) => state.UserData);
+  const { isLoading, isError, isSuccess, userData, accessToken, message } = useSelector((state) => state.UserData);
 
   useEffect(() => {
     if (isError == true) {
@@ -27,7 +26,7 @@ const Signin = () => {
       window.location.href = "/";
     }
 
-    dispatch(reset());
+    //dispatch(reset());
   }, [isLoading, isError, isSuccess, dispatch, navigate]);
 
   const onFinish = (values) => {
