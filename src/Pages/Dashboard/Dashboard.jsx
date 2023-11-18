@@ -324,103 +324,149 @@ const Dashboard = () => {
           />
         </div>
 
-        <Menu
-          style={{
-            padding: collapsed ? "0px" : "20px",
-            border: "none",
-            backgroundColor: "#001529",
-            color: "white",
-          }}
-          mode="inline"
-          defaultSelectedKeys={["1"]}
-        >
-          <Menu.Item
-            key="1"
-            icon={<RxDashboard style={{ fontSize: "14px" }} />}
-          >
-            <Link to="/" style={{ fontSize: "16px" }}>
-              {t("dashboard")}
-            </Link>
-          </Menu.Item>
+        {userFromLocalStorage.role === "super-admin" ? (
+          <>
+            <Menu
+              style={{
+                padding: collapsed ? "0px" : "20px",
+                border: "none",
+                backgroundColor: "#001529",
+                color: "white",
+              }}
+              mode="inline"
+              defaultSelectedKeys={["1"]}
+            >
+              <Menu.Item
+                key="1"
+                icon={<RxDashboard style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/" style={{ fontSize: "16px" }}>
+                  {t("dashboard")}
+                </Link>
+              </Menu.Item>
 
-          <Menu.Item
-            key="31"
-            icon={<BiBookmarkAltPlus style={{ fontSize: "14px" }} />}
-          >
-            <Link to="/booking" style={{ fontSize: "16px" }}>
-              {t("booking")}
-            </Link>
-          </Menu.Item>
+              <Menu.Item
+                key="31"
+                icon={<BiBookmarkAltPlus style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/booking" style={{ fontSize: "16px" }}>
+                  {t("booking")}
+                </Link>
+              </Menu.Item>
 
-          <Divider />
+              <Divider />
 
-          <Menu.Item
-            key="100"
-            icon={<MdPeopleOutline style={{ fontSize: "14px" }} />}
-          >
-            <Link to="/admin-info" style={{ fontSize: "16px" }}>
-              {t("adminInfo")}
-            </Link>
-          </Menu.Item>
+              <Menu.Item
+                key="100"
+                icon={<MdPeopleOutline style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/admin-info" style={{ fontSize: "16px" }}>
+                  {t("adminInfo")}
+                </Link>
+              </Menu.Item>
 
-          <Menu.Item
-            key="5"
-            icon={<MdPeopleOutline style={{ fontSize: "14px" }} />}
-          >
-            <Link to="/user-info" style={{ fontSize: "16px" }}>
-              {t("userInfo")}
-            </Link>
-          </Menu.Item>
+              <Menu.Item
+                key="5"
+                icon={<MdPeopleOutline style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/user-info" style={{ fontSize: "16px" }}>
+                  {t("userInfo")}
+                </Link>
+              </Menu.Item>
 
-          <Menu.Item key="39" icon={<GoPeople style={{ fontSize: "14px" }} />}>
-            <Link to="/host-info" style={{ fontSize: "16px" }}>
-              {t("hostInfo")}
-            </Link>
-          </Menu.Item>
+              <Menu.Item
+                key="39"
+                icon={<GoPeople style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/host-info" style={{ fontSize: "16px" }}>
+                  {t("hostInfo")}
+                </Link>
+              </Menu.Item>
 
-          <Menu.Item
-            key="7"
-            icon={<CarOutlined style={{ fontSize: "14px" }} />}
-          >
-            <Link to="/residence-info" style={{ fontSize: "16px" }}>
-              {t("residenceInfo")}
-            </Link>
-          </Menu.Item>
+              <Menu.Item
+                key="7"
+                icon={<CarOutlined style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/residence-info" style={{ fontSize: "16px" }}>
+                  {t("residenceInfo")}
+                </Link>
+              </Menu.Item>
 
-          <Divider />
+              <Divider />
 
-          <SubMenu
-            style={{ fontSize: "16px", color: "white" }}
-            key="8"
-            icon={
-              <RiUserSearchLine style={{ fontSize: "14px", color: "white" }} />
-            }
-            title={t("kyc.title")}
-          >
-            <Menu.Item key="41">
-              <Link to="/user-kyc">{t("kyc.subTitle1")}</Link>
-            </Menu.Item>
-            <Menu.Item key="42">
-              <Link to="/host-kyc">{t("kyc.subTitle2")}</Link>
-            </Menu.Item>
-            <Menu.Item key="43">
-              <Link to="/residence-kyc">{t("kyc.subTitle3")}</Link>
-            </Menu.Item>
-          </SubMenu>
+              <SubMenu
+                style={{ fontSize: "16px", color: "white" }}
+                key="8"
+                icon={
+                  <RiUserSearchLine
+                    style={{ fontSize: "14px", color: "white" }}
+                  />
+                }
+                title={t("kyc.title")}
+              >
+                <Menu.Item key="41">
+                  <Link to="/user-kyc">{t("kyc.subTitle1")}</Link>
+                </Menu.Item>
+                <Menu.Item key="42">
+                  <Link to="/host-kyc">{t("kyc.subTitle2")}</Link>
+                </Menu.Item>
+                <Menu.Item key="43">
+                  <Link to="/residence-kyc">{t("kyc.subTitle3")}</Link>
+                </Menu.Item>
+              </SubMenu>
 
-          <Menu.Item
-            key="9"
-            icon={
-              <SettingOutlined style={{ fontSize: "14px", color: "white" }} />
-            }
-          >
-            <Link to="/setting" style={{ fontSize: "16px", color: "white" }}>
-              {t("setting.title")}
-            </Link>
-          </Menu.Item>
-        </Menu>
+              <Menu.Item
+                key="9"
+                icon={
+                  <SettingOutlined
+                    style={{ fontSize: "14px", color: "white" }}
+                  />
+                }
+              >
+                <Link
+                  to="/setting"
+                  style={{ fontSize: "16px", color: "white" }}
+                >
+                  {t("setting.title")}
+                </Link>
+              </Menu.Item>
+            </Menu>{" "}
+          </>
+        ) : (
+          <>
+            <Menu
+              style={{
+                padding: collapsed ? "0px" : "20px",
+                border: "none",
+                backgroundColor: "#001529",
+                color: "white",
+              }}
+              mode="inline"
+              defaultSelectedKeys={["1"]}
+            >
+              <Divider />
+              <SubMenu
+                style={{ fontSize: "16px", color: "white" }}
+                key="1"
+                icon={<CarOutlined style={{ fontSize: "14px" }} />}
+                title={t("residenceInfo")}
+              >
+                <Menu.Item key="41">
+                  <Link to="/pending">Pending</Link>
+                </Menu.Item>
+                <Menu.Item key="42">
+                  <Link to="/re-upload">ReUpload</Link>
+                </Menu.Item>
+                <Menu.Item key="43">
+                  <Link to="/accepted">Accepted</Link>
+                </Menu.Item>
+              </SubMenu>
+            </Menu>
+          </>
+        )}
       </Sider>
       <Layout>
+        {/* Header dashboard */}
         <Header
           style={{
             position: "fixed",
@@ -447,45 +493,65 @@ const Dashboard = () => {
                 marginRight: "10px",
               }}
             />
-            <h2>
-              {location.pathname === "/" ? (
-                "Dashboard"
-              ) : location.pathname === "/booking" ? (
-                "Bookings"
-              ) : location.pathname === "/user-info" ? (
-                "User Information"
-              ) : location.pathname === "/host-info" ? (
-                "Host Information"
-              ) : location.pathname === "/residence-info" ? (
-                "Residence"
-              ) : location.pathname === "/setting" ? (
-                "Settings"
-              ) : location.pathname === "/setting/personal-information" ? (
-                "Settings"
-              ) : location.pathname === "/setting/login-activity" ? (
-                "Settings"
-              ) : location.pathname === "/setting/suspended-list" ? (
-                "Settings"
-              ) : location.pathname === "/setting/banned-list" ? (
-                "Settings"
-              ) : location.pathname === "/setting/privacy-policy" ? (
-                "Settings"
-              ) : location.pathname === "/setting/terms-condition" ? (
-                "Settings"
-              ) : location.pathname === "/setting/about-us" ? (
-                "Settings"
-              ) : location.pathname === "/user-kyc" ? (
-                "KYC Form"
-              ) : location.pathname === "/host-kyc" ? (
-                "KYC Form"
-              ) : location.pathname === "/residence-kyc" ? (
-                "KYC Form"
-              ) : location.pathname === "/notification" ? (
-                "Notification"
-              ) : (
-                <></>
-              )}
-            </h2>
+            {userFromLocalStorage.role === "super-admin" ? (
+              <>
+                <h2>
+                  {location.pathname === "/" ? (
+                    "Dashboard"
+                  ) : location.pathname === "/booking" ? (
+                    "Bookings"
+                  ) : location.pathname === "/user-info" ? (
+                    "User Information"
+                  ) : location.pathname === "/host-info" ? (
+                    "Host Information"
+                  ) : location.pathname === "/residence-info" ? (
+                    "Residence"
+                  ) : location.pathname === "/setting" ? (
+                    "Settings"
+                  ) : location.pathname === "/setting/personal-information" ? (
+                    "Settings"
+                  ) : location.pathname === "/setting/login-activity" ? (
+                    "Settings"
+                  ) : location.pathname === "/setting/suspended-list" ? (
+                    "Settings"
+                  ) : location.pathname === "/setting/banned-list" ? (
+                    "Settings"
+                  ) : location.pathname === "/setting/privacy-policy" ? (
+                    "Settings"
+                  ) : location.pathname === "/setting/terms-condition" ? (
+                    "Settings"
+                  ) : location.pathname === "/setting/about-us" ? (
+                    "Settings"
+                  ) : location.pathname === "/user-kyc" ? (
+                    "KYC Form"
+                  ) : location.pathname === "/host-kyc" ? (
+                    "KYC Form"
+                  ) : location.pathname === "/residence-kyc" ? (
+                    "KYC Form"
+                  ) : location.pathname === "/notification" ? (
+                    "Notification"
+                  ) : (
+                    <></>
+                  )}
+                </h2>
+              </>
+            ) : (
+              <>
+                <h2>
+                  {location.pathname === "/adminResidence" ? (
+                    "Residence"
+                  ) : location.pathname === "/pending" ? (
+                    "Pending Residence"
+                  ) : location.pathname === "/re-upload" ? (
+                    "Re Upload Residence"
+                  ) : location.pathname === "/accepted" ? (
+                    "Accepted Residence"
+                  ) : (
+                    <></>
+                  )}
+                </h2>
+              </>
+            )}
           </div>
 
           <div
@@ -577,6 +643,8 @@ const Dashboard = () => {
             </div>
           </div>
         </Header>
+
+        {/* main contain */}
         <Content
           style={{
             marginTop: "80px",

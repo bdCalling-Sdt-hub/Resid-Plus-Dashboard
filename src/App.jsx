@@ -20,6 +20,11 @@ import SettingPage from "./Pages/Dashboard/Setting/SettingPage/SettingPage";
 import UserKyc from "./Pages/Dashboard/UserKyc/UserKyc";
 import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
 import ResidenceKYC from "./Pages/Dashboard/ResidenceKYC/ResidenceKYC";
+import AdminRoute from "./Components/PrivateRoute/AdminRoute";
+import AdminResidence from "./Pages/Dashboard/AdminResidence/AdminResidence";
+import Pending from "./Pages/Dashboard/AdminResidence/Pending";
+import ReUpload from "./Pages/Dashboard/AdminResidence/ReUpload";
+import Accepted from "./Pages/Dashboard/AdminResidence/Accepted";
 
 function App() {
   return (
@@ -38,20 +43,93 @@ function App() {
             >
               <Route path="/" element={<DashboardHome />} />
               <Route path="/notification" element={<Notification />} />
-              <Route path="/booking" element={<Booking />} />
-              <Route path="/host-info" element={<HostInfo />} />
-              <Route path="/user-info" element={<UserInfo />} />
-              <Route path="/admin-info" element={<AdminInfo />} />
-              <Route path="/add-admin" element={<AddAdmin />} />
+              <Route
+                path="/booking"
+                element={
+                  <AdminRoute>
+                    <Booking />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/host-info"
+                element={
+                  <AdminRoute>
+                    <HostInfo />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/user-info"
+                element={
+                  <AdminRoute>
+                    <UserInfo />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/admin-info"
+                element={
+                  <AdminRoute>
+                    <AdminInfo />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/add-admin"
+                element={
+                  <AdminRoute>
+                    <AddAdmin />
+                  </AdminRoute>
+                }
+              />
               <Route
                 path="/residence-info"
-                element={<ResidenceInformation />}
+                element={
+                  <AdminRoute>
+                    <ResidenceInformation />
+                  </AdminRoute>
+                }
               />
-              <Route path="/host-kyc" element={<HostKyc />} />
-              <Route path="/user-kyc" element={<UserKyc />} />
-              <Route path="/residence-kyc" element={<ResidenceKYC />} />
-              <Route path="/setting" element={<Setting />}></Route>
+              <Route
+                path="/host-kyc"
+                element={
+                  <AdminRoute>
+                    <HostKyc />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/user-kyc"
+                element={
+                  <AdminRoute>
+                    <UserKyc />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/residence-kyc"
+                element={
+                  <AdminRoute>
+                    <ResidenceKYC />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/setting"
+                element={
+                  <AdminRoute>
+                    <Setting />{" "}
+                  </AdminRoute>
+                }
+              ></Route>
               <Route path="/setting/:dynamic" element={<SettingPage />} />
+              {/* Here Start Admin part */}
+              <Route path="/adminResidence" element={<AdminResidence />}></Route>
+              <Route path="/pending" element={<Pending />}></Route>
+              <Route path="/re-upload" element={<ReUpload />}></Route>
+              <Route path="/accepted" element={<Accepted />}></Route>
+
             </Route>
 
             <Route path="/signin" element={<Signin />} />
