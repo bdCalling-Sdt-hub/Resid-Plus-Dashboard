@@ -39,15 +39,28 @@ const Dashboard = () => {
   useEffect(() => {
     // Connect to server using socket.io-client
     var socket = io("http://192.168.10.18:3000");
-    socket.on("connect", () => {
-      // Emit events or listen for events here
-      socket.on("admin-notification", (data) => {
-        console.log(data);
-        setNotifications(data);
+
+    if (userFromLocalStorage.role === "super-admin") {
+      socket.on("connect", () => {
+        // Emit events or listen for events here
+        socket.on("admin-notification", (data) => {
+          console.log(data);
+          setNotifications(data);
+        });
       });
-    });
-    dispatch(NotificationsData());
-    socket.off("admin-notification", data);
+      dispatch(NotificationsData());
+      socket.off("admin-notification", data);
+    } else {
+      socket.on("connect", () => {
+        // Emit events or listen for events here
+        socket.on("super-admin-notification", (data) => {
+          console.log(data);
+          setNotifications(data);
+        });
+      });
+      dispatch(NotificationsData());
+      socket.off("super-admin-notification", data);
+    }
   }, []);
 
   const data = notifications?.allNotification
@@ -305,24 +318,46 @@ const Dashboard = () => {
         }}
       >
         <div className="demo-logo-vertical" />
-        <div
-          onClick={() => navigate("/")}
-          className="logo"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "60px",
-            marginBottom: "40px",
-            cursor: "pointer",
-          }}
-        >
-          <img
-            src={residLogo}
-            height={collapsed ? "40px" : "76px"}
-            width={collapsed ? "40px" : "66px"}
-          />
-        </div>
+
+        {userFromLocalStorage.role === "super-admin" ? (
+          <div
+            onClick={() => navigate("/")}
+            className="logo"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "60px",
+              marginBottom: "40px",
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src={residLogo}
+              height={collapsed ? "40px" : "76px"}
+              width={collapsed ? "40px" : "66px"}
+            />
+          </div>
+        ) : (
+          <div
+            onClick={() => navigate("/adminResidence")}
+            className="logo"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "60px",
+              marginBottom: "40px",
+              cursor: "pointer",
+            }}
+          >
+            <img
+              src={residLogo}
+              height={collapsed ? "40px" : "76px"}
+              width={collapsed ? "40px" : "66px"}
+            />
+          </div>
+        )}
 
         {userFromLocalStorage.role === "super-admin" ? (
           <>
@@ -445,11 +480,20 @@ const Dashboard = () => {
               defaultSelectedKeys={["1"]}
             >
               <Divider />
+              <Menu.Item
+                key="1"
+                icon={<RxDashboard style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/adminResidence" style={{ fontSize: "16px" }}>
+                  Residence List
+                </Link>
+              </Menu.Item>
+
               <SubMenu
                 style={{ fontSize: "16px", color: "white" }}
-                key="1"
+                key="2"
                 icon={<CarOutlined style={{ fontSize: "14px" }} />}
-                title={t("residenceInfo")}
+                title="Residence Status"
               >
                 <Menu.Item key="41">
                   <Link to="/pending">Pending</Link>

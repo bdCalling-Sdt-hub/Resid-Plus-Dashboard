@@ -26,7 +26,11 @@ import Pending from "./Pages/Dashboard/AdminResidence/Pending";
 import ReUpload from "./Pages/Dashboard/AdminResidence/ReUpload";
 import Accepted from "./Pages/Dashboard/AdminResidence/Accepted";
 
+
 function App() {
+  
+
+
   return (
     <>
       <div className="maincontainer">
