@@ -38,7 +38,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Connect to server using socket.io-client
-    var socket = io("http://138.68.184.31:3000");
+    var socket = io("http://192.168.10.18:3000");
     socket.on("connect", () => {
       // Emit events or listen for events here
       socket.on("admin-notification", (data) => {
@@ -353,6 +353,15 @@ const Dashboard = () => {
           </Menu.Item>
 
           <Divider />
+
+          <Menu.Item
+            key="100"
+            icon={<MdPeopleOutline style={{ fontSize: "14px" }} />}
+          >
+            <Link to="/admin-info" style={{ fontSize: "16px" }}>
+              {t("adminInfo")}
+            </Link>
+          </Menu.Item>
 
           <Menu.Item
             key="5"

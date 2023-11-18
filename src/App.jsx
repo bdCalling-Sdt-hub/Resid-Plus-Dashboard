@@ -6,6 +6,8 @@ import Booking from "./Pages/Dashboard/Booking/Booking";
 import HostInfo from "./Pages/Dashboard/HostInfo/HostInfo";
 import Notification from "./Pages/Dashboard/Notification/Notification";
 import UserInfo from "./Pages/Dashboard/UserInfo/UserInfo";
+import AdminInfo from "./Pages/Dashboard/AdminSection/AdminInfo";
+import AddAdmin from "./Pages/Dashboard/AdminSection/AddAdmin";
 import Otp from "./Pages/Otp/Otp";
 import Signin from "./Pages/Signin/Signin";
 import UpdatePass from "./Pages/UpdatePass/UpdatePass";
@@ -39,6 +41,8 @@ function App() {
               <Route path="/booking" element={<Booking />} />
               <Route path="/host-info" element={<HostInfo />} />
               <Route path="/user-info" element={<UserInfo />} />
+              <Route path="/admin-info" element={<AdminInfo />} />
+              <Route path="/add-admin" element={<AddAdmin />} />
               <Route
                 path="/residence-info"
                 element={<ResidenceInformation />}

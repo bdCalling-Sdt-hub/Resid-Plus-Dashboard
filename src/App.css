@@ -59,6 +59,19 @@ p{
   background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
 }
 
+.btn-admin{
+  color: var(--White, #fff);
+  font-family: Raleway;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 16px 70px;
+  border-radius: 8px;
+  height: 100%;
+  background: linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%);
+}
+
 .btn:hover {
   color: white !important;
 }

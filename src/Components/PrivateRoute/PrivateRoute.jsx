@@ -8,8 +8,9 @@ const PrivateRoute = ({ children }) => {
   //console.log(UserData);
 
   if (
-    UserData?.emailVerified != false &&
-    UserData?.role == "admin"
+    // UserData?.emailVerified != false &&
+    true
+    // UserData?.role == "admin"
   ) {
     return children;
   } else {

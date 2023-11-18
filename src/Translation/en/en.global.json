@@ -15,6 +15,7 @@
   },
   "residenceInfo": "Residence",
   "userInfo": "User Information",
+  "adminInfo": "Admin Information",
   "hostInfo": "Host Information",
   "user": {
     "search": "Search User",

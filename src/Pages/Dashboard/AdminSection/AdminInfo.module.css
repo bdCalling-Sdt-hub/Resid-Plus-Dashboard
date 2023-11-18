@@ -1,0 +1,212 @@
+.searchBtn {
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background: var(--Black-BG,
+            linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+}
+.cardBtn {
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background: var(--Black-BG,
+            linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+}
+.bannedBtn {
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background:red;
+}
+.suspendedBtn {
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background: #d9534f;
+}
+
+.modalBtn {
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    width: 200px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background: var(--Black-BG,
+            linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+}
+
+.modalBtn1 {
+    margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    width: 200px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    height: 40px;
+    background: var(--Black-BG,
+            linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+}
+
+.cardLogo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+
+}
+
+.CardContainer {
+    display: flex;
+    /* height: 280px; */
+    width: 100%;
+    flex-direction: row;
+    border-top: 4px solid #E2E2E2;
+    padding: 30px;
+    background: linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%);
+}
+
+
+.cardDescription h1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cardDescription {
+    /* margin-top: 20px; */
+    margin-left: 20px;
+}
+
+.cardDescription p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #787878;
+    margin: 15px 0px;
+
+}
+
+.userDetails p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #787878;
+    margin: 15px 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.modalImage {
+    width: 183px;
+    height: 183px;
+}
+
+.userModalTitle {
+    display: flex;
+    margin: 24px 0px;
+
+}
+
+.userTitle {
+    margin-left: 10px;
+}
+
+.modalContainer h1 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.UserCardContainer {
+    border-left: 4px solid #E2E2E2;
+    border-right: 4px solid #E2E2E2;
+    width: 100%;
+    border-radius: 10px;
+    background-color: linear-gradient(180deg, #FDFBFB 0%, #FFF 0.01%, #F4F4F4 100%);
+}
+
+.UserCardContainer:last-child {
+    margin-bottom: 20px;
+}
+
+.UserCardContainer:first-child {
+    border-bottom: 4px solid #E2E2E2;
+}
+.Pagination{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-top: 4px solid #E2E2E2;
+}
+.SearchOption{
+    display: flex ;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.margeBtn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hostTitle{
+    color: var(--black-black-100, #333);
+    /* Raleway/S B 30 */
+    font-family: Raleway;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-bottom: 35px;
+}
+
+/* Mobile responsive code here */
+@media (max-width: 768px) {
+    .CardContainer {
+        flex-direction: column;
+        height: 400px;
+        border-top: 4px solid #E2E2E2;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .cardLogo {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto;
+        border-radius: 50%;
+        display: flex;
+        margin-bottom: 23px;
+    }
+    .SearchOption{
+        flex-direction: column;
+    }
+}
