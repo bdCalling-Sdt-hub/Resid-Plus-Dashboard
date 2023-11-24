@@ -9,7 +9,7 @@ const BannedList = () => {
   const [banUser, setBanUser] = useState([]);
   console.log(banUser);
   useEffect(() => {
-    baseAxios.get("api/users?userType=host&userAccountStatus=banned", {
+    baseAxios.get("api/users?&userAccountStatus=banned&userType=all", {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,

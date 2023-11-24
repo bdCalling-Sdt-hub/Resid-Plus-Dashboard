@@ -5,18 +5,66 @@ import React, { useState } from "react";
 import { LiaEditSolid } from "react-icons/lia";
 import { PlusOutlined } from "@ant-design/icons";
 const dateFormat = "YYYY-MM-DD";
+import Swal from "sweetalert2";
 
 const { RangePicker } = DatePicker;
 
 const { TextArea } = Input;
 import styles from "./AdminInfo.module.css";
+import baseAxios from "../../../../Config";
 
 function AddAdmin() {
-  const [value, setValue] = useState("");
-  const [role, setRole] = useState("admin"); // Default role is set to "admin"
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const token = localStorage.getItem("token");
 
-  const handleRoleChange = (e) => {
-    setRole(e.target.value);
+
+  const handleAddAdmin = () => {
+    console.log("Add Admin");
+
+    const data = {
+      fullName: fullName,
+      email: email,
+      dateOfBirth: dateOfBirth,
+      phoneNumber: phoneNumber,
+      address: address,
+    };
+
+    baseAxios
+      .post("api/users/add-user", data, {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        // Handle success
+        console.log("User added successfully");
+        Swal.fire({
+          icon: "success",
+          title: response?.data?.message,
+          showConfirmButton: true,
+        });
+        setReload((prev) => prev + 1);
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Failed to add user", error);
+        Swal.fire({
+          icon: "error",
+          title: error?.response?.data?.message,
+          showConfirmButton: true,
+        });
+      });
+
+    setFullName("");
+    setEmail("");
+    setDateOfBirth("");
+    setPhoneNumber("");
+    setAddress("");
   };
 
   return (
@@ -28,6 +76,8 @@ function AddAdmin() {
           <Col span={24}>
             <label htmlFor="">Name</label>
             <Input
+              onChange={(e) => setFullName(e.target.value)}
+              defaultValue={fullName}
               style={{ height: "45px", marginTop: "5px" }}
               placeholder="Enter your name"
             />
@@ -37,6 +87,8 @@ function AddAdmin() {
           <Col span={24}>
             <label htmlFor="">Email</label>
             <Input
+              onChange={(e) => setEmail(e.target.value)}
+              defaultValue={email}
               style={{ height: "45px", marginTop: "5px" }}
               placeholder="Enter your email"
             />
@@ -47,13 +99,18 @@ function AddAdmin() {
           <Col span={12}>
             <label htmlFor="">Date of Birth</label>
             <DatePicker
+              onChange={(date, dateString) => setDateOfBirth(dateString)}
               style={{ height: "45px", width: "100%", marginTop: "5px" }}
               defaultValue={dayjs("2023-08-27", dateFormat)}
             />
           </Col>
           <Col span={12}>
             <label htmlFor="">Phone Number</label>
-            <Input style={{ height: "45px", marginTop: "5px" }} defaultValue={"01646524028"} />
+            <Input
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              defaultValue={phoneNumber}
+              style={{ height: "45px", marginTop: "5px" }}
+            />
           </Col>
         </Row>
         <Row style={{ marginBottom: "15px" }}>
@@ -61,28 +118,26 @@ function AddAdmin() {
             <label htmlFor="">Address</label>
             <TextArea
               style={{ marginTop: "5px" }}
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
+              defaultValue={address}
               placeholder="Enter your address"
               autoSize={{ minRows: 3, maxRows: 5 }}
             />
           </Col>
         </Row>
-
-        {/* Radio Group for Role */}
-        <Row style={{ marginBottom: "15px" }}>
-          <Col span={24}>
-            <label htmlFor="">Role</label>
-            <br/>
-            <Radio.Group onChange={handleRoleChange} value={role}>
-              <Radio value="super-admin">Super-admin</Radio>
-              <Radio value="admin">Admin</Radio>
-            </Radio.Group>
-          </Col>
-        </Row>
         <Row>
           <Col span={24}>
-            <Button type="primary" onClick={''} style={{display:"block",margin:"0 auto", width:"100%",height:"45px", fontSize:"20px"}}>
+            <Button
+              type="primary"
+              onClick={handleAddAdmin}
+              style={{
+                display: "block",
+                margin: "0 auto",
+                width: "100%",
+                height: "45px",
+                fontSize: "20px",
+              }}
+            >
               Submit
             </Button>
           </Col>

@@ -109,7 +109,7 @@ function UserInfo() {
           <Row>
             <div className={styles.UserCardContainer}>
               {data.map((item) => (
-                <UserCard key={item._id} data={item} />
+                <UserCard key={item._id} data={item}  setReload={setReload}/>
               ))}
               <Row className={styles.Pagination}>
                 <Col>

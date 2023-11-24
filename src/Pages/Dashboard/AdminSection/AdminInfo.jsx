@@ -96,9 +96,9 @@ function AdminInfo() {
           </Row>
           <Row>
             <div className={styles.UserCardContainer}>
-              {data.map((item) => (
+              {/* {data.map((item) => (
                 <UserCard key={item._id} data={item} />
-              ))}
+              ))} */}
               <Row className={styles.Pagination}>
                 <Col>
                   <p style={{ color: "#333333" }}>

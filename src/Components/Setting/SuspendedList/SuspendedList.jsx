@@ -11,7 +11,7 @@ const SuspendedList = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    baseAxios.get("api/users?userType=host&userAccountStatus=suspended", {
+    baseAxios.get("api/users?&userAccountStatus=suspended&userType=all", {
         headers: {
           "Content-Type": "application/json",
           authorization: `Bearer ${token}`,
