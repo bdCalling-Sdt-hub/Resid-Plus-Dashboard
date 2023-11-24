@@ -509,7 +509,9 @@ const Dashboard = () => {
           </>
         )}
       </Sider>
-      <Layout>
+      <Layout
+      
+      >
         {/* Header dashboard */}
         <Header
           style={{

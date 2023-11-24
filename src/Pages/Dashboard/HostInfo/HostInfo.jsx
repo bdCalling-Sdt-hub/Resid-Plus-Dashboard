@@ -104,7 +104,7 @@ function HostInfo() {
           <Row>
             <div className={styles.UserCardContainer}>
               {data.map((item) => (
-                <HostCard key={item._id} data={item} />
+                <HostCard setReload={setReload} key={item._id} data={item} />
               ))}
 
               <Row className={styles.Pagination}>

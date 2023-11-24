@@ -1,10 +1,41 @@
-
-
 import { Button, Col } from "antd";
 import React from "react";
 import Swal from "sweetalert2";
+import baseAxios from "../../../../Config";
 
-const BannedCard = () => {
+const BannedCard = ({ user, setReload }) => {
+  const token = localStorage.getItem("token");
+
+  const handleAccept = () => {
+    console.log("accept");
+    baseAxios
+      .patch(
+        `api/users/update-status/${user._id}?requestType=accept`,
+        { status: "accepted" },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        Swal.fire({
+          icon: "success",
+          title: response.data.message,
+          showConfirmButton: true,
+        });
+        setReload((prev) => prev + 1);
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: error.response.data.message,
+          showConfirmButton: true,
+        });
+      });
+  };
+
   const style = {
     cardStyle: {
       background: "#e8e6e6 ",
@@ -22,15 +53,15 @@ const BannedCard = () => {
       <div style={style.cardStyle}>
         <img
           style={{ width: "130px", borderRadius: "50%" }}
-          src="https://i.ibb.co/8cVj49n/alex-suprun-ZHv-M3-XIOHo-E-unsplash-1.jpg"
+          src={user?.image?.publicFileUrl}
           alt=""
         />
-        <h2 style={{ color: "black", marginBottom: "5px" }}>Sahinur silam</h2>
-        <p>ulululu@gmai.com</p>
-        <p style={{ margin: "8px 0" }}>+88454545454521</p>
+        <h2 style={{ color: "black", marginBottom: "5px" }}> {user.fullName}</h2>
+        <p>{user?.email}</p>
+        <p style={{ margin: "8px 0" }}>{user?.phoneNumber}</p>
         <div>
           <Button
-            //   onClick={handleBlockCancel}
+            onClick={handleAccept}
             className={style.cardBtn}
             style={{
               background: "green",

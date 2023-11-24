@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
 
   //console.log(UserData);
 
-  if (UserData?.emailVerified != false && (UserData?.role == "super-admin" || UserData?.role == "admin")) {
+  if (UserData?.emailVerified != false && (UserData?.role == "super-admin")) {
     return children;
   } else {
     return <Navigate to="/signin" />;

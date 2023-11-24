@@ -21,7 +21,7 @@ function Notification() {
     content: () => componentRef.current,
     pageStyle: "",
   });
-  const pageSize = 5;
+  const pageSize = 10;
   const dispatch = useDispatch();
   const userFromLocalStorage = JSON.parse(localStorage.getItem("yourInfo"));
   const data = useSelector((state) => state.NotificationsData.AllNotifications);

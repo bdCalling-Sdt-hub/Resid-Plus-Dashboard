@@ -17,7 +17,7 @@ export const NotificationsData = createAsyncThunk(
     try {
       console.log("slice page", value);
       let response = await baseAxios.get(
-        `/api/notifications?limit=5&page=${value?.page}`,
+        `/api/notifications?limit=10&page=${value?.page}`,
         {
           headers: {
             "Content-Type": "application/json",
