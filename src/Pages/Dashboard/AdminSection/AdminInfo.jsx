@@ -7,19 +7,23 @@ import UserCard from "../UserInfo/UserCard";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { HashLoader } from "react-spinners";
-import { UserInformationData } from "../../../ReduxSlices/UserInformationSlice";
 import ShowingPegination from "../../../Components/ShowingPegination/ShowingPegination";
 import { Link } from "react-router-dom";
+import { AdminInformationData } from "../../../ReduxSlices/AdminInformationSlice";
+import AdminCard from "./AdminCard";
 
 function AdminInfo() {
   const [searchData, setSearchData] = useState("");
   const pageSize = 5;
   const [reload, setReload] = useState(1);
-  const data = useSelector((state) => state.UserInformationData.UserInfoList);
+  const data = useSelector((state) => state.AdminInformationData.AdminInfoList);
+  console.log(data);
+
+
   const dataPagination = useSelector(
-    (state) => state.UserInformationData.pagination
+    (state) => state.AdminInformationData.pagination
   );
-  const isLoading = useSelector((state) => state.UserInformationData.Loading);
+  const isLoading = useSelector((state) => state.AdminInformationData.Loading);
 
   const dispatch = useDispatch();
 
@@ -31,7 +35,7 @@ function AdminInfo() {
       page: 1,
     };
     if (searchData === "") {
-      dispatch(UserInformationData(data));
+      dispatch(AdminInformationData(data));
     }
   }, [searchData, reload]);
 
@@ -41,7 +45,7 @@ function AdminInfo() {
       page: page,
     };
     if (searchData === "") {
-      dispatch(UserInformationData(data));
+      dispatch(AdminInformationData(data));
     }
   };
 
@@ -51,7 +55,7 @@ function AdminInfo() {
       page: page,
     };
     if (searchData !== "") {
-      dispatch(UserInformationData(data));
+      dispatch(AdminInformationData(data));
     }
   };
 
@@ -96,9 +100,9 @@ function AdminInfo() {
           </Row>
           <Row>
             <div className={styles.UserCardContainer}>
-              {/* {data.map((item) => (
-                <UserCard key={item._id} data={item} />
-              ))} */}
+              {data.map((item) => (
+                <AdminCard key={item._id} setReload={setReload} data={item} />
+              ))}
               <Row className={styles.Pagination}>
                 <Col>
                   <p style={{ color: "#333333" }}>

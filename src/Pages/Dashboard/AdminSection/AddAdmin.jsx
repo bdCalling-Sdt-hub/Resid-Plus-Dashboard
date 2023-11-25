@@ -6,6 +6,7 @@ import { LiaEditSolid } from "react-icons/lia";
 import { PlusOutlined } from "@ant-design/icons";
 const dateFormat = "YYYY-MM-DD";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const { RangePicker } = DatePicker;
 
@@ -14,13 +15,13 @@ import styles from "./AdminInfo.module.css";
 import baseAxios from "../../../../Config";
 
 function AddAdmin() {
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const token = localStorage.getItem("token");
-
 
   const handleAddAdmin = () => {
     console.log("Add Admin");
@@ -48,6 +49,8 @@ function AddAdmin() {
           title: response?.data?.message,
           showConfirmButton: true,
         });
+        navigate("/admin-info");
+
         // setReload((prev) => prev + 1);
       })
       .catch((error) => {
@@ -107,6 +110,7 @@ function AddAdmin() {
           <Col span={12}>
             <label htmlFor="">Phone Number</label>
             <Input
+              placeholder="Enter your phone number"
               onChange={(e) => setPhoneNumber(e.target.value)}
               defaultValue={phoneNumber}
               style={{ height: "45px", marginTop: "5px" }}

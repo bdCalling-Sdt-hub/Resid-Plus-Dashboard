@@ -1,13 +1,15 @@
-import { Button, Modal } from "antd";
-import React, { useState } from "react";
-import styles from "./Host.module.css";
-import { useTranslation } from "react-i18next";
-import { useReactToPrint } from "react-to-print";
-import { useRef } from "react";
-import baseAxios from "../../../../Config";
-import Swal from "sweetalert2";
 
-function HostCard({ data, setReload }) {
+
+import { Button, Modal } from "antd";
+import styles from "./AdminInfo.module.css";
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useRef } from "react";
+import { useReactToPrint } from "react-to-print";
+import Swal from "sweetalert2";
+import baseAxios from "../../../../Config";
+
+function AdminCard({ data, setReload }) {
   const componentRef = useRef();
   const token = localStorage.getItem("token");
   const handlePrint = useReactToPrint({
@@ -19,12 +21,35 @@ function HostCard({ data, setReload }) {
   const showModal = () => {
     setIsModalOpen(true);
   };
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const inputDateString = data.createdAt;
+
+  const inputDate = new Date(inputDateString);
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const month = monthNames[inputDate.getMonth()];
+  const day = inputDate.getDate();
+  const year = inputDate.getFullYear();
+
+  const formattedDate = `${month} ${day}, ${year}`;
 
   const handleSuspend = () => {
     console.log("Suspend");
@@ -95,31 +120,6 @@ function HostCard({ data, setReload }) {
       });
   };
 
-  const inputDateString = data.createdAt;
-
-  const inputDate = new Date(inputDateString);
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const month = monthNames[inputDate.getMonth()];
-  const day = inputDate.getDate();
-  const year = inputDate.getFullYear();
-
-  const formattedDate = `${month} ${day}, ${year}`;
-
   return (
     <div className={styles.CardContainer}>
       <div>
@@ -135,26 +135,27 @@ function HostCard({ data, setReload }) {
       <div className={styles.cardDescription}>
         <h1>{data.fullName}</h1>
         <div>
-          <p>Role: {data.role}</p>
           <p>
-            {" "}
-            {t("host.email")}: {data.email}
+            Role: {data?.role}
           </p>
           <p>
             {" "}
-            {t("host.JoiningDate")}: {formattedDate}
+            {t("user.email")}: {data.email}
           </p>
           <p>
             {" "}
-            {t("host.contact")}: {data.phoneNumber}
+            {t("user.JoiningDate")}: {formattedDate}
           </p>
           <p>
             {" "}
-            {t("host.address")}: {data.address}
+            {t("user.contact")}: {data.phoneNumber}
+          </p>
+          <p>
+            {" "}
+            {t("user.address")}: {data.address}
           </p>
         </div>
         <div style={{ display: "flex", columnGap: "10px" }}>
-          {" "}
           <Button onClick={showModal} className={styles.cardBtn}>
             {t("host.viewDetails")}
           </Button>
@@ -169,7 +170,7 @@ function HostCard({ data, setReload }) {
 
       <Modal open={isModalOpen} onCancel={handleCancel} centered footer={[]}>
         <div ref={componentRef} className={styles.modalContainer}>
-          <h1> {t("host.modalInfo")}</h1>
+          <h1> {t("user.modalInfo")}</h1>
           <hr />
           <div className={styles.userModalTitle}>
             <img
@@ -181,41 +182,43 @@ function HostCard({ data, setReload }) {
               alt=""
             />
             <div className={styles.userTitle}>
-              <h1>{data.name}</h1>
+              <h1>{data.fullName}</h1>
               <p>
                 {" "}
-                {t("host.bookComplete")}: {data.BookingCompleted || 0}
+                {t("user.bookComplete")}: {data.BookingCompleted || 0}
               </p>
             </div>
           </div>
           <hr />
           <div>
             <div className={styles.userDetails}>
-              <h1> {t("host.modalDetails")}</h1>
+              <h1> {t("user.modalDetails")}</h1>
               <p>
                 {" "}
-                {t("host.email")}: {data.email}
+                {t("user.email")}: {data.email}
               </p>
               <p>
                 {" "}
-                {t("host.JoiningDate")}: {formattedDate}
+                {t("user.JoiningDate")}: {formattedDate}
               </p>
               <p>
                 {" "}
-                {t("host.contact")}: {data.phoneNumber}
+                {t("user.contact")}: {data.phoneNumber}
               </p>
               <p>
                 {" "}
-                {t("host.address")}: {data.address}
+                {t("user.address")}: {data.address}
               </p>
             </div>
           </div>
         </div>
         <div>
           <Button onClick={handlePrint} className={styles.modalBtn}>
+            {" "}
             {t("user.printBtn")}
           </Button>
           <Button onClick={handlePrint} className={styles.modalBtn1}>
+            {" "}
             {t("user.downloadBtn")}
           </Button>
         </div>
@@ -224,4 +227,4 @@ function HostCard({ data, setReload }) {
   );
 }
 
-export default HostCard;
+export default AdminCard;

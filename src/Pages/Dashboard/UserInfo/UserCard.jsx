@@ -133,6 +133,7 @@ function UserCard({ data, setReload }) {
       <div className={styles.cardDescription}>
         <h1>{data.fullName}</h1>
         <div>
+          <p>Role: {data.role}</p>
           <p>
             {" "}
             {t("user.email")}: {data.email}

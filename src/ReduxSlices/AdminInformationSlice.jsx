@@ -5,19 +5,18 @@ const initialState = {
   Error: false,
   Success: false,
   Loading: false,
-  ResidenceInfoList: [],
+  AdminInfoList: [],
   pagination: {},
 };
 
 let token = localStorage.getItem("token");
 
-export const ResidenceInformationData = createAsyncThunk(
-  "ResidenceInfo",
+export const AdminInformationData = createAsyncThunk(
+  "AdminInfo",
   async (value, thunkAPI) => {
-    // api/residences/dashboard/status?
     try {
       let response = await baseAxios.get(
-        `/api/residences/dashboard/status?acceptanceStatus=accepted&limit=5&page=${value.page}`,
+        `/api/users?userType=admin&userAccountStatus=accepted&limit=5&page=${value.page}&search=${value.search}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -25,7 +24,7 @@ export const ResidenceInformationData = createAsyncThunk(
           },
         }
       );
-
+      console.log(response.data);
       return response.data;
     } catch (error) {
       if (
@@ -46,39 +45,38 @@ export const ResidenceInformationData = createAsyncThunk(
   }
 );
 
-export const ResidenceInformationSlice = createSlice({
-  name: "residenceinfo",
+export const AdminInformationSlice = createSlice({
+  name: "admininfo",
   initialState,
   reducers: {
     reset: (state) => {
       state.Loading = false;
       state.Success = false;
       state.Error = false;
-      (state.ResidenceInfoList = []), (state.pagination = {});
+      (state.AdminInfoList = []), (state.pagination = {});
     },
   },
   extraReducers: {
-    [ResidenceInformationData.pending]: (state, action) => {
+    [AdminInformationData.pending]: (state, action) => {
       state.Loading = true;
     },
-    [ResidenceInformationData.fulfilled]: (state, action) => {
+    [AdminInformationData.fulfilled]: (state, action) => {
       state.Loading = false;
       state.Success = true;
       state.Error = false;
-      state.ResidenceInfoList = action.payload.data.attributes.residences;
+      state.AdminInfoList = action.payload.data.attributes.users;
       state.pagination = action.payload.data.attributes.pagination;
-      state.status = action.payload.data.attributes.status;
     },
-    [ResidenceInformationData.rejected]: (state, action) => {
+    [AdminInformationData.rejected]: (state, action) => {
       state.Loading = false;
       state.Success = false;
       state.Error = true;
-      (state.ResidenceInfoList = []), (state.pagination = {});
+      (state.AdminInfoList = []), (state.pagination = {});
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { reset } = ResidenceInformationSlice.actions;
+export const { reset } = AdminInformationSlice.actions;
 
-export default ResidenceInformationSlice.reducer;
+export default AdminInformationSlice.reducer;
