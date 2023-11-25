@@ -48,7 +48,7 @@ function AddAdmin() {
           title: response?.data?.message,
           showConfirmButton: true,
         });
-        setReload((prev) => prev + 1);
+        // setReload((prev) => prev + 1);
       })
       .catch((error) => {
         // Handle error
