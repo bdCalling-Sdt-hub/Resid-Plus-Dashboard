@@ -25,12 +25,9 @@ import AdminResidence from "./Pages/Dashboard/AdminResidence/AdminResidence";
 import Pending from "./Pages/Dashboard/AdminResidence/Pending";
 import ReUpload from "./Pages/Dashboard/AdminResidence/ReUpload";
 import Accepted from "./Pages/Dashboard/AdminResidence/Accepted";
-
+import PromoCode from "./Pages/Dashboard/PromoCode/PromoCode";
 
 function App() {
-  
-
-
   return (
     <>
       <div className="maincontainer">
@@ -52,6 +49,14 @@ function App() {
                 element={
                   <AdminRoute>
                     <Booking />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/promo-code"
+                element={
+                  <AdminRoute>
+                    <PromoCode />
                   </AdminRoute>
                 }
               />
@@ -129,11 +134,13 @@ function App() {
               ></Route>
               <Route path="/setting/:dynamic" element={<SettingPage />} />
               {/* Here Start Admin part */}
-              <Route path="/adminResidence" element={<AdminResidence />}></Route>
+              <Route
+                path="/adminResidence"
+                element={<AdminResidence />}
+              ></Route>
               <Route path="/pending" element={<Pending />}></Route>
               <Route path="/re-upload" element={<ReUpload />}></Route>
               <Route path="/accepted" element={<Accepted />}></Route>
-
             </Route>
 
             <Route path="/signin" element={<Signin />} />

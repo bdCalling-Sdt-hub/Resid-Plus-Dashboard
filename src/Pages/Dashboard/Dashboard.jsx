@@ -5,6 +5,7 @@ import { Divider } from "antd";
 import { MdPeopleOutline } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { BiBookmarkAltPlus } from "react-icons/bi";
+import { TbDiscount2 } from "react-icons/tb";
 import { GoPeople } from "./../../../node_modules/react-icons/go/index.esm";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { RiUserSearchLine } from "react-icons/ri";
@@ -38,7 +39,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Connect to server using socket.io-client
-    var socket = io("http://159.65.18.179:3000");
+    var socket = io("http://192.168.10.18:3000");
 
     if (userFromLocalStorage.role === "super-admin") {
       socket.on("connect", () => {
@@ -429,6 +430,14 @@ const Dashboard = () => {
 
               <Divider />
 
+              <Menu.Item
+                key="395"
+                icon={<TbDiscount2 style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/promo-code" style={{ fontSize: "16px" }}>
+                  Promo Code
+                </Link>
+              </Menu.Item>
               <SubMenu
                 style={{ fontSize: "16px", color: "white" }}
                 key="8"
@@ -509,9 +518,7 @@ const Dashboard = () => {
           </>
         )}
       </Sider>
-      <Layout
-      
-      >
+      <Layout>
         {/* Header dashboard */}
         <Header
           style={{
