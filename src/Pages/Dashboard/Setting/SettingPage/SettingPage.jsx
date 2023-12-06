@@ -8,6 +8,7 @@ import PrivacyPolicy from "../../../../Components/Setting/PrivacyPolicy/PrivacyP
 import TermsAndCondition from "../../../../Components/Setting/TermsAndCondition/TermsAndCondition";
 import SuspendedList from "../../../../Components/Setting/SuspendedList/SuspendedList";
 import BannedList from "../../../../Components/Setting/BannedList/BannedList";
+import FAQ from "../../../../Components/Setting/FAQ/FAQ";
 
 const SettingPage = () => {
   const params = useParams();
@@ -46,6 +47,7 @@ const SettingPage = () => {
         {text === "suspended list" && <SuspendedList />}
         {text === "banned list" && <BannedList />}
         {text === "about us" && <About />}
+        {text === "faq" && <FAQ />}
       </div>
     </>
   );

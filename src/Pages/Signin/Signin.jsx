@@ -31,10 +31,17 @@ const Signin = () => {
       }
     }
 
-    //dispatch(reset());
+    dispatch(reset());
   }, [isLoading, isError, isSuccess, dispatch, navigate]);
 
   const onFinish = (values) => {
+    if (values.email == "" || values.password == "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter Email and Password",
+      });
+    }
     dispatch(UserData(values));
   };
   const handleForget = () => {

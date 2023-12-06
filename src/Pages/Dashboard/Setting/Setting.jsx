@@ -97,6 +97,11 @@ const Setting = () => {
       title: "About Us",
       link: "about-us",
     },
+    {
+      key: "11",
+      title: "FAQ",
+      link: "faq",
+    },
   ];
 
   const [err, setErr] = useState("");

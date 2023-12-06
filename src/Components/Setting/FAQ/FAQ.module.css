@@ -1,0 +1,22 @@
+.faqAdd{
+    display: flex;
+    justify-content: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin-left: 10px;
+    margin-top: 10px;
+    color: white;
+    font-family: Raleway;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+    width: 150px;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 40px;
+    background: var(--Black-BG,
+            linear-gradient(180deg, #787878 0%, #434343 0.01%, #000 100%));
+}
