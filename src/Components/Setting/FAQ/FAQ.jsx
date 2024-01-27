@@ -11,6 +11,7 @@ function FAQ() {
   const [deleteFAQData, setDeleteFAQData] = useState(false);
   const [editFAQData, setEditFAQData] = useState(false);
   const token = localStorage.getItem("token");
+  const [reload, setReload] = useState(1);
 
   useEffect(() => {
     baseAxios
@@ -26,7 +27,7 @@ function FAQ() {
       .catch((error) => {
         console.log(error);
       });
-  }, [deleteFAQData,editFAQData]);
+  }, [deleteFAQData,editFAQData,reload]);
 
   const addFAQ = () => {
     if (newQuestion && newAnswer) {
@@ -41,6 +42,7 @@ function FAQ() {
         .then((response) => {
           console.log(response);
           console.log(response.data);
+          setReload((prev) => prev + 1);
         })
         .catch((error) => {
           console.log(error);
@@ -63,6 +65,7 @@ function FAQ() {
       .then((response) => {
         console.log(response);
         console.log(response.data);
+        setReload((prev) => prev + 1);
       })
       .catch((error) => {
         console.log(error);
