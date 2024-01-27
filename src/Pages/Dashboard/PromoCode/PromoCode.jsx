@@ -14,6 +14,7 @@ import {
 import baseAxios from "../../../../Config";
 import styles from "./PromoCode.module.css";
 import { FaEye } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 function PromoCode() {
   const componentRef = useRef();
@@ -22,6 +23,14 @@ function PromoCode() {
   const [promoCode, setPromoCode] = React.useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState();
+  const [reload, setReload] = useState(1);
+
+  const [updateTitle, setUpdateTitle] = useState();
+  const [updateCouponCode, setUpdateCouponCode] = useState();
+  const [updateDiscountPercentage, setUpdateDiscountPercentage] = useState();
+  const [updateExpiryDate, setUpdateExpiryDate] = useState();
+  const [updateIsActive, setUpdateIsActive] = useState();
+
   console.log(modalData);
 
   const [title, setTitle] = useState();
@@ -30,13 +39,19 @@ function PromoCode() {
   const [expiryDate, setExpiryDate] = useState();
   const [isActive, setIsActive] = useState();
 
-
   const showModal = () => {
     setIsModalOpen(true);
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
+
+    // Reset modal-related states
+    setUpdateTitle("");
+    setUpdateCouponCode("");
+    setUpdateDiscountPercentage("");
+    setUpdateExpiryDate("");
+    setUpdateIsActive(false);
   };
   // console.log(promoCode);
 
@@ -60,8 +75,17 @@ function PromoCode() {
   };
 
   const handleUpdate = (values) => {
+    const updatedValues = {
+      title: updateTitle,
+      couponCode: updateCouponCode,
+      discountPercentage: updateDiscountPercentage,
+      expiryDate: updateExpiryDate,
+      isActive: updateIsActive,
+    };
+
+    console.log(updatedValues);
     baseAxios
-      .put(`api/promo-codes/${modalData._id}`, values, {
+      .put(`api/promo-codes/${modalData._id}`, updatedValues, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -69,13 +93,29 @@ function PromoCode() {
       .then((res) => {
         console.log(res);
         // Handle the response data here
+        setIsModalOpen(false); // Close the modal after successful update
+        // setShow(!show); // Optionally, you can update the state to refresh the promo code list
       })
       .catch((err) => {
         console.log(err);
         // Handle the error here
       });
   };
-
+  const handleDelete = (id) => {
+    baseAxios
+      .delete(`api/promo-codes/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setReload((prev) => prev + 1);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   function convertDateFormat(dateString) {
     const date = new Date(dateString);
@@ -104,13 +144,17 @@ function PromoCode() {
     return outputDate;
   }
 
-  const viewPromoCode = (id) => {
-    console.log(id);
+  const viewPromoCode = (record) => {
+    console.log(record?._id);
+    setUpdateTitle(record.title);
+    setUpdateCouponCode(record.couponCode);
+    setUpdateDiscountPercentage(record.discountPercentage);
+    setUpdateExpiryDate(convertDate(record.expiryDate));
+    setUpdateIsActive(record.isActive);
     // setShow(!show);
     setIsModalOpen(true);
+    setModalData(record);
   };
-
-
 
   useEffect(() => {
     baseAxios
@@ -126,7 +170,7 @@ function PromoCode() {
       .catch((err) => {
         console.log(err);
       });
-  }, [show]);
+  }, [show, isModalOpen,reload]);
 
   const columns = [
     {
@@ -178,20 +222,26 @@ function PromoCode() {
       ),
     },
     {
-      title: "View",
+      title: "Action",
       key: "view",
       dataIndex: "view",
       render: (_, record) => (
-        <>
+        <div style={{ display: "flex",gap:"10px" }}>
           <FaEye
             onClick={(e) => {
-              viewPromoCode(record._id);
-              setModalData(record);
+              viewPromoCode(record);
             }}
             style={{ cursor: "pointer" }}
             size={22}
           />
-        </>
+          <MdDelete
+            onClick={(e) => {
+              handleDelete(record._id);
+            }}
+            style={{ cursor: "pointer" }}
+            size={22}
+          />
+        </div>
       ),
     },
   ];
@@ -304,6 +354,7 @@ function PromoCode() {
               placeholder="Enter your title"
               name="title"
               className={styles.input}
+              onChange={(e) => setUpdateTitle(e.target.value)}
               type="text"
               defaultValue={modalData?.title}
             />
@@ -311,6 +362,7 @@ function PromoCode() {
           <div>
             <p style={{ fontSize: "16px" }}>Coupon Code</p>
             <input
+              onChange={(e) => setUpdateCouponCode(e.target.value)}
               placeholder="Enter coupon code"
               name="couponCode"
               className={styles.input}
@@ -321,8 +373,10 @@ function PromoCode() {
           <div>
             <p style={{ fontSize: "16px" }}>Discount Percentage</p>
             <input
+              onChange={(e) => setUpdateDiscountPercentage(e.target.value)}
               name="discountPercentage"
               placeholder="Enter your Discount Percentage"
+              defaultValue={modalData?.discountPercentage}
               className={styles.input}
               type="number"
             />
@@ -331,6 +385,7 @@ function PromoCode() {
             <p style={{ fontSize: "16px" }}>Expiry Date</p>
             <input
               name="expiryDate"
+              onChange={(e) => setUpdateExpiryDate(e.target.value)}
               className={styles.input}
               // defaultValue={convertDateFormat(modalData?.expiryDate)}
               defaultValue={convertDate(modalData?.expiryDate)}
@@ -343,6 +398,7 @@ function PromoCode() {
               Active
             </span>
             <input
+              onChange={(e) => setUpdateIsActive(e.target.checked)}
               defaultChecked={modalData?.isActive}
               name="isActive"
               className=""
@@ -351,7 +407,9 @@ function PromoCode() {
           </div>
 
           <div>
-            <div className={styles.updateBtn}>Promo Update</div>
+            <div onClick={handleUpdate} className={styles.updateBtn}>
+              Promo Update
+            </div>
           </div>
         </div>
         <div></div>
