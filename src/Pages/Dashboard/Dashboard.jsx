@@ -3,6 +3,7 @@ import { CarOutlined, MenuOutlined, SettingOutlined } from "@ant-design/icons";
 import { Badge, Button, Dropdown, Layout, Menu, Select, theme } from "antd";
 import { Divider } from "antd";
 import { MdPeopleOutline } from "react-icons/md";
+import { MdEvent } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { BiBookmarkAltPlus } from "react-icons/bi";
 import { TbDiscount2 } from "react-icons/tb";
@@ -39,7 +40,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Connect to server using socket.io-client
-    var socket = io("http://159.65.18.179:3000");
+    var socket = io("https://resid-plus.com");
 
     if (userFromLocalStorage.role === "super-admin") {
       socket.on("connect", () => {
@@ -407,6 +408,14 @@ const Dashboard = () => {
               >
                 <Link to="/user-info" style={{ fontSize: "16px" }}>
                   {t("userInfo")}
+                </Link>
+              </Menu.Item>
+              <Menu.Item
+                key="105"
+                icon={<MdEvent style={{ fontSize: "14px" }} />}
+              >
+                <Link to="/events" style={{ fontSize: "16px" }}>
+                  {t("events")}
                 </Link>
               </Menu.Item>
 

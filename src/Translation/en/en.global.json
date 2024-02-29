@@ -13,6 +13,7 @@
     "subTitle2": "- Host",
     "subTitle3": "- Residence"
   },
+  "events":"Event Section",
   "residenceInfo": "Residence",
   "userInfo": "User Information",
   "adminInfo": "Admin Information",

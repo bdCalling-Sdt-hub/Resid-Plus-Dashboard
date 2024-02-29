@@ -26,6 +26,8 @@ import Pending from "./Pages/Dashboard/AdminResidence/Pending";
 import ReUpload from "./Pages/Dashboard/AdminResidence/ReUpload";
 import Accepted from "./Pages/Dashboard/AdminResidence/Accepted";
 import PromoCode from "./Pages/Dashboard/PromoCode/PromoCode";
+import EventInfo from "./Pages/Dashboard/EventSection/EventInfo";
+import AddEvent from "./Pages/Dashboard/EventSection/AddEvent";
 
 function App() {
   return (
@@ -81,6 +83,22 @@ function App() {
                 element={
                   <AdminRoute>
                     <AdminInfo />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/events"
+                element={
+                  <AdminRoute>
+                    <EventInfo />
+                  </AdminRoute>
+                }
+              />
+              <Route
+                path="/add-event"
+                element={
+                  <AdminRoute>
+                    <AddEvent />
                   </AdminRoute>
                 }
               />
